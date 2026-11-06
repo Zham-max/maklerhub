@@ -1,0 +1,86 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<style>
+/* site-reset */
+.mhdv-root, .mhdv-root * { box-sizing: border-box; }
+.mhdv-root img { border: 0 !important; box-shadow: none !important; max-width: 100%; }
+.mhdv-root h1, .mhdv-root h2, .mhdv-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhdv-root p { margin: 0; }
+.mhdv-root a { text-decoration: none; }
+.mhdv-root {
+  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
+  --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
+  --mint: #eaf3f4; --cream: #f7efe5;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+}
+.mhdv-root { font-family: var(--font); color: var(--ink); }
+.mhdv-root .mhdv-wrap { max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; box-sizing: border-box; }
+.mhdv-root .mhdv-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 50px; padding: 0 22px;
+  border-radius: 12px; font: 700 15px/1 var(--font); text-decoration: none; white-space: nowrap; box-sizing: border-box;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+.mhdv-root .mhdv-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.mhdv-root .mhdv-btn .mhdv-arr { transition: transform .2s ease; }
+.mhdv-root .mhdv-btn:hover .mhdv-arr { transform: translateX(3px); }
+.mhdv-root .mhdv-sec { padding-top: 64px; padding-bottom: 64px; }
+.mhdv-root .mhdv-inner { display: flex; flex-direction: column; gap: 30px; }
+.mhdv-root .mhdv-head { display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
+.mhdv-root .mhdv-kicker { align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  background: #fff; padding: 7px 13px; border-radius: 999px; }
+.mhdv-root h2 { margin: 0; font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.2; color: #fff; }
+.mhdv-root .mhdv-lead { margin: 0; font-size: 16px; line-height: 1.7; }
+.mhdv-root .mhdv-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.mhdv-root .mhdv-card { background: #fff; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 8px; }
+.mhdv-root .mhdv-card b { font-size: 16.5px; line-height: 1.35; color: var(--ink); }
+.mhdv-root .mhdv-card span { font-size: 14.5px; line-height: 1.5; color: var(--muted); }
+.mhdv-root .mhdv-steps { list-style: none; margin: 0; padding: 22px 0 0; display: grid; gap: 16px; border-top: 1px solid rgba(255,255,255,.25); }
+.mhdv-root .mhdv-steps li { display: grid; grid-template-columns: 40px 1fr; column-gap: 12px; align-items: center; }
+.mhdv-root .mhdv-steps em { grid-row: span 2; font-style: normal; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; }
+.mhdv-root .mhdv-steps b { font-size: 15.5px; color: #fff; }
+.mhdv-root .mhdv-steps span { font-size: 14px; }
+.mhdv-root .mhdv-foot { background: #fff; border-radius: 18px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.mhdv-root .mhdv-foot p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--teal-deep); max-width: 520px; }
+.mhdv-root .mhdv-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.mhdv-root .mhdv-bronze { background: var(--bronze); color: #fff; }
+.mhdv-root .mhdv-bronze:hover { background: #9d5f27; }
+.mhdv-root .mhdv-redcat { background: var(--rc); color: #fff; }
+.mhdv-root .mhdv-redcat:hover { background: #d93608; }
+.mhdv-root .mhdv-ghost { border: 1.5px solid var(--teal); color: var(--teal); }
+.mhdv-root .mhdv-ghost:hover { background: var(--teal); color: #fff; }
+@media (max-width: 900px) {
+.mhdv-root .mhdv-grid { grid-template-columns: 1fr 1fr !important; }
+.mhdv-root .mhdv-steps { grid-template-columns: 1fr !important; }
+ }
+@media (max-width: 560px) {
+.mhdv-root .mhdv-grid { grid-template-columns: 1fr !important; }
+.mhdv-root .mhdv-sec { padding-top: 44px; padding-bottom: 44px; }
+.mhdv-root .mhdv-row, .mhdv-root .mhdv-row .mhdv-btn { width: 100%; }
+ }
+.mhdv-root .mhdv-sec { background: var(--bronze); }
+.mhdv-root .mhdv-kicker { color: var(--teal); }
+.mhdv-root .mhdv-lead, .mhdv-root .mhdv-steps span { color: #fbeee0; }
+.mhdv-root .mhdv-card i { color: var(--teal); }
+.mhdv-root .mhdv-grid { grid-template-columns: repeat(3, 1fr); }
+.mhdv-root .mhdv-steps { grid-template-columns: repeat(4, 1fr); border-top-color: rgba(255,255,255,.3); }
+.mhdv-root .mhdv-steps em { background: var(--teal); color: #fff; }
+
+</style>
+<div class="mhdv-root">
+<section class="mhdv-sec">
+  <div class="mhdv-wrap mhdv-inner">
+    <div class="mhdv-head">
+      <span class="mhdv-kicker">Застройщикам</span>
+      <h2>Платите только за проданную квартиру</h2>
+      <p class="mhdv-lead">RedCat заменяет рекламу для частных покупателей: ваши объекты продают риелторы Бурятии и Иркутска.</p>
+    </div>
+    <ul class="mhdv-grid"><li class="mhdv-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Бесплатная реклама в RedCat</b><span>Объекты в каталоге для всех риелторов-участников</span></li><li class="mhdv-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Отдел продаж, работающий офлайн</b></li><li class="mhdv-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Уникальная маркетинговая стратегия</b><span>Для риелторов и клиентов</span></li></ul>
+    <ol class="mhdv-steps"><li><em>1</em><b>Заявка</b><span>Оставляете контакты</span></li><li><em>2</em><b>Подключение</b><span>Объекты появляются в RedCat</span></li><li><em>3</em><b>Продажи</b><span>Риелторы ведут клиентов</span></li><li><em>4</em><b>Оплата</b><span>Только за закрытую сделку</span></li></ol>
+    <div class="mhdv-foot">
+      <p>Ни рубля вперёд: оплата только после закрытой сделки.</p>
+      <div class="mhdv-row">
+        <a class="mhdv-btn mhdv-bronze" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Подключить объект <span class="mhdv-arr" aria-hidden="true">→</span></a>
+        <a class="mhdv-btn mhdv-ghost" href="tel:+73012650099">Задать вопрос <span class="mhdv-arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>

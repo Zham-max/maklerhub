@@ -1,0 +1,86 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<style>
+/* site-reset */
+.mhrl-root, .mhrl-root * { box-sizing: border-box; }
+.mhrl-root img { border: 0 !important; box-shadow: none !important; max-width: 100%; }
+.mhrl-root h1, .mhrl-root h2, .mhrl-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhrl-root p { margin: 0; }
+.mhrl-root a { text-decoration: none; }
+.mhrl-root {
+  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
+  --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
+  --mint: #eaf3f4; --cream: #f7efe5;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+}
+.mhrl-root { font-family: var(--font); color: var(--ink); }
+.mhrl-root .mhrl-wrap { max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; box-sizing: border-box; }
+.mhrl-root .mhrl-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 50px; padding: 0 22px;
+  border-radius: 12px; font: 700 15px/1 var(--font); text-decoration: none; white-space: nowrap; box-sizing: border-box;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+.mhrl-root .mhrl-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.mhrl-root .mhrl-btn .mhrl-arr { transition: transform .2s ease; }
+.mhrl-root .mhrl-btn:hover .mhrl-arr { transform: translateX(3px); }
+.mhrl-root .mhrl-sec { padding-top: 64px; padding-bottom: 64px; }
+.mhrl-root .mhrl-inner { display: flex; flex-direction: column; gap: 30px; }
+.mhrl-root .mhrl-head { display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
+.mhrl-root .mhrl-kicker { align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  background: #fff; padding: 7px 13px; border-radius: 999px; }
+.mhrl-root h2 { margin: 0; font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.2; color: #fff; }
+.mhrl-root .mhrl-lead { margin: 0; font-size: 16px; line-height: 1.7; }
+.mhrl-root .mhrl-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.mhrl-root .mhrl-card { background: #fff; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 8px; }
+.mhrl-root .mhrl-card b { font-size: 16.5px; line-height: 1.35; color: var(--ink); }
+.mhrl-root .mhrl-card span { font-size: 14.5px; line-height: 1.5; color: var(--muted); }
+.mhrl-root .mhrl-steps { list-style: none; margin: 0; padding: 22px 0 0; display: grid; gap: 16px; border-top: 1px solid rgba(255,255,255,.25); }
+.mhrl-root .mhrl-steps li { display: grid; grid-template-columns: 40px 1fr; column-gap: 12px; align-items: center; }
+.mhrl-root .mhrl-steps em { grid-row: span 2; font-style: normal; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; }
+.mhrl-root .mhrl-steps b { font-size: 15.5px; color: #fff; }
+.mhrl-root .mhrl-steps span { font-size: 14px; }
+.mhrl-root .mhrl-foot { background: #fff; border-radius: 18px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.mhrl-root .mhrl-foot p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--teal-deep); max-width: 520px; }
+.mhrl-root .mhrl-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.mhrl-root .mhrl-bronze { background: var(--bronze); color: #fff; }
+.mhrl-root .mhrl-bronze:hover { background: #9d5f27; }
+.mhrl-root .mhrl-redcat { background: var(--rc); color: #fff; }
+.mhrl-root .mhrl-redcat:hover { background: #d93608; }
+.mhrl-root .mhrl-ghost { border: 1.5px solid var(--teal); color: var(--teal); }
+.mhrl-root .mhrl-ghost:hover { background: var(--teal); color: #fff; }
+@media (max-width: 900px) {
+.mhrl-root .mhrl-grid { grid-template-columns: 1fr 1fr !important; }
+.mhrl-root .mhrl-steps { grid-template-columns: 1fr !important; }
+ }
+@media (max-width: 560px) {
+.mhrl-root .mhrl-grid { grid-template-columns: 1fr !important; }
+.mhrl-root .mhrl-sec { padding-top: 44px; padding-bottom: 44px; }
+.mhrl-root .mhrl-row, .mhrl-root .mhrl-row .mhrl-btn { width: 100%; }
+ }
+.mhrl-root .mhrl-sec { background: var(--teal); }
+.mhrl-root .mhrl-kicker { color: var(--bronze); }
+.mhrl-root .mhrl-lead, .mhrl-root .mhrl-steps span { color: #d6e8ea; }
+.mhrl-root .mhrl-card i { color: var(--bronze); }
+.mhrl-root .mhrl-grid { grid-template-columns: repeat(4, 1fr); }
+.mhrl-root .mhrl-steps { grid-template-columns: repeat(3, 1fr); }
+.mhrl-root .mhrl-steps em { background: var(--sand); color: #14231f; }
+
+</style>
+<div class="mhrl-root">
+<section class="mhrl-sec">
+  <div class="mhrl-wrap mhrl-inner">
+    <div class="mhrl-head">
+      <span class="mhrl-kicker">Риелторам</span>
+      <h2>Все новостройки региона в одном сервисе. Бесплатно.</h2>
+      <p class="mhrl-lead">Вступайте в ассоциацию Маклер.Хаб и работайте с объектами застройщиков через RedCat.</p>
+    </div>
+    <ul class="mhrl-grid"><li class="mhrl-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Каталог новостроек</b><span>Бурятия, Иркутск, Москва и Владивосток в одном месте</span></li><li class="mhrl-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Шахматки и остатки</b><span>Актуальные квартиры без звонков в отделы продаж</span></li><li class="mhrl-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Фиксация клиента</b><span>Клиент закреплён за вами</span></li><li class="mhrl-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Комиссия за 72 часа</b><span>Выплата после закрытой сделки</span></li></ul>
+    <ol class="mhrl-steps"><li><em>1</em><b>Регистрация в RedCat</b><span>Пара минут, бесплатно</span></li><li><em>2</em><b>Подбор и фиксация</b><span>Выбираете объект, закрепляете клиента</span></li><li><em>3</em><b>Сделка и комиссия</b><span>Оплата в течение 72 часов</span></li></ol>
+    <div class="mhrl-foot">
+      <p>Плюс сообщество: мероприятия ассоциации, встречи с застройщиками, розыгрыши для участников.</p>
+      <div class="mhrl-row">
+        <a class="mhrl-btn mhrl-bronze" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Вступить в ассоциацию <span class="mhrl-arr" aria-hidden="true">→</span></a>
+        <a class="mhrl-btn mhrl-redcat" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">Зарегистрироваться в RedCat <span class="mhrl-arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</div>

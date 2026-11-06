@@ -1,0 +1,64 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<style>
+/* site-reset */
+.mhct-root, .mhct-root * { box-sizing: border-box; }
+.mhct-root img { border: 0 !important; box-shadow: none !important; max-width: 100%; }
+.mhct-root h1, .mhct-root h2, .mhct-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhct-root p { margin: 0; }
+.mhct-root a { text-decoration: none; }
+.mhct-root {
+  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
+  --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
+  --mint: #eaf3f4; --cream: #f7efe5;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+}
+.mhct-root { font-family: var(--font); color: var(--ink); }
+.mhct-root .mhct-wrap { max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; box-sizing: border-box; }
+.mhct-root .mhct-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 50px; padding: 0 22px;
+  border-radius: 12px; font: 700 15px/1 var(--font); text-decoration: none; white-space: nowrap; box-sizing: border-box;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+.mhct-root .mhct-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.mhct-root .mhct-btn .mhct-arr { transition: transform .2s ease; }
+.mhct-root .mhct-btn:hover .mhct-arr { transform: translateX(3px); }
+.mhct-root .mhct-sec { padding-top: 56px; padding-bottom: 56px; display: grid; grid-template-columns: 420px 1fr; gap: 40px; align-items: stretch; }
+.mhct-root .mhct-ct { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+.mhct-root h2 { margin: 0; font-weight: 800; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.2; }
+.mhct-root dl { margin: 0; display: grid; grid-template-columns: 120px 1fr; row-gap: 12px; font-size: 15.5px; }
+.mhct-root dt { color: #8b8a86; }
+.mhct-root dd { margin: 0; font-weight: 600; }
+.mhct-root dd a { color: var(--ink); text-decoration: none; }
+.mhct-root dd a:hover { color: var(--teal); }
+.mhct-root .mhct-btn { border: 1.5px solid var(--teal); color: var(--teal); }
+.mhct-root .mhct-btn:hover { background: var(--teal); color: #fff; }
+.mhct-root .mhct-map { border-radius: 18px; overflow: hidden; min-height: 340px; background: #e8eee6; position: relative; }
+.mhct-root .mhct-map > ymaps, .mhct-root .mhct-map iframe { position: absolute !important; inset: 0; width: 100% !important; height: 100% !important; border: 0; }
+.mhct-root .mhct-gis { font-size: 13.5px; color: var(--teal); }
+@media (max-width: 860px) {
+.mhct-root .mhct-sec { grid-template-columns: 1fr; }
+.mhct-root .mhct-map { min-height: 300px; }
+ }
+@media (max-width: 420px) {
+.mhct-root dl { grid-template-columns: 1fr; row-gap: 2px; }
+.mhct-root dd { margin-bottom: 10px; }
+ }
+
+</style>
+<div class="mhct-root">
+<section class="mhct-wrap mhct-sec">
+  <div class="mhct-ct">
+    <h2>Контакты</h2>
+    <dl>
+      <dt>Адрес</dt><dd>г. Улан-Удэ, ул. Корабельная, 47, Советский район</dd>
+      <dt>Телефон</dt><dd><a href="tel:+73012650099">+7 (3012) 65-00-99</a></dd>
+      <dt>Почта</dt><dd><a href="mailto:maklerhub@yandex.ru">maklerhub@yandex.ru</a></dd>
+      <dt>Часы работы</dt><dd>10:00–19:00</dd>
+    </dl>
+    <a class="mhct-btn" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Написать в MAX <span class="mhct-arr" aria-hidden="true">→</span></a>
+    <a class="mhct-gis" href="https://2gis.ru/ulanude/firm/70000001118858836" target="_blank" rel="noopener">Открыть в 2ГИС →</a>
+  </div>
+  <div class="mhct-map">
+    <iframe src="https://yandex.ru/map-widget/v1/?ll=107.578024%2C51.832598&amp;z=16&amp;pt=107.578024%2C51.832598%2Cpm2dgm&amp;l=map" title="Маклер.Хаб на карте: ул. Корабельная, 47" loading="lazy" allowfullscreen></iframe>
+  </div>
+</section>
+</div>
