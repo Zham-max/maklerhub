@@ -46,6 +46,17 @@ const page = `<!doctype html>
 <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="img/icon-512.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="canonical" href="https://maklerhub.ru/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Маклер.Хаб">
+<meta property="og:url" content="https://maklerhub.ru/">
+<meta property="og:title" content="Маклер.Хаб — ассоциация риелторов, оператор платформы RedCat">
+<meta property="og:description" content="Маклер.Хаб объединяет риелторов и застройщиков на платформе RedCat. Все новостройки региона в одном сервисе. Улан-Удэ.">
+<meta property="og:image" content="https://maklerhub.ru/img/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Маклер.Хаб">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
