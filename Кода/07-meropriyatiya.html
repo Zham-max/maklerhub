@@ -31,11 +31,45 @@
 .mhev-root .mhev-info p { margin: 0; color: #d6e8ea; font-size: 15.5px; line-height: 1.6; }
 .mhev-root .mhev-info p { max-width: 640px; }
 .mhev-root .mhev-past { font-size: 13.5px; color: #8b8a86; }
+/* «Как это было»: вертикальное видео и подпись */
+.mhev-root .mhev-recap { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 2fr); gap: 40px; align-items: end; margin-top: 10px; }
+/* ширины подобраны так, чтобы вертикальное и горизонтальное видео были одной высоты */
+.mhev-root .mhev-vids { display: grid; grid-template-columns: 9fr 28.44fr; gap: 20px; align-items: end; }
+.mhev-root .mhev-vid { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.mhev-root .mhev-vid figcaption { font-size: 14px; font-weight: 600; color: var(--ink); }
+.mhev-root .mhev-frame { position: relative; border-radius: 20px; overflow: hidden; background: #0b1416;
+  box-shadow: 0 30px 60px -32px rgba(1,40,46,.6); }
+.mhev-root .mhev-vid-v .mhev-frame { aspect-ratio: 9 / 16; }
+.mhev-root .mhev-vid-h .mhev-frame { aspect-ratio: 16 / 9; }
+.mhev-root .mhev-vid video { display: block; width: 100%; height: 100%; object-fit: cover; background: #0b1416; }
+.mhev-root .mhev-play { position: absolute; inset: 0; appearance: none; border: 0; cursor: pointer; padding: 28px 20px;
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between; color: #fff;
+  background: radial-gradient(120% 80% at 50% 30%, #037382 0%, #014c56 55%, #012f35 100%); font: 700 14px/1 var(--font); }
+.mhev-root .mhev-play[hidden] { display: none; }
+.mhev-root .mhev-play img { width: 70%; max-width: 220px; height: auto; filter: brightness(0) invert(1); opacity: .9; margin-top: 30%; }
+.mhev-root .mhev-vid-h .mhev-play { justify-content: center; gap: 18px; }
+.mhev-root .mhev-vid-h .mhev-play img { margin-top: 0; width: 34%; }
+.mhev-root .mhev-play-ico { width: 72px; height: 72px; border-radius: 50%; background: var(--bronze); display: grid; place-items: center;
+  box-shadow: 0 0 0 0 rgba(182,114,51,.5); animation: mhev-pulse 2.4s ease-out infinite; transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+.mhev-root .mhev-play-ico svg { width: 30px; height: 30px; fill: #fff; margin-left: 4px; }
+.mhev-root .mhev-play:hover .mhev-play-ico { transform: scale(1.1); }
+.mhev-root .mhev-play:focus-visible { outline: 3px solid var(--sand); outline-offset: -6px; }
+.mhev-root .mhev-play-t { font-size: 13px; letter-spacing: .04em; opacity: .85; }
+@keyframes mhev-pulse { 0% { box-shadow: 0 0 0 0 rgba(182,114,51,.55); } 70%, 100% { box-shadow: 0 0 0 22px rgba(182,114,51,0); } }
+.mhev-root .mhev-recap-text { display: flex; flex-direction: column; gap: 12px; max-width: 460px; }
+.mhev-root .mhev-kicker-light { color: var(--bronze); align-self: flex-start; }
+.mhev-root .mhev-recap-text h3 { margin: 0; color: var(--ink); }
+.mhev-root .mhev-recap-text p { font-size: 16px; line-height: 1.6; color: var(--muted); }
+.mhev-root .mhev-recap-text .mhev-past { font-size: 13.5px; color: #8b8a86; }
+@media (prefers-reduced-motion: reduce) { .mhev-root .mhev-play-ico { animation: none; } }
 .mhev-root .mhev-btn { background: var(--bronze); color: #fff; }
 .mhev-root .mhev-btn:hover { background: #9d5f27; }
 @media (max-width: 760px) {
 .mhev-root .mhev-sec { padding-bottom: 48px; }
 .mhev-root .mhev-ev { grid-template-columns: 1fr; }
+.mhev-root .mhev-recap { grid-template-columns: 1fr; gap: 20px; }
+.mhev-root .mhev-vids { grid-template-columns: 1fr; gap: 24px; }
+.mhev-root .mhev-vid-v { width: min(100%, 300px); margin: 0 auto; }
 .mhev-root .mhev-btn { width: 100%; }
  }
 
@@ -51,6 +85,60 @@
     </div>
     <a class="mhev-btn" href="https://max.ru/id300020791_biz" target="_blank" rel="noopener">Узнать первым <span class="mhev-arr" aria-hidden="true">→</span></a>
   </div>
-  <p class="mhev-past">Прошло: конференция «Инвестиции в&nbsp;недвижимость», 3&nbsp;ноября 2026</p>
+  <!-- «Как это было»: два видео, грузятся только по нажатию -->
+  <div class="mhev-recap">
+    <div class="mhev-recap-text">
+      <span class="mhev-kicker mhev-kicker-light">Как это было</span>
+      <h3>Маклер.Хаб на&nbsp;сцене и&nbsp;в&nbsp;эфире</h3>
+      <p>Рассказываем об&nbsp;ассоциации риелторам и&nbsp;застройщикам. Следующие встречи анонсируем в&nbsp;нашем канале MAX.</p>
+      <p class="mhev-past">Прошло: конференция «Инвестиции в&nbsp;недвижимость», 3&nbsp;ноября 2026</p>
+    </div>
+    <div class="mhev-vids">
+      <figure class="mhev-vid mhev-vid-v">
+        <div class="mhev-frame">
+          <video src="media/arigus.mp4" preload="none" playsinline width="720" height="1280" aria-label="Видео: Маклер.Хаб на «Ариг Ус»"></video>
+          <button class="mhev-play" type="button" aria-label="Смотреть: Маклер.Хаб на «Ариг Ус»">
+            <img src="img/logo.png" alt="" width="360" height="133">
+            <span class="mhev-play-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="mhev-play-t">Смотреть · 1:46</span>
+          </button>
+        </div>
+        <figcaption>Маклер.Хаб на&nbsp;«Ариг Ус»</figcaption>
+      </figure>
+      <figure class="mhev-vid mhev-vid-h">
+        <div class="mhev-frame">
+          <video src="media/vystuplenie-scena.mp4" preload="none" playsinline width="1280" height="720" aria-label="Видео: выступление Маклер.Хаб на сцене"></video>
+          <button class="mhev-play" type="button" aria-label="Смотреть выступление Маклер.Хаб на сцене">
+            <img src="img/logo.png" alt="" width="360" height="133">
+            <span class="mhev-play-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="mhev-play-t">Смотреть · 1:04</span>
+          </button>
+        </div>
+        <figcaption>Выступление на&nbsp;конференции</figcaption>
+      </figure>
+    </div>
+  </div>
 </section>
 </div>
+<script>
+(function () {
+  var vids = [];
+  document.querySelectorAll('.mhev-vid').forEach(function (fig) {
+    var v = fig.querySelector('video'), b = fig.querySelector('.mhev-play');
+    vids.push(v);
+    b.addEventListener('click', function () {
+      b.hidden = true;
+      v.controls = true;
+      v.play().catch(function () {});
+    });
+    // одновременно играет только одно видео
+    v.addEventListener('play', function () { vids.forEach(function (o) { if (o !== v && !o.paused) o.pause(); }); });
+    // если ролик ушёл с экрана — пауза
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (!e.isIntersecting && !v.paused) v.pause(); });
+      }, { threshold: 0.2 }).observe(v);
+    }
+  });
+})();
+</script>

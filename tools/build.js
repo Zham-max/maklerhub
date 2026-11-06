@@ -43,7 +43,9 @@ const page = `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Маклер.Хаб — ассоциация риелторов, оператор платформы RedCat</title>
 <meta name="description" content="Маклер.Хаб объединяет риелторов и застройщиков на платформе RedCat. Все новостройки региона в одном сервисе. Улан-Удэ.">
-<link rel="icon" href="img/logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="img/icon-512.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
