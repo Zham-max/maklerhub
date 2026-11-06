@@ -1,64 +1,207 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
 <style>
 /* site-reset */
 .mhct-root, .mhct-root * { box-sizing: border-box; }
-.mhct-root img { border: 0 !important; box-shadow: none !important; max-width: 100%; }
-.mhct-root h1, .mhct-root h2, .mhct-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhct-root h2, .mhct-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
 .mhct-root p { margin: 0; }
 .mhct-root a { text-decoration: none; }
 .mhct-root {
-  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
-  --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
-  --mint: #eaf3f4; --cream: #f7efe5;
+  --ink: #141414; --muted: #5b5a56; --line: #e7ddd0;
+  --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233;
+  --cream: #f7efe5;
   --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font); color: var(--ink);
 }
-.mhct-root { font-family: var(--font); color: var(--ink); }
-.mhct-root .mhct-wrap { max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; box-sizing: border-box; }
-.mhct-root .mhct-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 50px; padding: 0 22px;
-  border-radius: 12px; font: 700 15px/1 var(--font); text-decoration: none; white-space: nowrap; box-sizing: border-box;
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+.mhct-root .mhct-sec { background: var(--cream); padding: 72px 0; overflow: hidden; }
+.mhct-root .mhct-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 44px; align-items: stretch; }
+
+/* левая колонка */
+.mhct-root .mhct-ct { display: flex; flex-direction: column; gap: 28px; }
+.mhct-root .mhct-kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
+.mhct-root .mhct-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
+.mhct-root h2 { margin: 16px 0 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; color: var(--ink); }
+.mhct-root h2 em { font-style: normal; }
+.mhct-root .mhct-lead { margin-top: 14px; font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 460px; }
+
+/* плитки контактов */
+.mhct-root .mhct-tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.mhct-root .mhct-tile { position: relative; background: #fff; border-radius: 18px; padding: 16px; display: grid; grid-template-columns: 44px 1fr; column-gap: 12px; row-gap: 2px; align-items: center;
+  box-shadow: 0 1px 0 rgba(1,76,86,.04), 0 10px 24px -20px rgba(1,76,86,.5);
+  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; }
+.mhct-root .mhct-tile:hover { transform: translateY(-4px); box-shadow: 0 1px 0 rgba(1,76,86,.04), 0 22px 36px -22px rgba(1,76,86,.55); }
+.mhct-root .mhct-ico { grid-row: span 2; width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: #eaf3f4; color: var(--teal);
+  transition: background-color .3s ease, color .3s ease, transform .4s cubic-bezier(.34,1.56,.64,1); }
+.mhct-root .mhct-tile:hover .mhct-ico { background: var(--teal); color: #fff; transform: rotate(-8deg) scale(1.06); }
+.mhct-root .mhct-tile.mhct-max .mhct-ico { background: #fbeee0; color: var(--bronze); }
+.mhct-root .mhct-tile.mhct-max:hover .mhct-ico { background: var(--bronze); color: #fff; }
+.mhct-root .mhct-ico svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.mhct-root .mhct-lbl { font-size: 12.5px; font-weight: 600; color: #8b8a86; }
+.mhct-root .mhct-val { font-size: 15px; font-weight: 700; letter-spacing: -.01em; color: var(--ink); line-height: 1.3; }
+.mhct-root .mhct-val a { color: inherit; }
+/* вся плитка нажимается как ссылка */
+.mhct-root .mhct-val a::after { content: ""; position: absolute; inset: 0; border-radius: 18px; }
+.mhct-root .mhct-val a:focus-visible { outline: none; }
+.mhct-root .mhct-tile:has(a:focus-visible) { outline: 3px solid var(--teal); outline-offset: 3px; }
+.mhct-root .mhct-copy { position: absolute; z-index: 1; right: 10px; top: 10px; appearance: none; border: 0; cursor: pointer; width: 30px; height: 30px; border-radius: 9px;
+  display: grid; place-items: center; background: transparent; color: #a7a39b; opacity: 0; transition: opacity .2s ease, background-color .2s ease, color .2s ease; }
+.mhct-root .mhct-tile:hover .mhct-copy, .mhct-root .mhct-copy:focus-visible { opacity: 1; }
+.mhct-root .mhct-copy:hover { background: #f1ece5; color: var(--teal); }
+.mhct-root .mhct-copy:focus-visible { outline: 2px solid var(--teal); }
+.mhct-root .mhct-copy svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.mhct-root .mhct-copy[data-done]::after { content: "Скопировано"; position: absolute; right: 0; bottom: calc(100% + 6px); white-space: nowrap;
+  font: 700 11.5px/1 var(--font); color: #fff; background: var(--teal-deep); padding: 6px 8px; border-radius: 7px; }
+.mhct-root .mhct-now { font-size: 12.5px; color: var(--teal); font-weight: 600; grid-column: 2; }
+
+/* правая колонка: карта с карточкой адреса */
+.mhct-root .mhct-map { position: relative; min-height: 480px; border-radius: 24px; overflow: hidden; background: #e8eee6;
+  box-shadow: 0 30px 60px -34px rgba(1,76,86,.55); }
+.mhct-root .mhct-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.mhct-root .mhct-addr { position: absolute; left: 18px; right: 18px; bottom: 18px; max-width: 420px; background: rgba(255,255,255,.96);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-radius: 18px; padding: 18px 20px; display: grid; grid-template-columns: 40px 1fr; gap: 4px 14px;
+  box-shadow: 0 18px 40px -20px rgba(0,0,0,.4); }
+.mhct-root .mhct-pin { grid-row: span 2; position: relative; width: 40px; height: 40px; border-radius: 50%; background: var(--bronze); color: #fff; display: grid; place-items: center; }
+.mhct-root .mhct-pin svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.mhct-root .mhct-pin::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--bronze); animation: mhct-ping 2.2s cubic-bezier(0,0,.2,1) infinite; z-index: -1; }
+.mhct-root .mhct-pin { isolation: isolate; }
+@keyframes mhct-ping { 0% { transform: scale(1); opacity: .45; } 80%, 100% { transform: scale(2.1); opacity: 0; } }
+.mhct-root .mhct-addr b { font-size: 16px; color: var(--ink); align-self: end; }
+.mhct-root .mhct-addr span { font-size: 13.5px; color: var(--muted); }
+.mhct-root .mhct-acts { grid-column: 1 / -1; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+.mhct-root .mhct-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 44px; padding: 0 18px;
+  border-radius: 12px; font: 700 14px/1 var(--font); white-space: nowrap; border: 1.5px solid var(--teal); color: var(--teal);
+  transition: background-color .2s ease, color .2s ease; }
+.mhct-root .mhct-btn:hover { background: var(--teal); color: #fff; }
 .mhct-root .mhct-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
 .mhct-root .mhct-btn .mhct-arr { transition: transform .2s ease; }
-.mhct-root .mhct-btn:hover .mhct-arr { transform: translateX(3px); }
-.mhct-root .mhct-sec { padding-top: 56px; padding-bottom: 56px; display: grid; grid-template-columns: 420px 1fr; gap: 40px; align-items: stretch; }
-.mhct-root .mhct-ct { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
-.mhct-root h2 { margin: 0; font-weight: 800; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.2; }
-.mhct-root dl { margin: 0; display: grid; grid-template-columns: 120px 1fr; row-gap: 12px; font-size: 15.5px; }
-.mhct-root dt { color: #8b8a86; }
-.mhct-root dd { margin: 0; font-weight: 600; }
-.mhct-root dd a { color: var(--ink); text-decoration: none; }
-.mhct-root dd a:hover { color: var(--teal); }
-.mhct-root .mhct-btn { border: 1.5px solid var(--teal); color: var(--teal); }
-.mhct-root .mhct-btn:hover { background: var(--teal); color: #fff; }
-.mhct-root .mhct-map { border-radius: 18px; overflow: hidden; min-height: 340px; background: #e8eee6; position: relative; }
-.mhct-root .mhct-map > ymaps, .mhct-root .mhct-map iframe { position: absolute !important; inset: 0; width: 100% !important; height: 100% !important; border: 0; }
-.mhct-root .mhct-gis { font-size: 13.5px; color: var(--teal); }
-@media (max-width: 860px) {
-.mhct-root .mhct-sec { grid-template-columns: 1fr; }
-.mhct-root .mhct-map { min-height: 300px; }
- }
-@media (max-width: 420px) {
-.mhct-root dl { grid-template-columns: 1fr; row-gap: 2px; }
-.mhct-root dd { margin-bottom: 10px; }
- }
+.mhct-root .mhct-gis { font-size: 14px; font-weight: 700; color: var(--teal); padding: 8px 4px; }
+.mhct-root .mhct-gis:hover { color: var(--bronze); }
 
+/* появление при прокрутке */
+.mhct-root.mhct-js .mhct-ct > *, .mhct-root.mhct-js .mhct-tile, .mhct-root.mhct-js .mhct-map { opacity: 0; transform: translateY(24px); }
+.mhct-root.mhct-js .mhct-addr { opacity: 0; transform: translateY(20px) scale(.97); }
+.mhct-root.mhct-in .mhct-ct > *, .mhct-root.mhct-in .mhct-tile, .mhct-root.mhct-in .mhct-map, .mhct-root.mhct-in .mhct-addr {
+  opacity: 1; transform: none; transition: opacity .6s ease, transform .7s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; }
+.mhct-root.mhct-in .mhct-tiles { opacity: 1; transform: none; }
+.mhct-root.mhct-in .mhct-tile:nth-child(1) { transition-delay: .15s; }
+.mhct-root.mhct-in .mhct-tile:nth-child(2) { transition-delay: .23s; }
+.mhct-root.mhct-in .mhct-tile:nth-child(3) { transition-delay: .31s; }
+.mhct-root.mhct-in .mhct-tile:nth-child(4) { transition-delay: .39s; }
+.mhct-root.mhct-in .mhct-map { transition-delay: .1s; }
+.mhct-root.mhct-in .mhct-addr { transition-delay: .55s; }
+/* после появления у плиток снова быстрый отклик на наведение */
+.mhct-root.mhct-done .mhct-tile { transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; transition-delay: 0s; }
+.mhct-root.mhct-done .mhct-tile:hover { transform: translateY(-4px); }
+
+@media (max-width: 960px) {
+  .mhct-root .mhct-wrap { grid-template-columns: 1fr; gap: 36px; }
+  .mhct-root .mhct-map { min-height: 420px; }
+}
+@media (max-width: 560px) {
+  .mhct-root .mhct-sec { padding: 48px 0; }
+  .mhct-root .mhct-wrap { padding: 0 16px; }
+  .mhct-root .mhct-tiles { grid-template-columns: 1fr; }
+  .mhct-root .mhct-copy { opacity: 1; }
+  .mhct-root .mhct-map { min-height: 460px; border-radius: 18px; }
+  .mhct-root .mhct-addr { left: 10px; right: 10px; bottom: 10px; padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mhct-root *, .mhct-root.mhct-js * { transition: none !important; animation: none !important; }
+  .mhct-root.mhct-js .mhct-ct > *, .mhct-root.mhct-js .mhct-tile, .mhct-root.mhct-js .mhct-map, .mhct-root.mhct-js .mhct-addr { opacity: 1; transform: none; }
+}
 </style>
 <div class="mhct-root">
-<section class="mhct-wrap mhct-sec">
-  <div class="mhct-ct">
-    <h2>Контакты</h2>
-    <dl>
-      <dt>Адрес</dt><dd>г. Улан-Удэ, ул. Корабельная, 47, Советский район</dd>
-      <dt>Телефон</dt><dd><a href="tel:+73012650099">+7 (3012) 65-00-99</a></dd>
-      <dt>Почта</dt><dd><a href="mailto:maklerhub@yandex.ru">maklerhub@yandex.ru</a></dd>
-      <dt>Часы работы</dt><dd>10:00–19:00</dd>
-    </dl>
-    <a class="mhct-btn" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Написать в MAX <span class="mhct-arr" aria-hidden="true">→</span></a>
-    <a class="mhct-gis" href="https://2gis.ru/ulanude/firm/70000001118858836" target="_blank" rel="noopener">Открыть в 2ГИС →</a>
-  </div>
-  <div class="mhct-map">
-    <iframe src="https://yandex.ru/map-widget/v1/?ll=107.578024%2C51.832598&amp;z=16&amp;pt=107.578024%2C51.832598%2Cpm2dgm&amp;l=map" title="Маклер.Хаб на карте: ул. Корабельная, 47" loading="lazy" allowfullscreen></iframe>
+<section class="mhct-sec" aria-labelledby="mhct-title">
+  <div class="mhct-wrap">
+    <div class="mhct-ct">
+      <div>
+        <span class="mhct-kicker">Контакты</span>
+        <h2 id="mhct-title">Звоните, пишите <em>или&nbsp;приходите</em> в&nbsp;гости</h2>
+        <p class="mhct-lead">Подключим к RedCat, расскажем об ассоциации и ответим на вопросы риелторов и застройщиков.</p>
+      </div>
+      <ul class="mhct-tiles">
+        <li class="mhct-tile">
+          <span class="mhct-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5A16.5 16.5 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4z"/></svg></span>
+          <span class="mhct-lbl">Телефон</span>
+          <span class="mhct-val"><a href="tel:+73012650099">+7 (3012) 65-00-99</a></span>
+          <button class="mhct-copy" type="button" data-copy="+7 (3012) 65-00-99" aria-label="Скопировать телефон"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8"/></svg></button>
+        </li>
+        <li class="mhct-tile mhct-max">
+          <span class="mhct-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 1 3.3 6.5L4 19.5l1-3.2A7.9 7.9 0 0 1 4 12z"/><path d="M9 11h6M9 14h4"/></svg></span>
+          <span class="mhct-lbl">Мессенджер MAX</span>
+          <span class="mhct-val"><a href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Написать в MAX →</a></span>
+        </li>
+        <li class="mhct-tile">
+          <span class="mhct-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7 7.5 6 7.5-6"/></svg></span>
+          <span class="mhct-lbl">Почта</span>
+          <span class="mhct-val"><a href="mailto:maklerhub@yandex.ru">maklerhub<wbr>@yandex.ru</a></span>
+          <button class="mhct-copy" type="button" data-copy="maklerhub@yandex.ru" aria-label="Скопировать почту"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8"/></svg></button>
+        </li>
+        <li class="mhct-tile">
+          <span class="mhct-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
+          <span class="mhct-lbl">Часы работы</span>
+          <span class="mhct-val">10:00–19:00</span>
+          <span class="mhct-now" id="mhct-now"></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mhct-map">
+      <iframe src="https://yandex.ru/map-widget/v1/?ll=107.578024%2C51.832598&amp;z=16&amp;pt=107.578024%2C51.832598%2Cpm2dgm&amp;l=map" title="Маклер.Хаб на карте: ул. Корабельная, 47" loading="lazy" allowfullscreen></iframe>
+      <div class="mhct-addr">
+        <span class="mhct-pin" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span>
+        <b>ул. Корабельная, 47</b>
+        <span>г. Улан-Удэ, Советский район</span>
+        <div class="mhct-acts">
+          <a class="mhct-btn" href="https://yandex.ru/maps/?rtext=~51.832598%2C107.578024&amp;rtt=auto" target="_blank" rel="noopener">Проложить маршрут <span class="mhct-arr" aria-hidden="true">→</span></a>
+          <a class="mhct-gis" href="https://2gis.ru/ulanude/firm/70000001118858836" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 </div>
+<script>
+(function () {
+  var root = document.querySelector('.mhct-root');
+  if (!root) return;
+
+  // местное время в Улан-Удэ — удобно тем, кто звонит из других часовых поясов
+  var now = document.getElementById('mhct-now');
+  function tick() {
+    try {
+      var t = new Intl.DateTimeFormat('ru-RU', { timeZone: 'Asia/Irkutsk', hour: '2-digit', minute: '2-digit' }).format(new Date());
+      now.textContent = 'В Улан-Удэ сейчас ' + t;
+    } catch (e) { now.textContent = 'Время Улан-Удэ (МСК+5)'; }
+  }
+  tick();
+  setInterval(tick, 30000);
+
+  // копирование телефона и почты
+  root.querySelectorAll('.mhct-copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.getAttribute('data-copy');
+      var done = function () {
+        b.setAttribute('data-done', '');
+        setTimeout(function () { b.removeAttribute('data-done'); }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () {});
+      else {
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        ta.remove();
+      }
+    });
+  });
+
+  // появление блока при прокрутке; без поддержки — всё видно сразу
+  if (!('IntersectionObserver' in window)) return;
+  root.classList.add('mhct-js');
+  var io = new IntersectionObserver(function (es) {
+    if (!es.some(function (e) { return e.isIntersecting; })) return;
+    root.classList.add('mhct-in');
+    io.disconnect();
+    setTimeout(function () { root.classList.add('mhct-done'); }, 1400);
+  }, { threshold: 0.15 });
+  io.observe(root);
+})();
+</script>

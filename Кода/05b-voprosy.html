@@ -1,0 +1,121 @@
+<style>
+/* site-reset */
+.mhfq-root, .mhfq-root * { box-sizing: border-box; }
+.mhfq-root h2, .mhfq-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhfq-root p { margin: 0; }
+.mhfq-root a { text-decoration: none; }
+.mhfq-root {
+  --ink: #141414; --muted: #5b5a56; --line: #e7ddd0;
+  --teal: #025f6b; --teal-deep: #014c56; --bronze: #b67233; --cream: #f7efe5;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font); color: var(--ink);
+}
+.mhfq-root .mhfq-sec { background: var(--cream); }
+.mhfq-root .mhfq-wrap { max-width: 1200px; margin: 0 auto; padding: 72px 24px;
+  display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+
+/* левая колонка */
+.mhfq-root .mhfq-side { position: sticky; top: 110px; display: flex; flex-direction: column; gap: 16px; }
+.mhfq-root .mhfq-kicker { align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
+.mhfq-root .mhfq-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
+.mhfq-root h2 { margin: 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
+.mhfq-root .mhfq-sub { font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 360px; }
+.mhfq-root .mhfq-btn { align-self: flex-start; margin-top: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 50px; padding: 0 22px;
+  border-radius: 12px; font: 700 15px/1 var(--font); white-space: nowrap; background: var(--bronze); color: #fff;
+  transition: background-color .25s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease; }
+.mhfq-root .mhfq-btn:hover { background: #9d5f27; transform: translateY(-3px); box-shadow: 0 14px 24px -14px rgba(1,40,46,.55); }
+.mhfq-root .mhfq-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+
+/* вопросы: раскрываются по клику */
+.mhfq-root .mhfq-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.mhfq-root .mhfq-item { background: #fff; border-radius: 16px; transition: box-shadow .3s ease; }
+.mhfq-root .mhfq-item.mhfq-open { box-shadow: 0 18px 36px -28px rgba(1,76,86,.55); }
+.mhfq-root .mhfq-q { appearance: none; border: 0; background: none; cursor: pointer; width: 100%; text-align: left;
+  display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 20px 22px;
+  font: 700 16.5px/1.4 var(--font); color: var(--ink); border-radius: 16px; }
+.mhfq-root .mhfq-q:hover { color: var(--teal); }
+.mhfq-root .mhfq-q:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+.mhfq-root .mhfq-ico { position: relative; flex: none; width: 32px; height: 32px; border-radius: 50%; background: #eaf3f4;
+  transition: background-color .3s ease, transform .4s cubic-bezier(.65,0,.35,1); }
+.mhfq-root .mhfq-ico::before, .mhfq-root .mhfq-ico::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 2px; border-radius: 2px;
+  background: var(--teal); transform: translate(-50%, -50%); transition: background-color .3s ease, transform .4s cubic-bezier(.65,0,.35,1); }
+.mhfq-root .mhfq-ico::after { transform: translate(-50%, -50%) rotate(90deg); }
+.mhfq-root .mhfq-open .mhfq-ico { background: var(--teal); transform: rotate(180deg); }
+.mhfq-root .mhfq-open .mhfq-ico::before, .mhfq-root .mhfq-open .mhfq-ico::after { background: #fff; }
+.mhfq-root .mhfq-open .mhfq-ico::after { transform: translate(-50%, -50%) rotate(0deg); }
+.mhfq-root .mhfq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s cubic-bezier(.65,0,.35,1); }
+.mhfq-root .mhfq-open .mhfq-a { grid-template-rows: 1fr; }
+.mhfq-root .mhfq-a > div { overflow: hidden; }
+.mhfq-root .mhfq-a p { padding: 0 22px 22px; font-size: 15px; line-height: 1.65; color: var(--muted); max-width: 640px;
+  opacity: 0; transform: translateY(-6px); transition: opacity .3s ease, transform .4s cubic-bezier(.22,1,.36,1); }
+.mhfq-root .mhfq-open .mhfq-a p { opacity: 1; transform: none; transition-delay: .1s; }
+.mhfq-root .mhfq-a b { color: var(--ink); }
+.mhfq-root .mhfq-a a { color: var(--teal); font-weight: 700; }
+.mhfq-root .mhfq-a a:hover { color: var(--bronze); }
+
+@media (max-width: 860px) {
+  .mhfq-root .mhfq-wrap { grid-template-columns: 1fr; gap: 28px; padding: 48px 16px; }
+  .mhfq-root .mhfq-side { position: static; }
+  .mhfq-root .mhfq-q { padding: 18px; font-size: 15.5px; }
+  .mhfq-root .mhfq-a p { padding: 0 18px 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mhfq-root * { transition: none !important; }
+}
+</style>
+<div class="mhfq-root">
+<section class="mhfq-sec" aria-labelledby="mhfq-title">
+  <div class="mhfq-wrap">
+    <div class="mhfq-side">
+      <span class="mhfq-kicker">Вопросы и ответы</span>
+      <h2 id="mhfq-title">Частые вопросы</h2>
+      <p class="mhfq-sub">Не нашли ответ? Напишите нам в&nbsp;MAX — ответим в&nbsp;рабочее время.</p>
+      <a class="mhfq-btn" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Задать вопрос в MAX <span aria-hidden="true">→</span></a>
+    </div>
+
+    <ul class="mhfq-list">
+      <li class="mhfq-item">
+        <button class="mhfq-q" type="button" aria-expanded="false" aria-controls="mhfq-a1" id="mhfq-q1">Сколько стоит вступить в&nbsp;ассоциацию?<span class="mhfq-ico" aria-hidden="true"></span></button>
+        <div class="mhfq-a" id="mhfq-a1" role="region" aria-labelledby="mhfq-q1"><div>
+          <p><b>Для риелторов это бесплатно.</b> Достаточно зарегистрироваться в&nbsp;RedCat — это занимает пару минут, после чего сразу открывается каталог новостроек.</p>
+        </div></div>
+      </li>
+      <li class="mhfq-item">
+        <button class="mhfq-q" type="button" aria-expanded="false" aria-controls="mhfq-a2" id="mhfq-q2">Когда выплачивается комиссия?<span class="mhfq-ico" aria-hidden="true"></span></button>
+        <div class="mhfq-a" id="mhfq-a2" role="region" aria-labelledby="mhfq-q2"><div>
+          <p><b>В&nbsp;течение 72&nbsp;часов после закрытой сделки.</b></p>
+        </div></div>
+      </li>
+      <li class="mhfq-item">
+        <button class="mhfq-q" type="button" aria-expanded="false" aria-controls="mhfq-a3" id="mhfq-q3">Сколько стоит подключение застройщику и&nbsp;что входит?<span class="mhfq-ico" aria-hidden="true"></span></button>
+        <div class="mhfq-a" id="mhfq-a3" role="region" aria-labelledby="mhfq-q3"><div>
+          <p><b>Ни рубля вперёд — оплата только за&nbsp;проданную квартиру.</b> Ваши объекты бесплатно появляются в&nbsp;каталоге RedCat для всех риелторов-участников, а&nbsp;мы&nbsp;помогаем с&nbsp;маркетинговой стратегией для риелторов и&nbsp;покупателей. Условия подключения обсудим лично — <a href="tel:+73012650099">+7&nbsp;(3012)&nbsp;65-00-99</a>.</p>
+        </div></div>
+      </li>
+      <li class="mhfq-item">
+        <button class="mhfq-q" type="button" aria-expanded="false" aria-controls="mhfq-a4" id="mhfq-q4">В&nbsp;каких городах работает RedCat?<span class="mhfq-ico" aria-hidden="true"></span></button>
+        <div class="mhfq-a" id="mhfq-a4" role="region" aria-labelledby="mhfq-q4"><div>
+          <p><b>Сейчас — в&nbsp;Бурятии и&nbsp;Иркутске.</b> В&nbsp;каталоге собраны новостройки Улан-Удэ с&nbsp;актуальными шахматками и&nbsp;остатками.</p>
+        </div></div>
+      </li>
+    </ul>
+  </div>
+</section>
+</div>
+<script>
+(function () {
+  var items = document.querySelectorAll('.mhfq-item');
+  items.forEach(function (it) {
+    var q = it.querySelector('.mhfq-q');
+    q.addEventListener('click', function () {
+      var open = !it.classList.contains('mhfq-open');
+      // открыт только один вопрос — так список остаётся коротким
+      items.forEach(function (o) {
+        o.classList.remove('mhfq-open');
+        o.querySelector('.mhfq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (open) { it.classList.add('mhfq-open'); q.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+})();
+</script>

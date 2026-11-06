@@ -1,0 +1,166 @@
+<style>
+/* Общие эффекты сайта: переход к разделу по ссылкам меню и кнопкам,
+   отклик кнопок на наведение и нажатие, подчёркивание пунктов меню. */
+
+/* ---------- переход к разделу: шторка с названием раздела ---------- */
+.mh-curtain { position: fixed; inset: 0; z-index: 1000; pointer-events: none; display: grid; place-items: center;
+  background: #014c56; clip-path: inset(100% 0 0 0); visibility: hidden;
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif; }
+.mh-curtain::before { content: ""; position: absolute; inset: 0; background: #b67233; clip-path: inset(100% 0 0 0); }
+.mh-curtain-in { text-align: center; color: #fff; padding: 0 24px; }
+.mh-curtain-t { display: block; font-weight: 800; font-size: clamp(34px, 7vw, 84px); line-height: 1.05; letter-spacing: .01em; text-transform: uppercase;
+  opacity: 0; transform: translateY(40px); }
+.mh-curtain-bar { display: block; width: 0; height: 8px; margin: 22px auto 0; background: #da9858; }
+
+/* шторка поднимается снизу, за ней бронзовая полоса */
+.mh-curtain.mh-in { visibility: visible; clip-path: inset(0 0 0 0); transition: clip-path .45s cubic-bezier(.7,0,.3,1) .08s; }
+.mh-curtain.mh-in::before { clip-path: inset(0 0 100% 0); animation: mh-band .53s cubic-bezier(.7,0,.3,1) both; }
+.mh-curtain.mh-in .mh-curtain-t { opacity: 1; transform: none; transition: opacity .35s ease .3s, transform .5s cubic-bezier(.22,1,.36,1) .3s; }
+.mh-curtain.mh-in .mh-curtain-bar { width: 90px; transition: width .45s cubic-bezier(.22,1,.36,1) .45s; }
+/* и уходит вверх, открывая раздел */
+.mh-curtain.mh-out { visibility: visible; clip-path: inset(0 0 100% 0); transition: clip-path .5s cubic-bezier(.7,0,.3,1); }
+.mh-curtain.mh-out .mh-curtain-t { opacity: 0; transform: translateY(-30px); transition: opacity .25s ease, transform .4s ease-in; }
+.mh-curtain.mh-out .mh-curtain-bar { width: 90px; }
+@keyframes mh-band { 0% { clip-path: inset(100% 0 0 0); } 55% { clip-path: inset(0 0 0 0); } 100% { clip-path: inset(0 0 100% 0); } }
+
+/* раздел, к которому перешли, мягко поднимается навстречу */
+.mh-arrive { animation: mh-rise .8s cubic-bezier(.22,1,.36,1) both; }
+@keyframes mh-rise { from { opacity: .2; transform: translateY(60px); } to { opacity: 1; transform: none; } }
+
+/* ---------- кнопки ---------- */
+body .mhh-root .mhh-btn, body .mhsw-root .mhsw-btn, body .mhev-root .mhev-btn, body .mhct-root .mhct-btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, background-size .4s cubic-bezier(.65,0,.35,1),
+    transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease; }
+/* приподнимается и отбрасывает тень */
+body .mhh-root .mhh-btn:hover, body .mhsw-root .mhsw-btn:hover, body .mhev-root .mhev-btn:hover, body .mhct-root .mhct-btn:hover {
+  transform: translateY(-3px); box-shadow: 0 14px 24px -14px rgba(1,40,46,.55); }
+body .mhh-root .mhh-btn:active, body .mhsw-root .mhsw-btn:active, body .mhev-root .mhev-btn:active, body .mhct-root .mhct-btn:active {
+  transform: translateY(0) scale(.96); box-shadow: 0 4px 10px -6px rgba(1,40,46,.5); transition-duration: .08s; }
+/* по залитым кнопкам пробегает блик */
+body .mhh-root .mhh-fill::before, body .mhsw-root .mhsw-bronze::before, body .mhsw-root .mhsw-redcat::before, body .mhev-root .mhev-btn::before {
+  content: ""; position: absolute; top: -20%; left: -70%; width: 45%; height: 140%; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent); transform: skewX(-22deg); }
+body .mhh-root .mhh-fill:hover::before, body .mhsw-root .mhsw-bronze:hover::before, body .mhsw-root .mhsw-redcat:hover::before, body .mhev-root .mhev-btn:hover::before {
+  left: 130%; transition: left .7s cubic-bezier(.4,0,.2,1); }
+/* контурные кнопки заливаются слева направо */
+body .mhh-root .mhh-ghost, body .mhsw-root .mhsw-ghost, body .mhct-root .mhct-btn {
+  background-image: linear-gradient(#025f6b, #025f6b); background-repeat: no-repeat; background-position: left center; background-size: 0% 100%; }
+body .mhh-root .mhh-ghost:hover, body .mhsw-root .mhsw-ghost:hover, body .mhct-root .mhct-btn:hover {
+  background-color: transparent !important; background-image: linear-gradient(#025f6b, #025f6b) !important;
+  background-repeat: no-repeat !important; background-position: left center !important; background-size: 100% 100% !important; color: #fff; }
+/* стрелка «убегает» и возвращается с другой стороны */
+body .mhh-root .mhh-btn:hover span[aria-hidden], body .mhsw-root .mhsw-btn:hover .mhsw-arr,
+body .mhev-root .mhev-btn:hover .mhev-arr, body .mhct-root .mhct-btn:hover .mhct-arr { animation: mh-arrow .6s cubic-bezier(.65,0,.35,1); }
+@keyframes mh-arrow { 0% { transform: none; } 45% { transform: translateX(14px); opacity: 0; } 46% { transform: translateX(-14px); opacity: 0; } 100% { transform: translateX(3px); opacity: 1; } }
+/* круг от точки нажатия */
+.mh-ripple { position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; background: currentColor; opacity: .3;
+  transform: translate(-50%, -50%) scale(0); animation: mh-ripple .6s ease-out forwards; }
+@keyframes mh-ripple { to { transform: translate(-50%, -50%) scale(1); opacity: 0; } }
+
+/* ---------- меню: подчёркивание и текущий раздел ---------- */
+body .mhhd-root .mhhd-nav a { position: relative; transition: color .2s ease; }
+body .mhhd-root .mhhd-nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; border-radius: 2px;
+  background: #b67233; transform: scaleX(0); transform-origin: right; transition: transform .35s cubic-bezier(.65,0,.35,1); }
+body .mhhd-root .mhhd-nav a:hover::after, body .mhhd-root .mhhd-nav a.mh-current::after { transform: scaleX(1); transform-origin: left; }
+body .mhhd-root .mhhd-nav a.mh-current { color: #025f6b; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mh-curtain { display: none; }
+  .mh-arrive { animation: none; }
+  body .mhh-root .mhh-btn, body .mhsw-root .mhsw-btn, body .mhev-root .mhev-btn, body .mhct-root .mhct-btn { transition: none; }
+  body [class*="-btn"]:hover, body [class*="-btn"]:active { transform: none !important; }
+  body [class*="-btn"]::before, .mh-ripple { display: none; }
+  body [class*="-btn"] span { animation: none !important; }
+}
+</style>
+<div class="mh-curtain" id="mh-curtain" aria-hidden="true"><div class="mh-curtain-in"><span class="mh-curtain-t" id="mh-curtain-t"></span><span class="mh-curtain-bar"></span></div></div>
+<script>
+(function () {
+  var names = { b371: 'Маклер.Хаб', b451: 'О нас', b455: 'Риелторам', b459: 'Застройщикам', b753: 'Мероприятия', b757: 'Контакты' };
+  var curtain = document.getElementById('mh-curtain');
+  var title = document.getElementById('mh-curtain-t');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var busy = false;
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  // переход к разделу: шторка закрывает экран, страница перескакивает, шторка уходит вверх
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#b"]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    var id = a.getAttribute('href').slice(1);
+    var target = document.getElementById(id);
+    if (!target || !names[id]) return;
+    e.preventDefault();
+    if (reduced.matches) { target.scrollIntoView({ behavior: 'instant', block: 'start' }); history.replaceState(null, '', '#' + id); return; }
+    if (busy) return;
+    busy = true;
+    title.textContent = names[id];
+    curtain.classList.remove('mh-out');
+    void curtain.offsetWidth;
+    curtain.classList.add('mh-in');
+    wait(760).then(function () {
+      if (id === 'b371') window.scrollTo({ top: 0, behavior: 'instant' });
+      else target.scrollIntoView({ behavior: 'instant', block: 'start' });
+      history.replaceState(null, '', '#' + id);
+      var blk = target.closest('.blk');
+      // у закреплённого блока «риелторы / застройщики» сдвигаем только содержимое, а не сам блок
+      var rise = (blk && blk.querySelector('.mhsw-grid')) || blk;
+      if (rise) { rise.classList.remove('mh-arrive'); void rise.offsetWidth; rise.classList.add('mh-arrive'); }
+      return wait(260);
+    }).then(function () {
+      curtain.classList.remove('mh-in');
+      curtain.classList.add('mh-out');
+      return wait(520);
+    }).then(function () {
+      curtain.classList.remove('mh-out');
+      busy = false;
+    });
+  });
+  document.addEventListener('animationend', function (e) {
+    if (e.animationName === 'mh-rise') e.target.classList.remove('mh-arrive');
+  });
+
+  // круг от точки нажатия на кнопке
+  document.addEventListener('pointerdown', function (e) {
+    if (reduced.matches) return;
+    var b = e.target.closest && e.target.closest('.mhh-btn, .mhsw-btn, .mhev-btn, .mhct-btn');
+    if (!b) return;
+    var r = b.getBoundingClientRect();
+    var s = document.createElement('span');
+    var d = Math.hypot(r.width, r.height) * 2;
+    s.className = 'mh-ripple';
+    s.style.cssText = 'left:' + (e.clientX - r.left) + 'px;top:' + (e.clientY - r.top) + 'px;width:' + d + 'px;height:' + d + 'px';
+    b.appendChild(s);
+    s.addEventListener('animationend', function () { s.remove(); });
+  });
+
+  // подсветка пункта меню того раздела, который сейчас на экране
+  var links = Array.prototype.slice.call(document.querySelectorAll('.mhhd-nav a[href^="#b"]'));
+  if (!links.length) return;
+  function spy() {
+    var line = window.innerHeight * 0.35, cur = null;
+    links.forEach(function (a) {
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      var blk = el && (el.closest('.mhsw-track') || el);
+      if (!blk) return;
+      var r = blk.getBoundingClientRect();
+      if (r.top <= line && r.bottom > line) cur = a.getAttribute('href');
+    });
+    // внутри блока «риелторы / застройщики» — по тому, что сейчас показано
+    if (cur === '#b455' || cur === '#b459') {
+      var root = document.querySelector('.mhsw-root');
+      cur = root && root.getAttribute('data-active') === '1' ? '#b459' : '#b455';
+    }
+    links.forEach(function (a) { a.classList.toggle('mh-current', a.getAttribute('href') === cur); });
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { ticking = false; spy(); });
+  }, { passive: true });
+  window.addEventListener('resize', spy);
+  spy();
+})();
+</script>

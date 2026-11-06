@@ -8,7 +8,7 @@
 <link rel="icon" href="img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
 <style>
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #fff; -webkit-font-smoothing: antialiased; }
@@ -30,7 +30,7 @@ html, body { overflow-x: clip; }
 .mhhd-root p { margin: 0; }
 .mhhd-root a { text-decoration: none; }
 .mhhd-root {
-  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
+  --bg: #ffffff; --ink: #141414; --muted: #5b5a56; --line: #e7e2dc;
   --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
   --mint: #eaf3f4; --cream: #f7efe5;
   --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
@@ -106,12 +106,12 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 .mhh-root a { text-decoration: none; }
 .mhh-root {
   --bg: #ffffff;
-  --ink: #0b0b0b;
-  --body: #1d1d1d;
+  --ink: #141414;
+  --body: #5b5a56;
   --bronze: #b67233;
-  --teal: #015e6b;
+  --teal: #025f6b;
   --display: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-  --label: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --label: var(--display);
   color-scheme: light;
 }
 .mhh-root { background: var(--bg); color: var(--ink); font-family: var(--display); }
@@ -124,11 +124,11 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
   gap: 40px; align-items: center;
 }
 .mhh-root .mhh-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; max-width: 440px; }
-.mhh-root .mhh-eyebrow { margin: 0; color: var(--bronze); font-weight: 700; font-size: 13px;
-  letter-spacing: .06em; text-transform: uppercase; line-height: 1.5; max-width: 400px; }
-.mhh-root h1 { margin: 0; font-weight: 800; font-size: clamp(26px, 3vw, 34px); line-height: 1.5;
+.mhh-root .mhh-eyebrow { margin: 0; color: var(--bronze); font-weight: 700; font-size: 12px;
+  letter-spacing: .14em; text-transform: uppercase; line-height: 1.6; max-width: 400px; }
+.mhh-root h1 { margin: 0; font-weight: 800; font-size: clamp(26px, 3vw, 34px); line-height: 1.18;
   text-transform: uppercase; text-wrap: balance; }
-.mhh-root .mhh-bar { width: 70px; height: 10px; background: var(--bronze); margin-top: 12px; }
+.mhh-root .mhh-bar { width: 56px; height: 4px; background: var(--bronze); margin-top: 2px; }
 .mhh-root .mhh-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
 .mhh-root .mhh-btn { display: inline-flex; align-items: center; gap: 10px; height: 50px; padding: 0 22px; border-radius: 12px;
   font: 700 15px/1 var(--display); text-decoration: none; transition: background-color .2s ease, color .2s ease; }
@@ -137,36 +137,30 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 .mhh-root .mhh-btn.mhh-ghost { border: 1.5px solid var(--teal); color: var(--teal); }
 .mhh-root .mhh-btn.mhh-ghost:hover { background: var(--teal); color: #fff; }
 .mhh-root .mhh-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
-.mhh-root .mhh-lead { margin: 0; font-family: var(--display); font-weight: 400; font-size: 14px; line-height: 1.8;
+.mhh-root .mhh-lead { margin: 0; font-family: var(--display); font-weight: 400; font-size: 16px; line-height: 1.6;
   color: var(--body); max-width: 420px; }
 .mhh-root .mhh-art { min-width: 0; width: 100%; max-width: 600px; justify-self: end; align-self: center; }
 .mhh-root .mhh-copy { align-self: center; }
-.mhh-root .mhh-art svg { display: block; width: 100%; height: auto; overflow: visible; }
-.mhh-root .mhh-line { fill: none; stroke: var(--teal); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-.mhh-root .mhh-dot { fill: var(--teal); }
-.mhh-root .mhh-word { fill: var(--teal); font-family: var(--label); font-size: 23.8px; }
+/* видео вместо анимации логотипа */
+.mhh-root .mhh-frame { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 16 / 9; background: #efe7dc;
+  box-shadow: 0 30px 60px -30px rgba(1,76,86,.45), 0 0 0 1px rgba(1,76,86,.06); }
+.mhh-root .mhh-frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mhh-root .mhh-sound { position: absolute; right: 14px; top: 14px; appearance: none; border: 0; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px 0 11px; border-radius: 999px;
+  background: rgba(1,76,86,.88); color: #fff; font: 700 13px/1 var(--display); transition: background-color .2s ease; }
+.mhh-root .mhh-sound:hover { background: #014c56; }
+.mhh-root .mhh-sound:focus-visible { outline: 3px solid var(--bronze); outline-offset: 3px; }
+.mhh-root .mhh-sound svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.mhh-root .mhh-sound[hidden] { display: none; }
 @media (prefers-reduced-motion: no-preference) {
 .mhh-root .mhh-art { animation: mhh-slideIn 1.1s cubic-bezier(.2,.7,.2,1) .15s both; }
-.mhh-root .mhh-line { stroke-dasharray: 1; animation: mhh-draw 1.1s ease-in-out both; }
-.mhh-root .mhh-l0 { animation-delay: .7s; }
-.mhh-root .mhh-l2 { animation-delay: 1.6s; }
-.mhh-root .mhh-l1 { animation-delay: 2.5s; }
-.mhh-root .mhh-l3 { animation-delay: 3.4s; }
-.mhh-root .mhh-dot, .mhh-root .mhh-word { animation: mhh-pop .5s ease-out both; transform-box: fill-box; transform-origin: center; }
-.mhh-root .mhh-d0, .mhh-root .mhh-w0 { animation-delay: 1.6s; }
-.mhh-root .mhh-d1, .mhh-root .mhh-w1 { animation-delay: 2.5s; }
-.mhh-root .mhh-d2, .mhh-root .mhh-w2 { animation-delay: 3.4s; }
-.mhh-root .mhh-d3, .mhh-root .mhh-w3 { animation-delay: 4.4s; }
-
 }
-@keyframes mhh-slideInLeft { from { opacity: 0; transform: translateX(-80px); } to { opacity: 1; transform: none; } }
 @keyframes mhh-slideIn { from { opacity: 0; transform: translateX(80px); } to { opacity: 1; transform: none; } }
-@keyframes mhh-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-@keyframes mhh-pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
-.mhh-root .mhh-replay { position: fixed; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-  font: 600 13px var(--label); color: var(--teal); background: var(--bg); border: 1.5px solid var(--teal);
-  padding: 8px 14px; cursor: pointer; }
-.mhh-root .mhh-replay:focus-visible { outline: 2px solid var(--bronze); outline-offset: 2px; }
+@media (max-width: 560px) {
+.mhh-root .mhh-frame { border-radius: 14px; }
+.mhh-root .mhh-sound { right: 10px; top: 10px; width: 38px; padding: 0; justify-content: center; }
+.mhh-root .mhh-st { display: none; }
+}
 @media (max-width: 760px) {
 .mhh-root .mhh-hero { grid-template-columns: 1fr; padding-left: max(16px, env(safe-area-inset-left, 0px));
     padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -188,13 +182,40 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
     </div>
   </div>
   <div class="mhh-art" id="mhh-art">
-    <svg viewBox="60 55 705 392" role="img" aria-label="Маклер.Хаб: надёжный, деловой, современный">
-      <image class="mhh-logo" x="245" y="64.3" width="260" height="95.7" href="img/hero-logo.png"/>
-      <path class="mhh-line mhh-l0" pathLength="1" d="M515.4 113.8 L517.3 114.4 L518.0 114.3 L518.8 114.3 L519.6 114.2 L520.4 114.2 L521.2 114.2 L522.1 114.2 L523.0 114.2 L523.8 114.2 L524.7 114.3 L525.6 114.3 L526.6 114.4 L527.5 114.5 L528.5 114.6 L529.4 114.7 L530.4 114.9 L531.4 115.1 L532.4 115.2 L533.3 115.4 L534.3 115.6 L535.3 115.9 L536.3 116.1 L537.4 116.4 L538.4 116.7 L539.4 117.0 L540.4 117.3 L541.4 117.6 L542.4 117.9 L543.4 118.3 L544.4 118.7 L545.4 119.0 L546.4 119.5 L547.4 119.9 L548.4 120.3 L549.3 120.8 L550.3 121.2 L551.2 121.7 L552.2 122.2 L553.1 122.7 L554.0 123.2 L554.9 123.8 L555.8 124.3 L556.6 124.9 L557.5 125.5 L558.3 126.1 L559.1 126.7 L559.9 127.3 L560.6 128.0 L561.4 128.6 L562.1 129.3 L562.8 130.0 L563.5 130.7 L564.1 131.4 L564.7 132.1 L565.3 132.9 L565.9 133.6 L566.4 134.4 L566.9 135.2 L567.4 136.0 L567.8 136.8 L568.2 137.6 L568.6 138.5 L568.9 139.3 L569.2 140.2 L569.5 141.1 L569.7 142.0 L569.9 142.9 L570.0 143.8 L570.1 144.7 L570.2 145.6 L570.2 146.6 L570.3 147.5 L570.2 148.5 L570.2 149.4 L570.1 150.4 L570.0 151.3 L569.8 152.3 L569.6 153.2 L569.4 154.2 L569.2 155.1 L568.9 156.1 L568.6 157.0 L568.3 158.0 L568.0 158.9 L567.6 159.8 L567.2 160.7 L566.8 161.6 L566.3 162.5 L565.9 163.4 L565.4 164.2 L564.8 165.0 L564.3 165.9 L563.7 166.7 L563.2 167.5 L562.6 168.2 L561.9 169.0 L561.3 169.7 L560.6 170.4 L560.0 171.1 L559.3 171.7 L558.5 172.3 L557.8 172.9 L557.1 173.5 L556.3 174.0 L555.5 174.6 L554.7 175.0 L553.9 175.5 L553.1 176.0 L552.3 176.4 L551.4 176.8 L550.6 177.1 L549.7 177.5 L548.8 177.8 L547.9 178.2 L547.0 178.5 L546.1 178.7 L545.2 179.0 L544.3 179.2 L543.3 179.5 L542.4 179.7 L541.4 179.9 L540.5 180.1 L539.5 180.3 L538.5 180.4 L537.5 180.6 L536.5 180.7 L535.6 180.8 L534.6 181.0 L533.6 181.1 L532.6 181.2 L531.6 181.3 L530.6 181.4 L529.5 181.5 L528.5 181.6 L527.5 181.6 L526.5 181.7 L525.5 181.8 L524.5 181.9 L523.5 181.9 L522.5 182.0 L521.5 182.1 L520.5 182.1 L519.4 182.2 L518.4 182.2 L517.4 182.3 L516.4 182.4 L515.4 182.4 L514.4 182.5 L513.4 182.5 L512.4 182.6 L511.4 182.6 L510.4 182.7 L509.4 182.7 L508.4 182.8 L507.4 182.8 L506.4 182.8 L505.4 182.9 L504.4 182.9 L503.4 182.9 L502.4 183.0 L501.4 183.0 L500.4 183.0 L499.4 183.1 L498.4 183.1 L497.4 183.1 L496.4 183.1 L495.4 183.2 L494.4 183.2 L493.4 183.2 L492.4 183.2 L491.4 183.2 L490.4 183.2 L489.4 183.2 L488.4 183.3 L487.4 183.3 L486.4 183.3 L485.4 183.3 L484.4 183.3 L483.4 183.3 L482.4 183.3 L481.4 183.3 L480.5 183.3 L479.5 183.3 L478.5 183.3 L477.5 183.3 L476.5 183.3 L475.5 183.3 L474.5 183.3 L473.5 183.2 L472.5 183.2 L471.5 183.2 L470.5 183.2 L469.6 183.2 L468.6 183.2 L467.6 183.2 L466.6 183.1 L465.6 183.1 L464.6 183.1 L463.6 183.1 L462.6 183.0 L461.6 183.0 L460.7 183.0 L459.7 183.0 L458.7 182.9 L457.7 182.9 L456.7 182.9 L455.7 182.9 L454.7 182.8 L453.8 182.8 L452.8 182.8 L451.8 182.7 L450.8 182.7 L449.8 182.6 L448.8 182.6 L447.8 182.6 L446.9 182.5 L445.9 182.5 L444.9 182.4 L443.9 182.4 L442.9 182.4 L441.9 182.3 L441.0 182.3 L440.0 182.2 L439.0 182.2 L438.0 182.1 L437.0 182.1 L436.0 182.0 L435.1 182.0 L434.1 181.9 L433.1 181.9 L432.1 181.8 L431.1 181.8 L430.2 181.7 L429.2 181.7 L428.2 181.6 L427.2 181.5 L426.2 181.5 L425.3 181.4 L424.3 181.4 L423.3 181.3 L422.3 181.2 L421.3 181.2 L420.3 181.1 L419.4 181.1 L418.4 181.0 L417.4 180.9 L416.4 180.9 L415.4 180.8 L414.5 180.7 L413.5 180.7 L412.5 180.6 L411.5 180.6 L410.5 180.5 L409.6 180.4 L408.6 180.4 L407.6 180.3 L406.6 180.2 L405.6 180.1 L404.7 180.1 L403.7 180.0 L402.7 179.9 L401.7 179.9 L400.7 179.8 L399.8 179.7 L398.8 179.7 L397.8 179.6 L396.8 179.5 L395.8 179.4 L394.9 179.4 L393.9 179.3 L392.9 179.2 L391.9 179.2 L390.9 179.1 L390.0 179.0 L389.0 178.9 L388.0 178.9 L387.0 178.8 L386.0 178.7 L385.1 178.6 L384.1 178.6 L383.1 178.5 L382.1 178.4 L381.1 178.3 L380.2 178.3 L379.2 178.2 L378.2 178.1 L377.2 178.0 L376.2 178.0 L375.2 177.9 L374.3 177.8 L373.3 177.7 L372.3 177.7 L371.3 177.6 L370.3 177.5 L369.4 177.4 L368.4 177.4 L367.4 177.3 L366.4 177.2 L365.4 177.1 L364.4 177.1 L363.5 177.0 L362.5 176.9 L361.5 176.8 L360.5 176.8 L359.5 176.7 L358.5 176.6 L357.6 176.5 L356.6 176.5 L355.6 176.4 L354.6 176.3 L353.6 176.2 L352.6 176.2 L351.7 176.1 L350.7 176.0 L349.7 175.9 L348.7 175.9 L347.7 175.8 L346.7 175.7 L345.8 175.7 L344.8 175.6 L343.8 175.5 L342.8 175.4 L341.8 175.4 L340.8 175.3 L339.9 175.2 L338.9 175.1 L337.9 175.1 L336.9 175.0 L335.9 174.9 L334.9 174.9 L333.9 174.8 L333.0 174.7 L332.0 174.6 L331.0 174.6 L330.0 174.5 L329.0 174.4 L328.0 174.4 L327.0 174.3 L326.1 174.2 L325.1 174.2 L324.1 174.1 L323.1 174.0 L322.1 173.9 L321.1 173.9 L320.1 173.8 L319.2 173.7 L318.2 173.7 L317.2 173.6 L316.2 173.5 L315.2 173.5 L314.2 173.4 L313.2 173.3 L312.3 173.3 L311.3 173.2 L310.3 173.1 L309.3 173.1 L308.3 173.0 L307.3 173.0 L306.3 172.9 L305.3 172.8 L304.4 172.8 L303.4 172.7 L302.4 172.6 L301.4 172.6 L300.4 172.5 L299.4 172.4 L298.4 172.4 L297.5 172.3 L296.5 172.3 L295.5 172.2 L294.5 172.1 L293.5 172.1 L292.5 172.0 L291.5 172.0 L290.5 171.9 L289.6 171.9 L288.6 171.8 L287.6 171.7 L286.6 171.7 L285.6 171.6 L284.6 171.6 L283.6 171.5 L282.6 171.5 L281.6 171.4 L280.7 171.4 L279.7 171.3 L278.7 171.3 L277.7 171.2 L276.7 171.2 L275.7 171.1 L274.7 171.1 L273.7 171.0 L272.8 171.0 L271.8 170.9 L270.8 170.9 L269.8 170.8 L268.8 170.8 L267.8 170.7 L266.8 170.7 L265.8 170.6 L264.8 170.6 L263.9 170.5 L262.9 170.5 L261.9 170.4 L260.9 170.4 L259.9 170.4 L258.9 170.3 L257.9 170.3 L256.9 170.2 L255.9 170.2 L255.0 170.2 L254.0 170.1 L253.0 170.1 L252.0 170.1 L251.0 170.0 L250.0 170.0 L249.0 169.9 L248.0 169.9 L247.0 169.9 L246.1 169.8 L245.1 169.8 L244.1 169.8 L243.1 169.7 L242.1 169.7 L241.1 169.7 L240.1 169.7 L239.1 169.6 L238.1 169.6 L237.2 169.6 L236.2 169.5 L235.2 169.5 L234.2 169.5 L233.2 169.5 L232.2 169.4 L231.2 169.4 L230.2 169.4 L229.2 169.4 L228.3 169.4 L227.3 169.3 L226.3 169.3 L225.3 169.3 L224.3 169.3 L223.3 169.3 L222.3 169.3 L221.3 169.2 L220.4 169.2 L219.4 169.2 L218.4 169.2 L217.4 169.2 L216.4 169.2 L215.4 169.2 L214.4 169.2 L213.4 169.2 L212.4 169.2 L211.5 169.2 L210.5 169.2 L209.5 169.3 L208.5 169.3 L207.5 169.3 L206.5 169.3 L205.6 169.3 L204.6 169.4 L203.6 169.4 L202.6 169.4 L201.6 169.5 L200.6 169.5 L199.7 169.6 L198.7 169.6 L197.7 169.7 L196.7 169.7 L195.7 169.8 L194.8 169.9 L193.8 169.9 L192.8 170.0 L191.8 170.1 L190.8 170.2 L189.9 170.3 L188.9 170.4 L187.9 170.5 L186.9 170.6 L186.0 170.7 L185.0 170.8 L184.0 170.9 L183.1 171.1 L182.1 171.2 L181.1 171.3 L180.1 171.5 L179.2 171.6 L178.2 171.8 L177.2 172.0 L176.3 172.1 L175.3 172.3 L174.3 172.5 L173.4 172.7 L172.4 172.9 L171.5 173.1 L170.5 173.3 L169.5 173.5 L168.6 173.8 L167.6 174.0 L166.7 174.3 L165.7 174.5 L164.8 174.8 L163.8 175.0 L162.9 175.3 L161.9 175.6 L161.0 175.9 L160.0 176.2 L159.1 176.5 L158.1 176.8 L157.2 177.1 L156.2 177.5 L155.3 177.8 L154.4 178.2 L153.4 178.5 L152.5 178.9 L151.6 179.3 L150.6 179.7 L149.7 180.1 L148.8 180.5 L147.9 180.9 L147.0 181.3 L146.1 181.8 L145.2 182.2 L144.4 182.7 L143.5 183.2 L142.6 183.7 L141.8 184.2 L141.0 184.7 L140.1 185.2 L139.3 185.8 L138.5 186.3 L137.7 186.9 L136.9 187.5 L136.2 188.1 L135.4 188.7 L134.7 189.3 L134.0 190.0 L133.3 190.6 L132.6 191.3 L131.9 192.0 L131.2 192.7 L130.6 193.4 L130.0 194.1 L129.4 194.9 L128.8 195.6 L128.2 196.4 L127.7 197.2 L127.2 198.0 L126.7 198.9 L126.2 199.7 L125.7 200.6 L125.2 201.4 L124.8 202.3 L124.4 203.2 L124.0 204.1 L123.6 205.0 L123.3 206.0 L122.9 206.9 L122.6 207.9 L122.3 208.8 L122.0 209.8 L121.7 210.7 L121.5 211.7 L121.3 212.7 L121.0 213.7 L120.8 214.7 L120.7 215.7 L120.5 216.7 L120.4 217.7 L120.2 218.7 L120.1 219.7 L120.0 220.7 L119.9 221.7 L119.9 222.8 L119.8 223.8 L119.8 224.8 L119.8 225.8 L119.8 226.8 L119.8 227.8 L119.8 228.8 L119.9 229.8 L119.9 230.8 L120.0 231.8 L120.1 232.8 L120.2 233.8 L120.3 234.8 L120.5 235.7 L120.6 236.7 L120.8 237.6 L120.9 238.6 L121.1 239.5 L121.0 240.4"/><path class="mhh-line mhh-l1" pathLength="1" d="M354.1 345.8 L354.3 344.9 L354.9 344.2 L355.5 343.4 L356.1 342.7 L356.7 341.9 L357.3 341.2 L357.9 340.4 L358.5 339.7 L359.1 338.9 L359.7 338.2 L360.4 337.5 L361.0 336.7 L361.6 336.0 L362.2 335.2 L362.8 334.5 L363.4 333.8 L364.0 333.0 L364.6 332.3 L365.2 331.6 L365.9 330.9 L366.5 330.1 L367.1 329.4 L367.7 328.7 L368.3 328.0 L369.0 327.3 L369.6 326.6 L370.2 325.9 L370.8 325.1 L371.5 324.4 L372.1 323.7 L372.7 323.0 L373.4 322.3 L374.0 321.6 L374.6 320.9 L375.3 320.2 L375.9 319.5 L376.6 318.9 L377.2 318.2 L377.8 317.5 L378.5 316.8 L379.1 316.1 L379.8 315.4 L380.4 314.8 L381.1 314.1 L381.8 313.4 L382.4 312.7 L383.1 312.1 L383.7 311.4 L384.4 310.7 L385.1 310.1 L385.7 309.4 L386.4 308.8 L387.1 308.1 L387.7 307.5 L388.4 306.8 L389.1 306.2 L389.8 305.5 L390.4 304.9 L391.1 304.2 L391.8 303.6 L392.5 302.9 L393.2 302.3 L393.9 301.7 L394.6 301.0 L395.3 300.4 L396.0 299.8 L396.7 299.2 L397.4 298.6 L398.1 297.9 L398.8 297.3 L399.5 296.7 L400.2 296.1 L400.9 295.5 L401.6 294.9 L402.4 294.3 L403.1 293.7 L403.8 293.1 L404.5 292.5 L405.3 291.9 L406.0 291.3 L406.7 290.7 L407.5 290.1 L408.2 289.5 L408.9 289.0 L409.7 288.4 L410.4 287.8 L411.2 287.2 L411.9 286.7 L412.7 286.1 L413.5 285.5 L414.2 285.0 L415.0 284.4 L415.7 283.8 L416.5 283.3 L417.3 282.7 L418.1 282.2 L418.8 281.6 L419.6 281.1 L420.4 280.6 L421.2 280.0 L422.0 279.5 L422.8 279.0 L423.6 278.4 L424.4 277.9 L425.2 277.4 L426.0 276.9 L426.8 276.3 L427.6 275.8 L428.4 275.3 L429.2 274.8 L430.0 274.3 L430.9 273.8 L431.7 273.3 L432.5 272.8 L433.3 272.3 L434.2 271.8 L435.0 271.3 L435.9 270.8 L436.7 270.4 L437.5 269.9 L438.4 269.4 L439.2 269.0 L440.1 268.5 L440.9 268.1 L441.8 267.6 L442.7 267.2 L443.5 266.8 L444.4 266.4 L445.3 265.9 L446.1 265.5 L447.0 265.1 L447.9 264.8 L448.8 264.4 L449.6 264.0 L450.5 263.6 L451.4 263.3 L452.3 262.9 L453.2 262.6 L454.1 262.3 L455.0 261.9 L455.9 261.6 L456.8 261.3 L457.7 261.0 L458.6 260.7 L459.5 260.5 L460.4 260.2 L461.3 260.0 L462.2 259.7 L463.1 259.5 L464.0 259.3 L464.9 259.1 L465.9 258.9 L466.8 258.7 L467.7 258.5 L468.6 258.4 L469.6 258.3 L470.5 258.1 L471.4 258.0 L472.3 257.9 L473.3 257.8 L474.2 257.8 L475.1 257.7 L476.0 257.7 L477.0 257.6 L477.9 257.6 L478.8 257.6 L479.7 257.6 L480.6 257.7 L481.6 257.7 L482.5 257.8 L483.4 257.9 L484.3 258.0 L485.2 258.1 L486.1 258.2 L487.0 258.4 L487.9 258.6 L488.7 258.8 L489.6 259.0 L490.5 259.2 L491.4 259.5 L492.2 259.7 L493.1 260.0 L493.9 260.3 L494.8 260.7 L495.6 261.0 L496.4 261.4 L497.2 261.8 L498.0 262.2 L498.8 262.6 L499.6 263.1 L500.4 263.6 L501.2 264.1 L501.9 264.6 L502.7 265.2 L503.4 265.7 L504.1 266.3 L504.8 267.0 L505.6 267.6 L506.2 268.3 L506.9 269.0 L507.6 269.7 L508.2 270.5 L508.9 271.2 L509.5 272.0 L510.1 272.9 L510.7 273.7 L511.3 274.6 L511.9 275.5 L512.4 276.4 L513.0 277.4 L513.5 278.4 L514.0 279.4 L514.5 280.5 L515.0 281.5 L515.4 282.6 L515.9 283.8 L514.5 283.9"/><path class="mhh-line mhh-l2" pathLength="1" d="M135.1 303.4 L135.1 304.7 L135.5 305.6 L135.9 306.4 L136.3 307.2 L136.7 308.0 L137.1 308.9 L137.5 309.7 L137.8 310.5 L138.2 311.3 L138.6 312.2 L139.0 313.0 L139.4 313.8 L139.8 314.7 L140.2 315.5 L140.6 316.3 L141.0 317.2 L141.4 318.0 L141.8 318.8 L142.2 319.7 L142.6 320.5 L143.0 321.4 L143.4 322.2 L143.8 323.0 L144.2 323.9 L144.6 324.7 L145.0 325.5 L145.4 326.4 L145.9 327.2 L146.3 328.1 L146.7 328.9 L147.1 329.7 L147.5 330.6 L148.0 331.4 L148.4 332.2 L148.8 333.1 L149.2 333.9 L149.7 334.7 L150.1 335.6 L150.5 336.4 L151.0 337.3 L151.4 338.1 L151.8 338.9 L152.3 339.8 L152.7 340.6 L153.2 341.4 L153.6 342.2 L154.1 343.1 L154.5 343.9 L155.0 344.7 L155.4 345.6 L155.9 346.4 L156.4 347.2 L156.8 348.0 L157.3 348.8 L157.8 349.7 L158.2 350.5 L158.7 351.3 L159.2 352.1 L159.7 352.9 L160.2 353.7 L160.6 354.6 L161.1 355.4 L161.6 356.2 L162.1 357.0 L162.6 357.8 L163.1 358.6 L163.6 359.4 L164.1 360.2 L164.6 361.0 L165.1 361.8 L165.6 362.6 L166.2 363.4 L166.7 364.2 L167.2 364.9 L167.7 365.7 L168.3 366.5 L168.8 367.3 L169.3 368.1 L169.9 368.8 L170.4 369.6 L171.0 370.4 L171.5 371.2 L172.1 371.9 L172.6 372.7 L173.2 373.5 L173.7 374.2 L174.3 375.0 L174.9 375.7 L175.4 376.5 L176.0 377.2 L176.6 378.0 L177.2 378.7 L177.8 379.4 L178.4 380.2 L179.0 380.9 L179.6 381.6 L180.2 382.4 L180.8 383.1 L181.4 383.8 L182.0 384.5 L182.6 385.2 L183.2 385.9 L183.9 386.6 L184.5 387.3 L185.1 388.0 L185.8 388.7 L186.4 389.4 L187.0 390.1 L187.7 390.8 L188.3 391.5 L189.0 392.1 L189.7 392.8 L190.3 393.5 L191.0 394.2 L191.7 394.8 L192.4 395.5 L193.1 396.1 L193.7 396.8 L194.4 397.4 L195.1 398.0 L195.8 398.7 L196.5 399.3 L197.3 399.9 L198.0 400.6 L198.7 401.2 L199.4 401.8 L200.2 402.4 L200.9 403.0 L201.6 403.6 L202.4 404.2 L203.1 404.8 L203.9 405.3 L204.6 405.9 L205.4 406.5 L206.1 407.0 L206.9 407.6 L207.7 408.1 L208.5 408.7 L209.2 409.2 L210.0 409.7 L210.8 410.3 L211.6 410.8 L212.4 411.3 L213.2 411.8 L214.0 412.3 L214.8 412.8 L215.6 413.2 L216.4 413.7 L217.2 414.2 L218.1 414.6 L218.9 415.1 L219.7 415.5 L220.5 415.9 L221.4 416.3 L222.2 416.8 L223.0 417.2 L223.9 417.6 L224.7 417.9 L225.6 418.3 L226.4 418.7 L227.3 419.0 L228.1 419.4 L229.0 419.7 L229.9 420.0 L230.7 420.4 L231.6 420.7 L232.5 421.0 L233.4 421.3 L234.2 421.5 L235.1 421.8 L236.0 422.0 L236.9 422.3 L237.8 422.5 L238.7 422.7 L239.6 423.0 L240.4 423.2 L241.3 423.3 L242.2 423.5 L243.2 423.7 L244.1 423.8 L245.0 424.0 L245.9 424.1 L246.8 424.2 L247.7 424.3 L248.6 424.4 L249.5 424.5 L250.4 424.6 L251.4 424.6 L252.3 424.7 L253.2 424.7 L254.1 424.7 L255.0 424.7 L256.0 424.7 L256.9 424.7 L257.8 424.6 L258.7 424.6 L259.7 424.5 L260.6 424.5 L261.5 424.4 L262.4 424.3 L263.4 424.2 L264.3 424.0 L265.2 423.9 L266.1 423.8 L267.0 423.6 L268.0 423.4 L268.9 423.2 L269.8 423.0 L270.7 422.8 L271.6 422.6 L272.5 422.3 L273.5 422.0 L274.4 421.8 L275.3 421.5 L276.2 421.2 L277.1 420.9 L278.0 420.5 L278.9 420.2 L279.8 419.8 L280.7 419.4 L281.6 419.0 L282.4 418.6 L283.3 418.2 L284.2 417.8 L285.1 417.3 L286.0 416.9 L286.8 416.4 L287.7 415.9 L288.5 415.4 L289.4 414.8 L290.3 414.3 L291.1 413.7 L292.0 413.2 L292.8 412.6 L293.6 412.0 L294.5 411.4 L295.3 410.7 L296.1 410.1 L296.9 409.4 L297.7 408.7 L298.5 408.0 L299.3 407.3 L300.1 406.6 L300.9 405.8 L301.7 405.1 L302.5 404.3 L302.2 405.4"/><path class="mhh-line mhh-l3" pathLength="1" d="M515.0 340.6 L515.4 341.3 L515.4 342.2 L515.4 343.1 L515.4 343.9 L515.4 344.8 L515.4 345.7 L515.4 346.6 L515.5 347.5 L515.5 348.3 L515.6 349.2 L515.6 350.1 L515.7 351.0 L515.8 351.9 L515.8 352.7 L515.9 353.6 L516.0 354.5 L516.1 355.4 L516.3 356.3 L516.4 357.2 L516.5 358.1 L516.7 358.9 L516.8 359.8 L517.0 360.7 L517.1 361.6 L517.3 362.5 L517.5 363.3 L517.7 364.2 L517.9 365.1 L518.1 366.0 L518.3 366.9 L518.5 367.7 L518.7 368.6 L519.0 369.5 L519.2 370.3 L519.5 371.2 L519.7 372.1 L520.0 372.9 L520.3 373.8 L520.6 374.7 L520.9 375.5 L521.2 376.4 L521.5 377.2 L521.8 378.1 L522.1 378.9 L522.4 379.8 L522.8 380.6 L523.1 381.4 L523.5 382.3 L523.8 383.1 L524.2 383.9 L524.6 384.7 L525.0 385.6 L525.3 386.4 L525.7 387.2 L526.1 388.0 L526.5 388.8 L527.0 389.6 L527.4 390.4 L527.8 391.2 L528.3 392.0 L528.7 392.8 L529.2 393.5 L529.6 394.3 L530.1 395.1 L530.5 395.8 L531.0 396.6 L531.5 397.3 L532.0 398.1 L532.5 398.8 L533.0 399.6 L533.5 400.3 L534.0 401.0 L534.6 401.7 L535.1 402.5 L535.6 403.2 L536.2 403.9 L536.7 404.6 L537.3 405.2 L537.8 405.9 L538.4 406.6 L539.0 407.3 L539.6 407.9 L540.2 408.6 L540.8 409.2 L541.4 409.9 L542.0 410.5 L542.6 411.1 L543.2 411.7 L543.8 412.4 L544.5 413.0 L545.1 413.5 L545.7 414.1 L546.4 414.7 L547.0 415.3 L547.7 415.9 L548.4 416.4 L549.0 417.0 L549.7 417.5 L550.4 418.0 L551.1 418.6 L551.8 419.1 L552.5 419.6 L553.2 420.1 L553.9 420.6 L554.6 421.1 L555.3 421.6 L556.0 422.0 L556.8 422.5 L557.5 423.0 L558.2 423.4 L559.0 423.9 L559.7 424.3 L560.5 424.7 L561.2 425.2 L562.0 425.6 L562.7 426.0 L563.5 426.4 L564.3 426.8 L565.0 427.2 L565.8 427.6 L566.6 427.9 L567.4 428.3 L568.2 428.7 L569.0 429.0 L569.8 429.4 L570.6 429.7 L571.4 430.1 L572.2 430.4 L573.0 430.7 L573.8 431.0 L574.6 431.3 L575.5 431.6 L576.3 431.9 L577.1 432.2 L577.9 432.5 L578.8 432.8 L579.6 433.0 L580.4 433.3 L581.3 433.6 L582.1 433.8 L583.0 434.1 L583.8 434.3 L584.7 434.5 L585.5 434.8 L586.4 435.0 L587.2 435.2 L588.1 435.4 L589.0 435.6 L589.8 435.8 L590.7 436.0 L591.6 436.2 L592.4 436.4 L593.3 436.5 L594.2 436.7 L595.0 436.9 L595.9 437.0 L596.8 437.2 L597.7 437.3 L598.6 437.5 L599.4 437.6 L600.3 437.7 L601.2 437.8 L602.1 437.9 L603.0 438.1 L603.9 438.2 L604.8 438.3 L605.6 438.4 L606.5 438.4 L607.4 438.5 L608.3 438.6 L609.2 438.7 L610.1 438.7 L611.0 438.8 L611.9 438.9 L612.8 438.9 L613.7 439.0 L614.5 439.0 L615.4 439.0 L616.3 439.1 L617.2 439.1 L618.1 439.1 L619.0 439.1 L619.9 439.1 L620.8 439.1 L621.7 439.1 L622.6 439.1 L623.5 439.1 L624.3 439.1 L625.2 439.1 L626.1 439.1 L627.0 439.0 L627.9 439.0 L628.8 439.0 L629.7 438.9 L630.5 438.9 L631.4 438.8 L632.3 438.8 L633.2 438.7 L634.1 438.6 L635.0 438.6 L635.8 438.5 L636.7 438.4 L637.6 438.3 L638.5 438.3 L639.4 438.2 L640.3 438.1 L641.1 438.0 L642.0 437.9 L642.9 437.8 L643.8 437.6 L644.6 437.5 L645.5 437.4 L646.4 437.3 L647.3 437.1 L648.1 437.0 L649.0 436.9 L649.9 436.7 L650.8 436.6 L651.6 436.4 L652.5 436.3 L653.4 436.1 L654.3 436.0 L655.1 435.8 L656.0 435.6 L656.9 435.5 L657.7 435.3 L658.6 435.1 L659.5 434.9 L660.3 434.7 L661.2 434.5 L662.1 434.3 L662.9 434.2 L663.8 433.9 L664.7 433.7 L665.5 433.5 L666.4 433.3 L667.2 433.1 L668.1 432.9 L669.0 432.7 L669.8 432.4 L670.7 432.2 L671.5 432.0 L672.4 431.7 L673.2 431.5 L674.1 431.3 L675.0 431.0 L675.8 430.8 L676.7 430.5 L677.5 430.3 L678.4 430.0 L679.2 429.7 L680.1 429.5 L680.9 429.2 L681.8 428.9 L682.6 428.7 L683.5 428.4 L684.3 428.1 L685.2 427.8 L686.0 427.6 L686.8 427.3 L687.7 427.0 L688.5 426.7 L689.4 426.4 L690.2 426.1 L691.0 425.8 L691.9 425.5 L692.7 425.2 L693.6 424.9 L694.4 424.6 L695.2 424.3 L696.1 423.9 L696.9 423.6 L697.7 423.3 L698.6 423.0 L699.4 422.7 L700.2 422.3 L701.0 422.0 L701.9 421.7 L702.7 421.3 L703.5 421.0 L704.4 420.7 L705.2 420.3 L706.0 420.0 L706.8 419.6 L707.6 419.3 L708.5 418.9 L709.3 418.6 L710.1 418.2 L710.9 417.9 L711.7 417.5 L712.5 417.2 L713.4 416.8 L714.2 416.4 L715.0 416.1 L715.8 415.7 L716.6 415.3 L717.4 415.0 L718.2 414.6 L719.0 414.2 L719.8 413.8 L720.6 413.5 L721.4 413.1 L722.3 412.7 L723.1 412.3 L723.9 411.9 L724.7 411.6 L725.5 411.2 L726.3 410.8 L727.0 410.4 L727.8 410.0 L728.6 409.6 L729.4 409.2 L730.2 408.8 L731.0 408.4 L731.8 408.0 L732.6 407.7 L733.4 407.3 L734.2 406.9 L735.0 406.5 L735.7 406.1 L736.5 405.7 L737.3 405.2"/><circle class="mhh-dot mhh-d0" cx="120.95" cy="240.36" r="8.9"/><circle class="mhh-dot mhh-d1" cx="302.2" cy="405.44" r="8.9"/><circle class="mhh-dot mhh-d2" cx="514.5" cy="283.88" r="8.9"/><circle class="mhh-dot mhh-d3" cx="737.3022895188483" cy="405.24723707044427" r="8.9"/><text class="mhh-word mhh-w0" x="72.6" y="286" textLength="126.2" lengthAdjust="spacingAndGlyphs">надёжный</text><text class="mhh-word mhh-w1" x="265.6" y="381" textLength="104.6" lengthAdjust="spacingAndGlyphs">деловой</text><text class="mhh-word mhh-w2" x="427.6" y="322" textLength="175.8" lengthAdjust="spacingAndGlyphs">современный</text><text class="mhh-word mhh-w3" x="715.0" y="381.2" text-anchor="middle">партнёр</text>
-    </svg>
+    <div class="mhh-frame">
+      <video id="mhh-video" src="media/maklerhub.mp4" autoplay muted loop playsinline preload="auto"
+        aria-label="Видео: каждый ЖК — отдельный поиск; с Маклер.Хаб все ЖК на одной платформе RedCat"></video>
+      <button class="mhh-sound" id="mhh-sound" type="button" aria-label="Смотреть со звуком">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg>
+        <span class="mhh-st">Смотреть со звуком</span>
+      </button>
+    </div>
   </div>
 </section>
 </div>
+<script>
+(function () {
+  var v = document.getElementById('mhh-video');
+  var btn = document.getElementById('mhh-sound');
+  if (!v || !btn) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; }
+  // без звука крутится по кругу; кнопка перезапускает ролик со звуком с начала
+  btn.addEventListener('click', function () {
+    v.muted = false; v.loop = false; v.controls = true; v.currentTime = 0;
+    v.play().catch(function () {});
+  });
+  v.addEventListener('volumechange', function () { btn.hidden = !v.muted; });
+  // пауза, когда первый экран прокрутили; без звука — снова играет при возврате
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) v.pause();
+        else if (v.paused && v.muted && v.hasAttribute('autoplay')) v.play().catch(function () {});
+      });
+    }, { threshold: 0.2 }).observe(v);
+  }
+})();
+</script>
 </div>
 
 <!-- 03-o-kompanii.html -->
@@ -202,262 +223,711 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 <style>
 /* site-reset */
 .mha-root, .mha-root * { box-sizing: border-box; }
-.mha-root img { border: 0 !important; box-shadow: none !important; max-width: 100%; }
-.mha-root h1, .mha-root h2, .mha-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mha-root h2 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
 .mha-root p { margin: 0; }
-.mha-root a { text-decoration: none; }
 .mha-root {
-  --bg: #ffffff;
-  --ink: #111111;
-  --bronze: #b67233;
-  --frame: #025f6b;
-  --frame-edge: #025f6b;
-  --on-bronze: #ffffff;
+  --ink: #141414; --muted: #5b5a56; --line: #e7e2dc; --teal: #025f6b; --bronze: #b67233;
   --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-  color-scheme: light;
+  font-family: var(--font); color: var(--ink); background: #fff;
 }
-.mha-root { background: var(--bg); color: var(--ink); font-family: var(--font); }
-.mha-root .mha-about {
-  max-width: 1200px; margin: 0 auto;
-  padding-block: 48px 64px;
-  padding-left: max(24px, env(safe-area-inset-left, 0px));
-  padding-right: max(24px, env(safe-area-inset-right, 0px));
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-  gap: 40px; align-items: stretch;
-}
-.mha-root .mha-logo { min-width: 0; position: relative; width: 100%; max-width: 420px; min-height: 240px;
-  border-radius: 28px; background: var(--frame); border: 1px solid var(--frame-edge); overflow: hidden; }
-.mha-root .mha-logo img { position: absolute; inset: 9%; width: 82%; height: 82%; object-fit: contain; object-position: center; }
-.mha-root .mha-text { min-width: 0; display: flex; flex-direction: column; gap: 14px; max-width: 640px; }
-.mha-root h2 { margin: 0; padding-bottom: 6px; border-bottom: 4px solid var(--bronze);
-  color: var(--bronze); font-weight: 700; font-size: clamp(28px, 3vw, 36px); line-height: 1.25; }
-.mha-root .mha-text p { margin: 0; font-size: 16px; line-height: 1.8; }
-.mha-root .mha-text p.mha-gap { margin-top: 14px; }
-.mha-root .mha-btn { align-self: flex-start; margin-top: 40px; display: inline-block; padding: 18px 32px;
-  background: var(--bronze); color: var(--on-bronze); font: 700 15px var(--font);
-  text-transform: uppercase; letter-spacing: .02em; text-decoration: none; }
-.mha-root .mha-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-@media (prefers-reduced-motion: no-preference) {
-.mha-root .mha-logo.mha-waiting img { opacity: 0; }
-.mha-root .mha-logo.mha-play img { animation: mha-slideInLeft 1.1s cubic-bezier(.2,.7,.2,1) both; }
+.mha-root .mha-about { max-width: 1200px; margin: 0 auto; padding: 72px 24px;
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+.mha-root .mha-kicker { align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
+.mha-root .mha-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
+.mha-root .mha-text p b { color: var(--ink); font-weight: 700; }
+.mha-root h2 { margin: 2px 0 10px; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
+.mha-root .mha-text { display: flex; flex-direction: column; gap: 14px; max-width: 620px; }
+.mha-root .mha-text p { font-size: 16px; line-height: 1.7; color: var(--muted); }
+.mha-root .mha-text p.mha-first { font-size: 18px; line-height: 1.6; color: var(--ink); font-weight: 600; }
 
-}
-@keyframes mha-slideInLeft { from { opacity: 0; transform: translateX(-90px); } to { opacity: 1; transform: none; }
-}
-@media (max-width: 760px) {
-.mha-root .mha-about { grid-template-columns: 1fr; gap: 28px; }
-.mha-root .mha-logo { height: 260px; max-width: none; }
+/* цифры: три строки, разделённые линиями; знак-узел — тихим водяным знаком */
+.mha-root .mha-side { position: relative; }
+.mha-root .mha-mark { position: absolute; right: -12px; top: 50%; width: 190px; height: auto; transform: translateY(-50%);
+  opacity: .12; pointer-events: none; user-select: none; }
+.mha-root .mha-stats { position: relative; list-style: none; margin: 0; padding: 0; }
+.mha-root .mha-stats li { display: grid; grid-template-columns: minmax(130px, auto) 1fr; align-items: baseline; column-gap: 22px;
+  padding: 20px 0; border-top: 1px solid var(--line); }
+.mha-root .mha-stats li:last-child { border-bottom: 1px solid var(--line); }
+.mha-root .mha-num { font-weight: 800; font-size: clamp(40px, 4.6vw, 60px); line-height: 1; color: var(--teal); letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums; }
+.mha-root .mha-lbl { font-size: 15px; line-height: 1.45; color: var(--muted); max-width: 200px; }
 
+@media (max-width: 860px) {
+  .mha-root .mha-about { grid-template-columns: 1fr; gap: 32px; padding: 48px 16px; }
+  .mha-root .mha-text p.mha-first { font-size: 17px; }
+  .mha-root .mha-mark { width: 140px; }
+  .mha-root .mha-stats li { grid-template-columns: 110px 1fr; padding: 16px 0; }
 }
-
 </style>
 <div class="mha-root">
-
 <section class="mha-about" id="mha-about">
-  <div class="mha-logo" id="mha-logo">
-    <img src="img/about-logo.png" width="356" height="500" alt="Маклер.Хаб">
-  </div>
   <div class="mha-text">
-    <h2>О компании</h2>
-    <p>Маклер.Хаб — ассоциация риелторов. Мы оператор платформы RedCat.</p>
-    <p>Наша задача простая: чтобы риелтор видел все новостройки региона, а застройщик получал покупателей через профессионалов рынка.</p>
-    <p class="mha-gap">Нашим приоритетом является ваш комфорт и ваша безопасность, а также эффективность вашего сотрудничества с нами. Мы постоянно проводим мониторинг рынка и осваиваем новые профессиональные технологии.</p>
+    <span class="mha-kicker">О компании</span>
+    <h2>С нами просто</h2>
+    <p class="mha-first">Маклер.Хаб — ассоциация риелторов Бурятии и&nbsp;Иркутска и&nbsp;оператор платформы RedCat. Мы&nbsp;соединяем риелторов и&nbsp;застройщиков, чтобы сделки с&nbsp;новостройками проходили быстро и&nbsp;без лишних звонков.</p>
+    <p><b>Риелтору</b> — все новостройки в&nbsp;одном каталоге, актуальные шахматки, фиксация клиента и&nbsp;комиссия в&nbsp;течение 72&nbsp;часов после сделки. <b>Застройщику</b> — продажи через профессионалов рынка и&nbsp;оплата только за&nbsp;проданную квартиру.</p>
+  </div>
+  <div class="mha-side">
+    <img class="mha-mark" src="img/about-logo.png" alt="" width="356" height="500" aria-hidden="true">
+    <ul class="mha-stats">
+      <li><span class="mha-num" data-to="200" data-suffix="+">200+</span><span class="mha-lbl">риелторов с&nbsp;нами</span></li>
+      <li><span class="mha-num" data-to="5" data-suffix="+">5+</span><span class="mha-lbl">ЖК с&nbsp;нами</span></li>
+      <li><span class="mha-num" data-to="248" data-suffix="">248</span><span class="mha-lbl">объектов реализовано за&nbsp;полгода</span></li>
+    </ul>
+  </div>
+</section>
+</div>
+<script>
+// цифры «набегают» от нуля, когда блок появляется на экране
+(function () {
+  var nums = document.querySelectorAll('.mha-num[data-to]');
+  if (!nums.length || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var run = function (el) {
+    var to = Number(el.getAttribute('data-to')), suf = el.getAttribute('data-suffix') || '', t0 = null, dur = 1400;
+    var step = function (t) {
+      if (t0 === null) t0 = t;
+      var k = Math.min(1, (t - t0) / dur);
+      el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))) + (k === 1 ? suf : '');
+      if (k < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  nums.forEach(function (el) { io.observe(el); });
+})();
+</script>
+</div>
+
+<!-- 04-rieltoram-zastroyshchikam.html -->
+<div class="blk">
+<style>
+/* site-reset */
+.mhsw-root, .mhsw-root * { box-sizing: border-box; }
+.mhsw-root h2 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhsw-root p { margin: 0; }
+.mhsw-root a { text-decoration: none; }
+.mhsw-root {
+  --bg: #ffffff; --ink: #141414; --muted: #5b5a56; --line: #e7e2dc;
+  --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --hdr: 77px;
+  --accent: var(--teal);
+  font-family: var(--font); color: #fff;
+}
+/* у застройщиков фон — тёмная бронза: на ней белый текст читается чётко */
+.mhsw-root[data-active="1"] { --accent: #94561f; }
+
+/* Риелтор и застройщик — один блок. При прокрутке он закрепляется на экране,
+   и прокрутка переключает «риелтор → застройщик»: эмблема уходит по дуге,
+   заголовок стирается и проявляется, условия сменяются, фон меняет цвет. */
+.mhsw-track { position: relative; background: var(--accent); transition: background-color 1.1s ease; }
+.mhsw-mark { position: absolute; left: 0; top: 0; width: 1px; height: 1px; scroll-margin-top: var(--hdr); }
+.mhsw-stage { padding: 72px 0; }
+.mhsw-pin .mhsw-stage { position: sticky; top: var(--hdr); height: calc(100vh - var(--hdr)); padding: 0; display: flex; align-items: center; overflow: hidden; }
+.mhsw-wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.mhsw-grid { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center; }
+.mhsw-pin .mhsw-grid { padding: 16px 0; }
+
+/* левая колонка: переключатель, точки, эмблема на орбите */
+.mhsw-side { display: flex; flex-direction: column; align-items: center; gap: 64px; }
+.mhsw-tabs { display: inline-flex; padding: 4px; border-radius: 999px; background: rgba(255,255,255,.16); }
+.mhsw-tab { appearance: none; border: 0; background: none; cursor: pointer; font: 700 13px/1 var(--font); letter-spacing: .02em; color: #fff;
+  padding: 11px 16px; border-radius: 999px; transition: background-color .35s ease, color .35s ease; }
+.mhsw-tab[aria-selected="true"] { background: #fff; color: var(--accent); }
+.mhsw-tab:focus-visible, .mhsw-dot:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.mhsw-vis { position: relative; width: 300px; height: 300px; touch-action: pan-y; }
+.mhsw-band { position: absolute; inset: -34px; width: calc(100% + 68px); height: calc(100% + 68px); overflow: visible; pointer-events: none;
+  transform: rotate(-20deg); transition: transform 1.3s cubic-bezier(.65,0,.35,1); }
+.mhsw-band circle { fill: none; stroke: #fff; stroke-opacity: .2; stroke-width: 20; stroke-linecap: round;
+  stroke-dasharray: 26 74; transition: stroke-dasharray 1.3s cubic-bezier(.65,0,.35,1); }
+.mhsw-root[data-active="1"] .mhsw-band { transform: rotate(130deg); }
+.mhsw-root[data-active="1"] .mhsw-band circle { stroke-dasharray: 34 66; }
+.mhsw-plates { position: absolute; inset: 30px; }
+.mhsw-orb { position: absolute; inset: 0; border-radius: 50%; background: #fff; display: grid; place-items: center;
+  box-shadow: 0 24px 40px -18px rgba(0,0,0,.45), 0 4px 10px rgba(0,0,0,.12);
+  transform-origin: 50% -190%; will-change: transform;
+  /* уходит: разгон по дуге, потом исчезает */
+  opacity: 0; transition: transform .62s cubic-bezier(.55,0,1,.45), opacity 0s linear .62s; }
+.mhsw-orb svg { width: 62%; height: auto; }
+.mhsw-orb[data-i="0"] { color: var(--teal); }
+.mhsw-orb[data-i="1"] { color: #94561f; }
+/* ушедшая эмблема ждёт с той стороны, откуда вернётся */
+.mhsw-root[data-active="1"] .mhsw-orb[data-i="0"] { transform: rotate(50deg); }
+.mhsw-root[data-active="0"] .mhsw-orb[data-i="1"] { transform: rotate(-50deg); }
+.mhsw-root[data-active="0"] .mhsw-orb[data-i="0"],
+.mhsw-root[data-active="1"] .mhsw-orb[data-i="1"] { opacity: 1; transform: rotate(0deg);
+  transition: transform .95s cubic-bezier(.22,1,.36,1) .3s, opacity 0s linear .3s; }
+.mhsw-dots { position: absolute; left: -46px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 8px; }
+.mhsw-dot { appearance: none; border: 0; background: none; cursor: pointer; width: 16px; height: 12px; padding: 0; display: grid; place-items: center;
+  transition: height .45s cubic-bezier(.3,.7,.2,1); }
+.mhsw-dot i { display: block; width: 4px; height: 4px; border-radius: 4px; background: #fff; opacity: .5;
+  transition: height .45s cubic-bezier(.3,.7,.2,1), opacity .3s; }
+.mhsw-dot[aria-current="true"] { height: 30px; }
+.mhsw-dot[aria-current="true"] i { height: 26px; opacity: 1; }
+
+/* правая колонка: заголовок и условия; оба варианта лежат друг на друге */
+.mhsw-main { min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+.mhsw-stack { display: grid; }
+.mhsw-stack > * { grid-area: 1 / 1; min-width: 0; }
+.mhsw-hd, .mhsw-body { visibility: hidden; }
+.mhsw-t1, .mhsw-t2 { display: block; margin: 0; }
+.mhsw-t1 { font-weight: 300; font-size: clamp(30px, 3.6vw, 46px); line-height: 1; letter-spacing: .02em; text-transform: uppercase; }
+.mhsw-t2 { font-weight: 800; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.2; margin-top: 8px; }
+/* уходящий заголовок: тонкая строка стирается вправо, жирная — влево */
+.mhsw-hd { transition: visibility 0s linear .5s; }
+.mhsw-hd .mhsw-t1 { clip-path: inset(0 0 0 100%); transition: clip-path .42s cubic-bezier(.55,0,1,.45); }
+.mhsw-hd .mhsw-t2 { clip-path: inset(0 100% 0 0); transition: clip-path .42s cubic-bezier(.55,0,1,.45) .06s; }
+.mhsw-hd.mhsw-on { visibility: visible; transition: visibility 0s linear .5s; }
+.mhsw-hd.mhsw-on .mhsw-t1 { clip-path: inset(0 0 0 0); transition: clip-path .7s cubic-bezier(.22,1,.36,1) .55s; }
+.mhsw-hd.mhsw-on .mhsw-t2 { clip-path: inset(0 0 0 0); transition: clip-path .7s cubic-bezier(.22,1,.36,1) .62s; }
+/* условия: старые гаснут, новые поднимаются по очереди */
+.mhsw-body { display: flex; flex-direction: column; gap: 16px; opacity: 0; transform: translateY(-6px);
+  transition: opacity .3s ease-in .05s, transform .3s ease-in .05s, visibility 0s linear .4s; }
+.mhsw-body > * { opacity: 0; transform: translateY(10px); transition: opacity 0s linear .4s, transform 0s linear .4s; }
+.mhsw-body.mhsw-on { visibility: visible; opacity: 1; transform: none; transition: opacity 0s linear .4s, transform 0s linear .4s, visibility 0s linear .4s; }
+.mhsw-body.mhsw-on > * { opacity: 1; transform: none; transition: opacity .5s ease-out, transform .5s cubic-bezier(.22,1,.36,1); }
+.mhsw-body.mhsw-on > :nth-child(1) { transition-delay: .4s; }
+.mhsw-body.mhsw-on > :nth-child(2) { transition-delay: .46s; }
+.mhsw-body.mhsw-on > :nth-child(3) { transition-delay: .52s; }
+.mhsw-body.mhsw-on > :nth-child(4) { transition-delay: .58s; }
+
+.mhsw-lead { font-size: 16px; line-height: 1.6; max-width: 720px; }
+.mhsw-b0 .mhsw-lead, .mhsw-b0 .mhsw-steps span { color: #d6e8ea; }
+.mhsw-b1 .mhsw-lead, .mhsw-b1 .mhsw-steps span { color: #fbeee0; }
+.mhsw-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.mhsw-b0 .mhsw-cards { grid-template-columns: repeat(4, 1fr); }
+.mhsw-b1 .mhsw-cards { grid-template-columns: repeat(3, 1fr); }
+.mhsw-card { background: #fff; border-radius: 16px; padding: 14px 16px; display: grid; grid-template-columns: 22px 1fr; column-gap: 10px; row-gap: 4px; align-content: start; }
+.mhsw-card i { display: block; grid-row: span 2; }
+.mhsw-card i svg { display: block; }
+.mhsw-b0 .mhsw-card i { color: var(--bronze); }
+.mhsw-b1 .mhsw-card i { color: var(--teal); }
+.mhsw-card b { font-size: 15px; line-height: 1.3; color: var(--ink); }
+.mhsw-card span { font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+.mhsw-steps { list-style: none; margin: 0; padding: 14px 0 0; display: grid; gap: 14px; border-top: 1px solid rgba(255,255,255,.28); }
+.mhsw-b0 .mhsw-steps { grid-template-columns: repeat(3, 1fr); }
+.mhsw-b1 .mhsw-steps { grid-template-columns: repeat(4, 1fr); }
+.mhsw-steps li { display: grid; grid-template-columns: 36px 1fr; column-gap: 12px; align-items: center; }
+.mhsw-steps em { grid-row: span 2; font-style: normal; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; }
+.mhsw-b0 .mhsw-steps em { background: var(--sand); color: #14231f; }
+.mhsw-b1 .mhsw-steps em { background: var(--teal); color: #fff; }
+.mhsw-steps b { font-size: 15px; }
+.mhsw-steps span { font-size: 13.5px; }
+.mhsw-foot { background: #fff; border-radius: 16px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.mhsw-foot p { flex: 1 1 240px; font-size: 14.5px; line-height: 1.5; color: var(--muted); }
+.mhsw-row { display: flex; gap: 12px; flex-wrap: wrap; flex: none; }
+.mhsw-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 48px; padding: 0 20px;
+  border-radius: 12px; font: 700 15px/1 var(--font); white-space: nowrap; transition: background-color .2s ease, color .2s ease; }
+.mhsw-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.mhsw-btn .mhsw-arr { transition: transform .2s ease; }
+.mhsw-btn:hover .mhsw-arr { transform: translateX(3px); }
+.mhsw-bronze { background: var(--bronze); color: #fff; }
+.mhsw-bronze:hover { background: #9d5f27; }
+.mhsw-redcat { background: var(--rc); color: #fff; }
+.mhsw-redcat:hover { background: #d93608; }
+.mhsw-ghost { border: 1.5px solid var(--teal); color: var(--teal); }
+.mhsw-ghost:hover { background: var(--teal); color: #fff; }
+.mhsw-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 1100px) {
+  .mhsw-b0 .mhsw-cards { grid-template-columns: repeat(2, 1fr); }
+  .mhsw-grid { grid-template-columns: 240px 1fr; gap: 48px; }
+  .mhsw-vis { width: 240px; height: 240px; }
+}
+@media (max-width: 900px) {
+  .mhsw-stage { padding: 48px 0; }
+  .mhsw-grid { grid-template-columns: 1fr; gap: 28px; }
+  .mhsw-side { gap: 46px; }
+  .mhsw-vis { width: 170px; height: 170px; }
+  .mhsw-plates { inset: 18px; }
+  .mhsw-band { inset: -22px; width: calc(100% + 44px); height: calc(100% + 44px); }
+  .mhsw-dots { display: none; }
+  .mhsw-b1 .mhsw-cards { grid-template-columns: 1fr; }
+  .mhsw-b0 .mhsw-steps, .mhsw-b1 .mhsw-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .mhsw-wrap { padding: 0 16px; }
+  .mhsw-b0 .mhsw-cards { grid-template-columns: 1fr; }
+  .mhsw-b0 .mhsw-steps, .mhsw-b1 .mhsw-steps { grid-template-columns: 1fr; }
+  .mhsw-row, .mhsw-row .mhsw-btn { width: 100%; }
+  .mhsw-tab { padding: 11px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mhsw-root *, .mhsw-track { transition-duration: 0s !important; transition-delay: 0s !important; }
+}
+</style>
+<div class="mhsw-root" data-active="0">
+<div class="mhsw-track" id="mhsw-track">
+  <span class="mhsw-mark" id="b455" aria-hidden="true"></span>
+  <span class="mhsw-mark" id="b459" aria-hidden="true"></span>
+  <section class="mhsw-stage" tabindex="-1" aria-roledescription="карусель" aria-label="Риелторам и застройщикам">
+    <div class="mhsw-wrap mhsw-grid">
+
+      <div class="mhsw-side">
+        <div class="mhsw-tabs" role="tablist" aria-label="Для кого">
+          <button class="mhsw-tab" type="button" role="tab" data-go="0" aria-selected="true" aria-controls="mhsw-b0">Риелторам</button>
+          <button class="mhsw-tab" type="button" role="tab" data-go="1" aria-selected="false" aria-controls="mhsw-b1">Застройщикам</button>
+        </div>
+        <div class="mhsw-vis" id="mhsw-vis">
+          <svg class="mhsw-band" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" pathLength="100"/></svg>
+          <div class="mhsw-plates">
+            <div class="mhsw-orb" data-i="0" aria-hidden="true">
+              <!-- дом и ключ -->
+              <svg viewBox="0 0 130 120" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 58 L56 24 L96 58"/>
+                <path d="M26 50 V96 H86 V50"/>
+                <path d="M47 96 V72 H65 V96"/>
+                <circle cx="96" cy="86" r="11" fill="#fff"/>
+                <path d="M107 86 H124 M117 86 V95 M124 86 V93"/>
+              </svg>
+            </div>
+            <div class="mhsw-orb" data-i="1" aria-hidden="true">
+              <!-- дом и башенный кран -->
+              <svg viewBox="0 0 130 120" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 108 H120"/>
+                <path d="M22 108 V54 H62 V108"/>
+                <path d="M33 66 H39 M45 66 H51 M33 80 H39 M45 80 H51 M33 94 H39 M45 94 H51"/>
+                <path d="M92 108 V20"/>
+                <path d="M70 26 H122 M92 20 L80 26 M92 20 L104 26"/>
+                <path d="M116 26 V48"/>
+                <path d="M110 48 H122 V56 H110 Z"/>
+                <path d="M72 26 V34 H80 V26"/>
+              </svg>
+            </div>
+          </div>
+          <div class="mhsw-dots">
+            <button class="mhsw-dot" type="button" data-go="0" aria-current="true" aria-label="Риелторам"><i></i></button>
+            <button class="mhsw-dot" type="button" data-go="1" aria-label="Застройщикам"><i></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mhsw-main">
+        <div class="mhsw-stack">
+          <div class="mhsw-hd mhsw-on" data-i="0">
+            <h2><span class="mhsw-t1">Риелторам</span><span class="mhsw-t2">Все новостройки региона в одном сервисе. Бесплатно.</span></h2>
+          </div>
+          <div class="mhsw-hd" data-i="1" aria-hidden="true">
+            <h2><span class="mhsw-t1">Застройщикам</span><span class="mhsw-t2">Платите только за проданную квартиру</span></h2>
+          </div>
+        </div>
+
+        <div class="mhsw-stack">
+          <div class="mhsw-body mhsw-b0 mhsw-on" id="mhsw-b0" role="tabpanel" data-i="0">
+            <p class="mhsw-lead">Вступайте в ассоциацию Маклер.Хаб и работайте с объектами застройщиков через RedCat.</p>
+            <ul class="mhsw-cards"><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Каталог новостроек</b><span>Бурятия и Иркутск в одном месте</span></li><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Шахматки и остатки</b><span>Актуальные квартиры без звонков в отделы продаж</span></li><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Фиксация клиента</b><span>Клиент закреплён за вами</span></li><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Комиссия за 72 часа</b><span>Выплата после закрытой сделки</span></li></ul>
+            <ol class="mhsw-steps"><li><em>1</em><b>Регистрация в RedCat</b><span>Пара минут, бесплатно</span></li><li><em>2</em><b>Подбор и фиксация</b><span>Выбираете объект, закрепляете клиента</span></li><li><em>3</em><b>Сделка и комиссия</b><span>Оплата в течение 72 часов</span></li></ol>
+            <div class="mhsw-foot">
+              <p>Плюс сообщество: мероприятия ассоциации, встречи с застройщиками, розыгрыши для участников.</p>
+              <div class="mhsw-row">
+                <a class="mhsw-btn mhsw-bronze" href="https://max.ru/id300020791_biz" target="_blank" rel="noopener">Вступить в ассоциацию <span class="mhsw-arr" aria-hidden="true">→</span></a>
+                <a class="mhsw-btn mhsw-ghost" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">Зарегистрироваться в RedCat <span class="mhsw-arr" aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mhsw-body mhsw-b1" id="mhsw-b1" role="tabpanel" data-i="1" aria-hidden="true">
+            <p class="mhsw-lead">RedCat заменяет рекламу для частных покупателей: ваши объекты продают риелторы Бурятии и Иркутска.</p>
+            <ul class="mhsw-cards"><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Бесплатная реклама в RedCat</b><span>Объекты в каталоге для всех риелторов-участников</span></li><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Отдел продаж, работающий офлайн</b></li><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Уникальная маркетинговая стратегия</b><span>Для риелторов и клиентов</span></li></ul>
+            <ol class="mhsw-steps"><li><em>1</em><b>Заявка</b><span>Оставляете контакты</span></li><li><em>2</em><b>Подключение</b><span>Объекты появляются в RedCat</span></li><li><em>3</em><b>Продажи</b><span>Риелторы ведут клиентов</span></li><li><em>4</em><b>Оплата</b><span>Только за закрытую сделку</span></li></ol>
+            <div class="mhsw-foot">
+              <p>Ни рубля вперёд: оплата только после закрытой сделки.</p>
+              <div class="mhsw-row">
+                <a class="mhsw-btn mhsw-bronze" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Подключить объект <span class="mhsw-arr" aria-hidden="true">→</span></a>
+                <a class="mhsw-btn mhsw-ghost" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Задать вопрос <span class="mhsw-arr" aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="mhsw-sr" aria-live="polite" id="mhsw-live"></p>
+  </section>
+</div>
+</div>
+<script>
+(function () {
+  var root = document.querySelector('.mhsw-root');
+  if (!root) return;
+  var track = document.getElementById('mhsw-track');
+  var stage = track.querySelector('.mhsw-stage');
+  var grid = track.querySelector('.mhsw-grid');
+  var mark1 = document.getElementById('b459');
+  var live = document.getElementById('mhsw-live');
+  var names = ['Риелторам', 'Застройщикам'];
+  var STRETCH = 0.9; // сколько экранов прокрутки занимает переход
+  var active = 0, pinned = false, dist = 0;
+
+  function show(i) {
+    if (i === active) return;
+    active = i;
+    root.setAttribute('data-active', String(i));
+    track.querySelectorAll('.mhsw-hd, .mhsw-body').forEach(function (el) {
+      var on = el.getAttribute('data-i') === String(i);
+      el.classList.toggle('mhsw-on', on);
+      if (on) el.removeAttribute('aria-hidden'); else el.setAttribute('aria-hidden', 'true');
+    });
+    track.querySelectorAll('.mhsw-tab').forEach(function (b) { b.setAttribute('aria-selected', b.getAttribute('data-go') === String(i) ? 'true' : 'false'); });
+    track.querySelectorAll('.mhsw-dot').forEach(function (b) {
+      if (b.getAttribute('data-go') === String(i)) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+    });
+    live.textContent = names[i];
+  }
+
+  function hdr() {
+    var h = document.querySelector('.mhhd-hdr');
+    return h ? h.offsetHeight : 0;
+  }
+
+  // Закрепляем блок только там, где он целиком помещается в экран; иначе — обычный блок с переключателем.
+  function layout() {
+    root.style.setProperty('--hdr', hdr() + 'px');
+    track.classList.remove('mhsw-pin');
+    track.style.height = '';
+    pinned = false;
+    if (window.matchMedia('(min-width: 901px)').matches) {
+      track.classList.add('mhsw-pin');
+      if (grid.offsetHeight <= stage.clientHeight) {
+        pinned = true;
+        dist = Math.round(stage.clientHeight * STRETCH);
+        track.style.height = (stage.clientHeight + dist) + 'px';
+      } else {
+        track.classList.remove('mhsw-pin');
+      }
+    }
+    mark1.style.top = pinned ? dist + 'px' : '0px';
+    onScroll();
+  }
+
+  function onScroll() {
+    if (!pinned) return;
+    var p = (hdr() - track.getBoundingClientRect().top) / dist;
+    // небольшой зазор, чтобы на границе блок не дёргался туда-обратно
+    if (active === 0 && p > 0.55) show(1);
+    else if (active === 1 && p < 0.45) show(0);
+  }
+
+  function go(i) {
+    if (pinned) {
+      var y = window.scrollY + track.getBoundingClientRect().top - hdr() + (i ? dist : 0);
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+    show(i);
+  }
+
+  track.querySelectorAll('[data-go]').forEach(function (b) {
+    b.addEventListener('click', function () { go(Number(b.getAttribute('data-go'))); });
+  });
+  // кнопки «Я риелтор» / «Я застройщик» и пункты меню
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#b455"], a[href="#b459"]');
+    if (a && !pinned) show(a.getAttribute('href') === '#b459' ? 1 : 0);
+  });
+  if (location.hash === '#b459') show(1);
+  stage.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') go(1);
+    else if (e.key === 'ArrowLeft') go(0);
+  });
+  var vis = document.getElementById('mhsw-vis'), sx = null, sy = 0;
+  vis.addEventListener('pointerdown', function (e) { sx = e.clientX; sy = e.clientY; });
+  vis.addEventListener('pointerup', function (e) {
+    if (sx === null) return;
+    var dx = e.clientX - sx;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(e.clientY - sy) * 1.4) go(dx < 0 ? 1 : 0);
+    sx = null;
+  });
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', layout);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+  layout();
+})();
+</script>
+</div>
+
+<!-- 05-zhk.html -->
+<div class="blk">
+<style>
+/* site-reset */
+.mhzk-root, .mhzk-root * { box-sizing: border-box; }
+.mhzk-root h2, .mhzk-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhzk-root p { margin: 0; }
+.mhzk-root a { text-decoration: none; color: inherit; }
+.mhzk-root {
+  --ink: #141414; --muted: #5b5a56; --soft: #8b8a86; --line: #e7e2dc;
+  --teal: #025f6b; --teal-deep: #014c56; --bronze: #b67233; --cream: #f7efe5;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font); color: var(--ink); background: #fff;
+}
+.mhzk-root .mhzk-sec { max-width: 1200px; margin: 0 auto; padding: 72px 24px; }
+
+/* шапка блока */
+.mhzk-root .mhzk-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px 40px; flex-wrap: wrap; margin-bottom: 32px; }
+.mhzk-root .mhzk-kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
+.mhzk-root .mhzk-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
+.mhzk-root h2 { margin: 12px 0 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
+.mhzk-root .mhzk-sub { margin-top: 10px; font-size: 16px; line-height: 1.6; color: var(--muted); }
+.mhzk-root .mhzk-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 50px; padding: 0 22px;
+  border-radius: 12px; font: 700 15px/1 var(--font); white-space: nowrap; border: 1.5px solid var(--teal); color: var(--teal);
+  background-image: linear-gradient(var(--teal), var(--teal)); background-repeat: no-repeat; background-position: left center; background-size: 0% 100%;
+  transition: background-size .4s cubic-bezier(.65,0,.35,1), color .25s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease; }
+.mhzk-root .mhzk-btn:hover { background-size: 100% 100%; color: #fff; transform: translateY(-3px); box-shadow: 0 14px 24px -14px rgba(1,40,46,.55); }
+.mhzk-root .mhzk-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+
+/* карточки ЖК */
+.mhzk-root .mhzk-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.mhzk-root .mhzk-card { position: relative; display: flex; flex-direction: column; height: 100%; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: #fff;
+  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease; }
+.mhzk-root .mhzk-card:hover { transform: translateY(-6px); border-color: #d9cfc2; box-shadow: 0 26px 44px -30px rgba(1,76,86,.55); }
+.mhzk-root .mhzk-card:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.mhzk-root .mhzk-pic { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--cream); }
+.mhzk-root .mhzk-pic img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+.mhzk-root .mhzk-card:hover .mhzk-pic img { transform: scale(1.06); }
+.mhzk-root .mhzk-tag { position: absolute; left: 12px; top: 12px; padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; line-height: 1;
+  background: rgba(255,255,255,.94); color: var(--teal-deep); }
+.mhzk-root .mhzk-tag.mhzk-done { background: var(--teal); color: #fff; }
+.mhzk-root .mhzk-body { display: flex; flex-direction: column; gap: 6px; padding: 18px 18px 20px; flex: 1; }
+.mhzk-root .mhzk-card h3 { margin: 0; font-size: 18px; font-weight: 800; line-height: 1.25; }
+.mhzk-root .mhzk-dev { font-size: 13px; font-weight: 600; color: var(--soft); }
+.mhzk-root .mhzk-addr { font-size: 14px; line-height: 1.45; color: var(--muted); }
+.mhzk-root .mhzk-types { margin-top: 4px; font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+.mhzk-root .mhzk-price { margin-top: auto; padding-top: 14px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+  border-top: 1px solid var(--line); }
+.mhzk-root .mhzk-price b { font-size: 18px; font-weight: 800; color: var(--teal); white-space: nowrap; }
+.mhzk-root .mhzk-arr { font-weight: 700; color: var(--bronze); transition: transform .25s ease; }
+.mhzk-root .mhzk-card:hover .mhzk-arr { transform: translateX(4px); }
+.mhzk-root .mhzk-note { margin-top: 18px; font-size: 13px; color: var(--soft); }
+
+/* появление при прокрутке */
+.mhzk-root.mhzk-js .mhzk-list > li { opacity: 0; transform: translateY(26px); }
+.mhzk-root.mhzk-in .mhzk-list > li { opacity: 1; transform: none; transition: opacity .6s ease, transform .7s cubic-bezier(.22,1,.36,1); }
+.mhzk-root.mhzk-in .mhzk-list > li:nth-child(2) { transition-delay: .08s; }
+.mhzk-root.mhzk-in .mhzk-list > li:nth-child(3) { transition-delay: .16s; }
+.mhzk-root.mhzk-in .mhzk-list > li:nth-child(4) { transition-delay: .24s; }
+
+@media (max-width: 1000px) {
+  .mhzk-root .mhzk-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* на телефоне карточки листаются вбок */
+@media (max-width: 640px) {
+  .mhzk-root .mhzk-sec { padding: 48px 0; }
+  .mhzk-root .mhzk-head, .mhzk-root .mhzk-note { padding: 0 16px; }
+  .mhzk-root .mhzk-btn { width: 100%; }
+  .mhzk-root .mhzk-list { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 16px 12px; scroll-padding: 0 16px;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .mhzk-root .mhzk-list::-webkit-scrollbar { display: none; }
+  .mhzk-root .mhzk-list > li { flex: 0 0 78%; scroll-snap-align: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mhzk-root * { transition: none !important; }
+  .mhzk-root.mhzk-js .mhzk-list > li { opacity: 1; transform: none; }
+}
+</style>
+<div class="mhzk-root">
+<section class="mhzk-sec" aria-labelledby="mhzk-title">
+  <div class="mhzk-head">
+    <div>
+      <span class="mhzk-kicker">Каталог RedCat</span>
+      <h2 id="mhzk-title">ЖК в каталоге</h2>
+      <p class="mhzk-sub">4 жилых комплекса и&nbsp;270 объектов в&nbsp;продаже в&nbsp;Улан-Удэ.</p>
+    </div>
+    <a class="mhzk-btn" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">Весь каталог в RedCat <span aria-hidden="true">→</span></a>
+  </div>
+
+  <ul class="mhzk-list">
+    <li>
+      <a class="mhzk-card" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">
+        <div class="mhzk-pic"><img src="img/zhk/elki.jpg" alt="ЖК «Ёлки»" width="547" height="400" loading="lazy"><span class="mhzk-tag mhzk-done">Сдан</span></div>
+        <div class="mhzk-body">
+          <h3>ЖК «Ёлки»</h3>
+          <span class="mhzk-dev">СЗ СК Улан-Удэ</span>
+          <p class="mhzk-addr">мкр. Энергетик, ул. Энергетик</p>
+          <p class="mhzk-types">Студии, 1–3-комнатные</p>
+          <div class="mhzk-price"><b>от 6,25 млн ₽</b><span class="mhzk-arr" aria-hidden="true">→</span></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="mhzk-card" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">
+        <div class="mhzk-pic"><img src="img/zhk/plament.jpg" alt="ЖК «Пламент»" width="528" height="400" loading="lazy"><span class="mhzk-tag mhzk-done">Сдан</span></div>
+        <div class="mhzk-body">
+          <h3>ЖК «Пламент»</h3>
+          <span class="mhzk-dev">СЗ ФСК Беркут</span>
+          <p class="mhzk-addr">20-й А квартал, ул. Ключевская</p>
+          <p class="mhzk-types">3–4-комнатные, машино-места</p>
+          <div class="mhzk-price"><b>от 14 млн ₽</b><span class="mhzk-arr" aria-hidden="true">→</span></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="mhzk-card" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">
+        <div class="mhzk-pic"><img src="img/zhk/pobeda.jpg" alt="ЖК «Победа»" width="680" height="383" loading="lazy"><span class="mhzk-tag">Сдача I кв. 2027</span></div>
+        <div class="mhzk-body">
+          <h3>ЖК «Победа»</h3>
+          <span class="mhzk-dev">СЗ ИДК</span>
+          <p class="mhzk-addr">Вербная</p>
+          <p class="mhzk-types">1–2-комнатные</p>
+          <div class="mhzk-price"><b>от 5,01 млн ₽</b><span class="mhzk-arr" aria-hidden="true">→</span></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="mhzk-card" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">
+        <div class="mhzk-pic"><img src="img/zhk/respublika.jpg" alt="ЖК «Республика»" width="680" height="383" loading="lazy"><span class="mhzk-tag">Сдача I кв. 2028</span></div>
+        <div class="mhzk-body">
+          <h3>ЖК «Республика»</h3>
+          <span class="mhzk-dev">СЗ Готол</span>
+          <p class="mhzk-addr">140-й А квартал, ул. Мокрова</p>
+          <p class="mhzk-types">Студии, 1–3-комнатные, кладовые, машино-места</p>
+          <div class="mhzk-price"><b>от 5,91 млн ₽</b><span class="mhzk-arr" aria-hidden="true">→</span></div>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <p class="mhzk-note">Цены и наличие на 6 ноября 2026. Актуальные шахматки и остатки — в RedCat.</p>
+</section>
+</div>
+<script>
+(function () {
+  var root = document.querySelector('.mhzk-root');
+  if (!root || !('IntersectionObserver' in window)) return;
+  root.classList.add('mhzk-js');
+  var io = new IntersectionObserver(function (es) {
+    if (!es.some(function (e) { return e.isIntersecting; })) return;
+    root.classList.add('mhzk-in');
+    io.disconnect();
+  }, { threshold: 0.15 });
+  io.observe(root);
+})();
+</script>
+</div>
+
+<!-- 05b-voprosy.html -->
+<div class="blk">
+<style>
+/* site-reset */
+.mhfq-root, .mhfq-root * { box-sizing: border-box; }
+.mhfq-root h2, .mhfq-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhfq-root p { margin: 0; }
+.mhfq-root a { text-decoration: none; }
+.mhfq-root {
+  --ink: #141414; --muted: #5b5a56; --line: #e7ddd0;
+  --teal: #025f6b; --teal-deep: #014c56; --bronze: #b67233; --cream: #f7efe5;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font); color: var(--ink);
+}
+.mhfq-root .mhfq-sec { background: var(--cream); }
+.mhfq-root .mhfq-wrap { max-width: 1200px; margin: 0 auto; padding: 72px 24px;
+  display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+
+/* левая колонка */
+.mhfq-root .mhfq-side { position: sticky; top: 110px; display: flex; flex-direction: column; gap: 16px; }
+.mhfq-root .mhfq-kicker { align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
+.mhfq-root .mhfq-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
+.mhfq-root h2 { margin: 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
+.mhfq-root .mhfq-sub { font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 360px; }
+.mhfq-root .mhfq-btn { align-self: flex-start; margin-top: 6px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 50px; padding: 0 22px;
+  border-radius: 12px; font: 700 15px/1 var(--font); white-space: nowrap; background: var(--bronze); color: #fff;
+  transition: background-color .25s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease; }
+.mhfq-root .mhfq-btn:hover { background: #9d5f27; transform: translateY(-3px); box-shadow: 0 14px 24px -14px rgba(1,40,46,.55); }
+.mhfq-root .mhfq-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+
+/* вопросы: раскрываются по клику */
+.mhfq-root .mhfq-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.mhfq-root .mhfq-item { background: #fff; border-radius: 16px; transition: box-shadow .3s ease; }
+.mhfq-root .mhfq-item.mhfq-open { box-shadow: 0 18px 36px -28px rgba(1,76,86,.55); }
+.mhfq-root .mhfq-q { appearance: none; border: 0; background: none; cursor: pointer; width: 100%; text-align: left;
+  display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 20px 22px;
+  font: 700 16.5px/1.4 var(--font); color: var(--ink); border-radius: 16px; }
+.mhfq-root .mhfq-q:hover { color: var(--teal); }
+.mhfq-root .mhfq-q:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+.mhfq-root .mhfq-ico { position: relative; flex: none; width: 32px; height: 32px; border-radius: 50%; background: #eaf3f4;
+  transition: background-color .3s ease, transform .4s cubic-bezier(.65,0,.35,1); }
+.mhfq-root .mhfq-ico::before, .mhfq-root .mhfq-ico::after { content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 2px; border-radius: 2px;
+  background: var(--teal); transform: translate(-50%, -50%); transition: background-color .3s ease, transform .4s cubic-bezier(.65,0,.35,1); }
+.mhfq-root .mhfq-ico::after { transform: translate(-50%, -50%) rotate(90deg); }
+.mhfq-root .mhfq-open .mhfq-ico { background: var(--teal); transform: rotate(180deg); }
+.mhfq-root .mhfq-open .mhfq-ico::before, .mhfq-root .mhfq-open .mhfq-ico::after { background: #fff; }
+.mhfq-root .mhfq-open .mhfq-ico::after { transform: translate(-50%, -50%) rotate(0deg); }
+.mhfq-root .mhfq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s cubic-bezier(.65,0,.35,1); }
+.mhfq-root .mhfq-open .mhfq-a { grid-template-rows: 1fr; }
+.mhfq-root .mhfq-a > div { overflow: hidden; }
+.mhfq-root .mhfq-a p { padding: 0 22px 22px; font-size: 15px; line-height: 1.65; color: var(--muted); max-width: 640px;
+  opacity: 0; transform: translateY(-6px); transition: opacity .3s ease, transform .4s cubic-bezier(.22,1,.36,1); }
+.mhfq-root .mhfq-open .mhfq-a p { opacity: 1; transform: none; transition-delay: .1s; }
+.mhfq-root .mhfq-a b { color: var(--ink); }
+.mhfq-root .mhfq-a a { color: var(--teal); font-weight: 700; }
+.mhfq-root .mhfq-a a:hover { color: var(--bronze); }
+
+@media (max-width: 860px) {
+  .mhfq-root .mhfq-wrap { grid-template-columns: 1fr; gap: 28px; padding: 48px 16px; }
+  .mhfq-root .mhfq-side { position: static; }
+  .mhfq-root .mhfq-q { padding: 18px; font-size: 15.5px; }
+  .mhfq-root .mhfq-a p { padding: 0 18px 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mhfq-root * { transition: none !important; }
+}
+</style>
+<div class="mhfq-root">
+<section class="mhfq-sec" aria-labelledby="mhfq-title">
+  <div class="mhfq-wrap">
+    <div class="mhfq-side">
+      <span class="mhfq-kicker">Вопросы и ответы</span>
+      <h2 id="mhfq-title">Частые вопросы</h2>
+      <p class="mhfq-sub">Не нашли ответ? Напишите нам в&nbsp;MAX — ответим в&nbsp;рабочее время.</p>
+      <a class="mhfq-btn" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Задать вопрос в MAX <span aria-hidden="true">→</span></a>
+    </div>
+
+    <ul class="mhfq-list">
+      <li class="mhfq-item">
+        <button class="mhfq-q" type="button" aria-expanded="false" aria-controls="mhfq-a1" id="mhfq-q1">Сколько стоит вступить в&nbsp;ассоциацию?<span class="mhfq-ico" aria-hidden="true"></span></button>
+        <div class="mhfq-a" id="mhfq-a1" role="region" aria-labelledby="mhfq-q1"><div>
+          <p><b>Для риелторов это бесплатно.</b> Достаточно зарегистрироваться в&nbsp;RedCat — это занимает пару минут, после чего сразу открывается каталог новостроек.</p>
+        </div></div>
+      </li>
+      <li class="mhfq-item">
+        <button class="mhfq-q" type="button" aria-expanded="false" aria-controls="mhfq-a2" id="mhfq-q2">Когда выплачивается комиссия?<span class="mhfq-ico" aria-hidden="true"></span></button>
+        <div class="mhfq-a" id="mhfq-a2" role="region" aria-labelledby="mhfq-q2"><div>
+          <p><b>В&nbsp;течение 72&nbsp;часов после закрытой сделки.</b></p>
+        </div></div>
+      </li>
+      <li class="mhfq-item">
+        <button class="mhfq-q" type="button" aria-expanded="false" aria-controls="mhfq-a3" id="mhfq-q3">Сколько стоит подключение застройщику и&nbsp;что входит?<span class="mhfq-ico" aria-hidden="true"></span></button>
+        <div class="mhfq-a" id="mhfq-a3" role="region" aria-labelledby="mhfq-q3"><div>
+          <p><b>Ни рубля вперёд — оплата только за&nbsp;проданную квартиру.</b> Ваши объекты бесплатно появляются в&nbsp;каталоге RedCat для всех риелторов-участников, а&nbsp;мы&nbsp;помогаем с&nbsp;маркетинговой стратегией для риелторов и&nbsp;покупателей. Условия подключения обсудим лично — <a href="tel:+73012650099">+7&nbsp;(3012)&nbsp;65-00-99</a>.</p>
+        </div></div>
+      </li>
+      <li class="mhfq-item">
+        <button class="mhfq-q" type="button" aria-expanded="false" aria-controls="mhfq-a4" id="mhfq-q4">В&nbsp;каких городах работает RedCat?<span class="mhfq-ico" aria-hidden="true"></span></button>
+        <div class="mhfq-a" id="mhfq-a4" role="region" aria-labelledby="mhfq-q4"><div>
+          <p><b>Сейчас — в&nbsp;Бурятии и&nbsp;Иркутске.</b> В&nbsp;каталоге собраны новостройки Улан-Удэ с&nbsp;актуальными шахматками и&nbsp;остатками.</p>
+        </div></div>
+      </li>
+    </ul>
   </div>
 </section>
 </div>
 <script>
 (function () {
-  var logo = document.getElementById('mha-logo');
-  if (!('IntersectionObserver' in window)) return;
-  var r = logo.getBoundingClientRect();
-  var inView = r.top < window.innerHeight && r.bottom > 0;
-  // hide only after JS runs, so the logo is never lost if scripts are off
-  logo.classList.add('mha-waiting');
-  void logo.offsetWidth; // commit the hidden state before it animates
-  var show = function () { setTimeout(function () { logo.classList.remove('mha-waiting'); logo.classList.add('mha-play'); }, 60); };
-  if (inView) { show(); return; }
-  var io = new IntersectionObserver(function (es) {
-    if (es.some(function (e) { return e.isIntersecting; })) { show(); io.disconnect(); }
-  }, { threshold: 0.3 });
-  io.observe(logo);
+  var items = document.querySelectorAll('.mhfq-item');
+  items.forEach(function (it) {
+    var q = it.querySelector('.mhfq-q');
+    q.addEventListener('click', function () {
+      var open = !it.classList.contains('mhfq-open');
+      // открыт только один вопрос — так список остаётся коротким
+      items.forEach(function (o) {
+        o.classList.remove('mhfq-open');
+        o.querySelector('.mhfq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (open) { it.classList.add('mhfq-open'); q.setAttribute('aria-expanded', 'true'); }
+    });
+  });
 })();
 </script>
-</div>
-
-<!-- 04-rieltoram.html -->
-<div class="blk" id="b455">
-<style>
-/* site-reset */
-.mhrl-root, .mhrl-root * { box-sizing: border-box; }
-.mhrl-root img { border: 0 !important; box-shadow: none !important; max-width: 100%; }
-.mhrl-root h1, .mhrl-root h2, .mhrl-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
-.mhrl-root p { margin: 0; }
-.mhrl-root a { text-decoration: none; }
-.mhrl-root {
-  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
-  --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
-  --mint: #eaf3f4; --cream: #f7efe5;
-  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-}
-.mhrl-root { font-family: var(--font); color: var(--ink); }
-.mhrl-root .mhrl-wrap { max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; box-sizing: border-box; }
-.mhrl-root .mhrl-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 50px; padding: 0 22px;
-  border-radius: 12px; font: 700 15px/1 var(--font); text-decoration: none; white-space: nowrap; box-sizing: border-box;
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
-.mhrl-root .mhrl-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
-.mhrl-root .mhrl-btn .mhrl-arr { transition: transform .2s ease; }
-.mhrl-root .mhrl-btn:hover .mhrl-arr { transform: translateX(3px); }
-.mhrl-root .mhrl-sec { padding-top: 64px; padding-bottom: 64px; }
-.mhrl-root .mhrl-inner { display: flex; flex-direction: column; gap: 30px; }
-.mhrl-root .mhrl-head { display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
-.mhrl-root .mhrl-kicker { align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
-  background: #fff; padding: 7px 13px; border-radius: 999px; }
-.mhrl-root h2 { margin: 0; font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.2; color: #fff; }
-.mhrl-root .mhrl-lead { margin: 0; font-size: 16px; line-height: 1.7; }
-.mhrl-root .mhrl-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
-.mhrl-root .mhrl-card { background: #fff; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 8px; }
-.mhrl-root .mhrl-card b { font-size: 16.5px; line-height: 1.35; color: var(--ink); }
-.mhrl-root .mhrl-card span { font-size: 14.5px; line-height: 1.5; color: var(--muted); }
-.mhrl-root .mhrl-steps { list-style: none; margin: 0; padding: 22px 0 0; display: grid; gap: 16px; border-top: 1px solid rgba(255,255,255,.25); }
-.mhrl-root .mhrl-steps li { display: grid; grid-template-columns: 40px 1fr; column-gap: 12px; align-items: center; }
-.mhrl-root .mhrl-steps em { grid-row: span 2; font-style: normal; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; }
-.mhrl-root .mhrl-steps b { font-size: 15.5px; color: #fff; }
-.mhrl-root .mhrl-steps span { font-size: 14px; }
-.mhrl-root .mhrl-foot { background: #fff; border-radius: 18px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
-.mhrl-root .mhrl-foot p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--teal-deep); max-width: 520px; }
-.mhrl-root .mhrl-row { display: flex; gap: 12px; flex-wrap: wrap; }
-.mhrl-root .mhrl-bronze { background: var(--bronze); color: #fff; }
-.mhrl-root .mhrl-bronze:hover { background: #9d5f27; }
-.mhrl-root .mhrl-redcat { background: var(--rc); color: #fff; }
-.mhrl-root .mhrl-redcat:hover { background: #d93608; }
-.mhrl-root .mhrl-ghost { border: 1.5px solid var(--teal); color: var(--teal); }
-.mhrl-root .mhrl-ghost:hover { background: var(--teal); color: #fff; }
-@media (max-width: 900px) {
-.mhrl-root .mhrl-grid { grid-template-columns: 1fr 1fr !important; }
-.mhrl-root .mhrl-steps { grid-template-columns: 1fr !important; }
- }
-@media (max-width: 560px) {
-.mhrl-root .mhrl-grid { grid-template-columns: 1fr !important; }
-.mhrl-root .mhrl-sec { padding-top: 44px; padding-bottom: 44px; }
-.mhrl-root .mhrl-row, .mhrl-root .mhrl-row .mhrl-btn { width: 100%; }
- }
-.mhrl-root .mhrl-sec { background: var(--teal); }
-.mhrl-root .mhrl-kicker { color: var(--bronze); }
-.mhrl-root .mhrl-lead, .mhrl-root .mhrl-steps span { color: #d6e8ea; }
-.mhrl-root .mhrl-card i { color: var(--bronze); }
-.mhrl-root .mhrl-grid { grid-template-columns: repeat(4, 1fr); }
-.mhrl-root .mhrl-steps { grid-template-columns: repeat(3, 1fr); }
-.mhrl-root .mhrl-steps em { background: var(--sand); color: #14231f; }
-
-</style>
-<div class="mhrl-root">
-<section class="mhrl-sec">
-  <div class="mhrl-wrap mhrl-inner">
-    <div class="mhrl-head">
-      <span class="mhrl-kicker">Риелторам</span>
-      <h2>Все новостройки региона в одном сервисе. Бесплатно.</h2>
-      <p class="mhrl-lead">Вступайте в ассоциацию Маклер.Хаб и работайте с объектами застройщиков через RedCat.</p>
-    </div>
-    <ul class="mhrl-grid"><li class="mhrl-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Каталог новостроек</b><span>Бурятия, Иркутск, Москва и Владивосток в одном месте</span></li><li class="mhrl-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Шахматки и остатки</b><span>Актуальные квартиры без звонков в отделы продаж</span></li><li class="mhrl-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Фиксация клиента</b><span>Клиент закреплён за вами</span></li><li class="mhrl-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Комиссия за 72 часа</b><span>Выплата после закрытой сделки</span></li></ul>
-    <ol class="mhrl-steps"><li><em>1</em><b>Регистрация в RedCat</b><span>Пара минут, бесплатно</span></li><li><em>2</em><b>Подбор и фиксация</b><span>Выбираете объект, закрепляете клиента</span></li><li><em>3</em><b>Сделка и комиссия</b><span>Оплата в течение 72 часов</span></li></ol>
-    <div class="mhrl-foot">
-      <p>Плюс сообщество: мероприятия ассоциации, встречи с застройщиками, розыгрыши для участников.</p>
-      <div class="mhrl-row">
-        <a class="mhrl-btn mhrl-bronze" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Вступить в ассоциацию <span class="mhrl-arr" aria-hidden="true">→</span></a>
-        <a class="mhrl-btn mhrl-redcat" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">Зарегистрироваться в RedCat <span class="mhrl-arr" aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-</div>
-</div>
-
-<!-- 05-zastroyshchikam.html -->
-<div class="blk" id="b459">
-<style>
-/* site-reset */
-.mhdv-root, .mhdv-root * { box-sizing: border-box; }
-.mhdv-root img { border: 0 !important; box-shadow: none !important; max-width: 100%; }
-.mhdv-root h1, .mhdv-root h2, .mhdv-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
-.mhdv-root p { margin: 0; }
-.mhdv-root a { text-decoration: none; }
-.mhdv-root {
-  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
-  --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
-  --mint: #eaf3f4; --cream: #f7efe5;
-  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-}
-.mhdv-root { font-family: var(--font); color: var(--ink); }
-.mhdv-root .mhdv-wrap { max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; box-sizing: border-box; }
-.mhdv-root .mhdv-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 50px; padding: 0 22px;
-  border-radius: 12px; font: 700 15px/1 var(--font); text-decoration: none; white-space: nowrap; box-sizing: border-box;
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
-.mhdv-root .mhdv-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
-.mhdv-root .mhdv-btn .mhdv-arr { transition: transform .2s ease; }
-.mhdv-root .mhdv-btn:hover .mhdv-arr { transform: translateX(3px); }
-.mhdv-root .mhdv-sec { padding-top: 64px; padding-bottom: 64px; }
-.mhdv-root .mhdv-inner { display: flex; flex-direction: column; gap: 30px; }
-.mhdv-root .mhdv-head { display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
-.mhdv-root .mhdv-kicker { align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
-  background: #fff; padding: 7px 13px; border-radius: 999px; }
-.mhdv-root h2 { margin: 0; font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.2; color: #fff; }
-.mhdv-root .mhdv-lead { margin: 0; font-size: 16px; line-height: 1.7; }
-.mhdv-root .mhdv-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
-.mhdv-root .mhdv-card { background: #fff; border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 8px; }
-.mhdv-root .mhdv-card b { font-size: 16.5px; line-height: 1.35; color: var(--ink); }
-.mhdv-root .mhdv-card span { font-size: 14.5px; line-height: 1.5; color: var(--muted); }
-.mhdv-root .mhdv-steps { list-style: none; margin: 0; padding: 22px 0 0; display: grid; gap: 16px; border-top: 1px solid rgba(255,255,255,.25); }
-.mhdv-root .mhdv-steps li { display: grid; grid-template-columns: 40px 1fr; column-gap: 12px; align-items: center; }
-.mhdv-root .mhdv-steps em { grid-row: span 2; font-style: normal; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; }
-.mhdv-root .mhdv-steps b { font-size: 15.5px; color: #fff; }
-.mhdv-root .mhdv-steps span { font-size: 14px; }
-.mhdv-root .mhdv-foot { background: #fff; border-radius: 18px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
-.mhdv-root .mhdv-foot p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--teal-deep); max-width: 520px; }
-.mhdv-root .mhdv-row { display: flex; gap: 12px; flex-wrap: wrap; }
-.mhdv-root .mhdv-bronze { background: var(--bronze); color: #fff; }
-.mhdv-root .mhdv-bronze:hover { background: #9d5f27; }
-.mhdv-root .mhdv-redcat { background: var(--rc); color: #fff; }
-.mhdv-root .mhdv-redcat:hover { background: #d93608; }
-.mhdv-root .mhdv-ghost { border: 1.5px solid var(--teal); color: var(--teal); }
-.mhdv-root .mhdv-ghost:hover { background: var(--teal); color: #fff; }
-@media (max-width: 900px) {
-.mhdv-root .mhdv-grid { grid-template-columns: 1fr 1fr !important; }
-.mhdv-root .mhdv-steps { grid-template-columns: 1fr !important; }
- }
-@media (max-width: 560px) {
-.mhdv-root .mhdv-grid { grid-template-columns: 1fr !important; }
-.mhdv-root .mhdv-sec { padding-top: 44px; padding-bottom: 44px; }
-.mhdv-root .mhdv-row, .mhdv-root .mhdv-row .mhdv-btn { width: 100%; }
- }
-.mhdv-root .mhdv-sec { background: var(--bronze); }
-.mhdv-root .mhdv-kicker { color: var(--teal); }
-.mhdv-root .mhdv-lead, .mhdv-root .mhdv-steps span { color: #fbeee0; }
-.mhdv-root .mhdv-card i { color: var(--teal); }
-.mhdv-root .mhdv-grid { grid-template-columns: repeat(3, 1fr); }
-.mhdv-root .mhdv-steps { grid-template-columns: repeat(4, 1fr); border-top-color: rgba(255,255,255,.3); }
-.mhdv-root .mhdv-steps em { background: var(--teal); color: #fff; }
-
-</style>
-<div class="mhdv-root">
-<section class="mhdv-sec">
-  <div class="mhdv-wrap mhdv-inner">
-    <div class="mhdv-head">
-      <span class="mhdv-kicker">Застройщикам</span>
-      <h2>Платите только за проданную квартиру</h2>
-      <p class="mhdv-lead">RedCat заменяет рекламу для частных покупателей: ваши объекты продают риелторы Бурятии и Иркутска.</p>
-    </div>
-    <ul class="mhdv-grid"><li class="mhdv-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Бесплатная реклама в RedCat</b><span>Объекты в каталоге для всех риелторов-участников</span></li><li class="mhdv-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Отдел продаж, работающий офлайн</b></li><li class="mhdv-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Уникальная маркетинговая стратегия</b><span>Для риелторов и клиентов</span></li></ul>
-    <ol class="mhdv-steps"><li><em>1</em><b>Заявка</b><span>Оставляете контакты</span></li><li><em>2</em><b>Подключение</b><span>Объекты появляются в RedCat</span></li><li><em>3</em><b>Продажи</b><span>Риелторы ведут клиентов</span></li><li><em>4</em><b>Оплата</b><span>Только за закрытую сделку</span></li></ol>
-    <div class="mhdv-foot">
-      <p>Ни рубля вперёд: оплата только после закрытой сделки.</p>
-      <div class="mhdv-row">
-        <a class="mhdv-btn mhdv-bronze" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Подключить объект <span class="mhdv-arr" aria-hidden="true">→</span></a>
-        <a class="mhdv-btn mhdv-ghost" href="tel:+73012650099">Задать вопрос <span class="mhdv-arr" aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-</div>
 </div>
 
 <!-- 06-partnery.html -->
@@ -470,7 +940,7 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 .mhpt-root p { margin: 0; }
 .mhpt-root a { text-decoration: none; }
 .mhpt-root {
-  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
+  --bg: #ffffff; --ink: #141414; --muted: #5b5a56; --line: #e7e2dc;
   --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
   --mint: #eaf3f4; --cream: #f7efe5;
   --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
@@ -483,12 +953,18 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 .mhpt-root .mhpt-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
 .mhpt-root .mhpt-btn .mhpt-arr { transition: transform .2s ease; }
 .mhpt-root .mhpt-btn:hover .mhpt-arr { transform: translateX(3px); }
-.mhpt-root .mhpt-sec { padding-top: 56px; padding-bottom: 56px; display: flex; flex-direction: column; gap: 24px; }
-.mhpt-root h2 { margin: 0; font-weight: 800; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.2; }
+.mhpt-root .mhpt-sec { padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 24px; }
+.mhpt-root h2 { margin: 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
 .mhpt-root .mhpt-logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
 .mhpt-root .mhpt-pl { border: 1px solid var(--line); border-radius: 16px; min-height: 120px; display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 10px; padding: 14px; text-align: center; }
 .mhpt-root .mhpt-pl img { max-width: 85%; height: 28px; object-fit: contain; }
+/* логотипы серые и спокойные, цвет — при наведении */
+.mhpt-root .mhpt-pl { transition: border-color .3s ease, box-shadow .3s ease, transform .3s cubic-bezier(.22,1,.36,1); }
+.mhpt-root .mhpt-pl img, .mhpt-root .mhpt-pl b { filter: grayscale(1); opacity: .62; transition: filter .35s ease, opacity .35s ease; }
+.mhpt-root .mhpt-pl:hover { border-color: #d9cfc2; transform: translateY(-3px); box-shadow: 0 16px 30px -24px rgba(1,76,86,.5); }
+.mhpt-root .mhpt-pl:hover img, .mhpt-root .mhpt-pl:hover b { filter: none; opacity: 1; }
+@media (hover: none) { .mhpt-root .mhpt-pl img, .mhpt-root .mhpt-pl b { opacity: .75; } }
 .mhpt-root .mhpt-pl img.mhpt-afi { height: 42px; }
 .mhpt-root .mhpt-pl b { font-size: 17px; color: var(--ink); }
 .mhpt-root .mhpt-pl span { font-size: 12.5px; color: #8b8a86; line-height: 1.4; }
@@ -496,6 +972,7 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 .mhpt-root .mhpt-logos { grid-template-columns: repeat(3, 1fr); }
  }
 @media (max-width: 520px) {
+.mhpt-root .mhpt-sec { padding-top: 48px; padding-bottom: 48px; }
 .mhpt-root .mhpt-logos { grid-template-columns: repeat(2, 1fr); }
  }
 
@@ -525,7 +1002,7 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 .mhev-root p { margin: 0; }
 .mhev-root a { text-decoration: none; }
 .mhev-root {
-  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
+  --bg: #ffffff; --ink: #141414; --muted: #5b5a56; --line: #e7e2dc;
   --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
   --mint: #eaf3f4; --cream: #f7efe5;
   --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
@@ -538,18 +1015,20 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 .mhev-root .mhev-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
 .mhev-root .mhev-btn .mhev-arr { transition: transform .2s ease; }
 .mhev-root .mhev-btn:hover .mhev-arr { transform: translateX(3px); }
-.mhev-root .mhev-sec { padding-top: 56px; padding-bottom: 56px; display: flex; flex-direction: column; gap: 22px; }
-.mhev-root h2 { margin: 0; font-weight: 800; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.2; }
+.mhev-root .mhev-sec { padding-top: 0; padding-bottom: 72px; display: flex; flex-direction: column; gap: 22px; }
+.mhev-root h2 { margin: 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
 .mhev-root .mhev-ev { background: var(--teal); color: #fff; border-radius: 24px; padding: clamp(24px, 3.5vw, 40px);
   display: grid; grid-template-columns: 1fr auto; gap: 18px 32px; align-items: center; }
-.mhev-root .mhev-kicker { grid-column: 1 / -1; justify-self: start; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--sand); background: rgba(255,255,255,.1); padding: 7px 13px; border-radius: 999px; }
+.mhev-root .mhev-kicker { grid-column: 1 / -1; justify-self: start; display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--sand); }
+.mhev-root .mhev-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
 .mhev-root h3 { margin: 0 0 10px; font-weight: 800; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; }
 .mhev-root .mhev-info p { margin: 0; color: #d6e8ea; font-size: 15.5px; line-height: 1.6; }
-.mhev-root .mhev-info .mhev-prize { color: var(--sand); margin-top: 6px; }
-.mhev-root .mhev-btn { background: var(--sand); color: #14231f; }
-.mhev-root .mhev-btn:hover { background: #e6a96c; }
+.mhev-root .mhev-info p { max-width: 640px; }
+.mhev-root .mhev-past { font-size: 13.5px; color: #8b8a86; }
+.mhev-root .mhev-btn { background: var(--bronze); color: #fff; }
+.mhev-root .mhev-btn:hover { background: #9d5f27; }
 @media (max-width: 760px) {
+.mhev-root .mhev-sec { padding-bottom: 48px; }
 .mhev-root .mhev-ev { grid-template-columns: 1fr; }
 .mhev-root .mhev-btn { width: 100%; }
  }
@@ -559,13 +1038,88 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 <section class="mhev-wrap mhev-sec">
   <h2>Мероприятия</h2>
   <div class="mhev-ev">
-    <span class="mhev-kicker">Ближайшее событие</span>
+    <span class="mhev-kicker">Скоро</span>
     <div class="mhev-info">
-      <h3>Конференция «Инвестиции в&nbsp;недвижимость»</h3>
-      <p>3 ноября 2026, 10:00<br>Концерт-Холл «Опера», ул. Корабельная, 32, Улан-Удэ</p>
-      <p class="mhev-prize">Призы: iPhone 18, путёвка на Хайнань, 20&nbsp;000&nbsp;₽ призового фонда</p>
+      <h3>Готовим следующие мероприятия</h3>
+      <p>Конференции, встречи с&nbsp;застройщиками и&nbsp;розыгрыши для участников ассоциации. Анонс появится здесь, а&nbsp;первыми о&nbsp;нём узнают те, кто на&nbsp;связи с&nbsp;нами в&nbsp;MAX.</p>
     </div>
-    <a class="mhev-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSf-zlTh03ks46Imx7YWg99mK4YGNaSVBBYL0Ywnmfg1KD8h0Q/viewform" target="_blank" rel="noopener">Зарегистрироваться <span class="mhev-arr" aria-hidden="true">→</span></a>
+    <a class="mhev-btn" href="https://max.ru/id300020791_biz" target="_blank" rel="noopener">Узнать первым <span class="mhev-arr" aria-hidden="true">→</span></a>
+  </div>
+  <p class="mhev-past">Прошло: конференция «Инвестиции в&nbsp;недвижимость», 3&nbsp;ноября 2026</p>
+</section>
+</div>
+</div>
+
+<!-- 07b-zayavka.html -->
+<div class="blk">
+<style>
+/* site-reset */
+.mhlf-root, .mhlf-root * { box-sizing: border-box; }
+.mhlf-root h2 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhlf-root p { margin: 0; }
+.mhlf-root a { text-decoration: none; }
+.mhlf-root {
+  --ink: #141414; --teal: #025f6b; --teal-deep: #014c56; --bronze: #b67233; --sand: #da9858;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font); color: #fff;
+}
+.mhlf-root .mhlf-sec { background: var(--teal); }
+.mhlf-root .mhlf-wrap { max-width: 1200px; margin: 0 auto; padding: 56px 24px;
+  display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; align-items: center; }
+
+/* текст слева */
+.mhlf-root .mhlf-text { display: flex; flex-direction: column; gap: 14px; }
+.mhlf-root .mhlf-kicker { align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--sand); }
+.mhlf-root .mhlf-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
+.mhlf-root h2 { margin: 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
+.mhlf-root .mhlf-sub { font-size: 16px; line-height: 1.6; color: #d6e8ea; max-width: 460px; }
+.mhlf-root .mhlf-points { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.mhlf-root .mhlf-points li { display: flex; align-items: center; gap: 12px; font-size: 15px; line-height: 1.45; }
+.mhlf-root .mhlf-points li::before { content: ""; flex: none; width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(255,255,255,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.4l2.6 2.6L14 7.6' fill='none' stroke='%23da9858' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 18px no-repeat; }
+.mhlf-root .mhlf-alt { margin-top: 8px; font-size: 14px; color: #d6e8ea; }
+.mhlf-root .mhlf-alt a { color: #fff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,.4); }
+.mhlf-root .mhlf-alt a:hover { color: var(--sand); border-color: var(--sand); }
+
+/* форма Битрикс24 справа: белая карточка, форма подстроена под шрифт и цвета сайта */
+.mhlf-root .mhlf-card { background: #fff; color: var(--ink); border-radius: 22px; padding: 6px 4px; min-height: 300px;
+  box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
+.mhlf-root .mhlf-card .b24-form-wrapper { box-shadow: none !important; border: 0 !important; background: transparent !important; }
+.mhlf-root .mhlf-card .b24-form, .mhlf-root .mhlf-card .b24-form * { font-family: var(--font) !important; }
+.mhlf-root .mhlf-card .b24-form-btn { background-color: var(--bronze) !important; border-radius: 12px !important; font-weight: 700 !important;
+  transition: background-color .25s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease; }
+.mhlf-root .mhlf-card .b24-form-btn:hover { background-color: #9d5f27 !important; transform: translateY(-2px); box-shadow: 0 14px 24px -14px rgba(1,40,46,.55); }
+.mhlf-root .mhlf-card .b24-form-control { border-radius: 12px !important; }
+.mhlf-root .mhlf-card .b24-form-sign { opacity: .55; }
+/* поля формы — в две колонки: имя и фамилия, телефон и почта; «Кто вы?» на всю ширину */
+.mhlf-root .mhlf-card div:has(> .b24-form-field) { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; }
+.mhlf-root .mhlf-card div:has(> .b24-form-field) > .b24-form-field-list { grid-column: 1 / -1; }
+.mhlf-root .mhlf-card .b24-form-field-agreement, .mhlf-root .mhlf-card .b24-form-field-agreement * { font-size: 12px !important; line-height: 1.45 !important; }
+
+@media (max-width: 860px) {
+  .mhlf-root .mhlf-wrap { grid-template-columns: 1fr; gap: 22px; padding: 44px 16px; }
+  .mhlf-root .mhlf-points { display: none; }
+  .mhlf-root .mhlf-card { border-radius: 18px; padding: 4px 0; }
+}
+</style>
+<div class="mhlf-root">
+<section class="mhlf-sec" aria-labelledby="mhlf-title">
+  <div class="mhlf-wrap">
+    <div class="mhlf-text">
+      <span class="mhlf-kicker">Заявка</span>
+      <h2 id="mhlf-title">Оставьте контакты — перезвоним</h2>
+      <p class="mhlf-sub">Подключим к&nbsp;RedCat, расскажем об&nbsp;условиях для риелторов и&nbsp;застройщиков и&nbsp;ответим на&nbsp;вопросы.</p>
+      <ul class="mhlf-points">
+        <li>Для риелторов — бесплатно</li>
+        <li>Застройщикам — оплата только за&nbsp;проданную квартиру</li>
+        <li>Перезвоним в&nbsp;рабочее время, 10:00–19:00</li>
+      </ul>
+      <p class="mhlf-alt">Удобнее сразу? <a href="tel:+73012650099">+7 (3012) 65-00-99</a> или <a href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">написать в MAX</a></p>
+    </div>
+    <div class="mhlf-card">
+      <!-- CRM-форма Битрикс24 №9 «Контактные данные»: заявка сразу попадает лидом в CRM -->
+      <script data-b24-form="inline/9/il5004" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b38879800/crm/form/loader_9.js');</script>
+    </div>
   </div>
 </section>
 </div>
@@ -576,65 +1130,210 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 <style>
 /* site-reset */
 .mhct-root, .mhct-root * { box-sizing: border-box; }
-.mhct-root img { border: 0 !important; box-shadow: none !important; max-width: 100%; }
-.mhct-root h1, .mhct-root h2, .mhct-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhct-root h2, .mhct-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
 .mhct-root p { margin: 0; }
 .mhct-root a { text-decoration: none; }
 .mhct-root {
-  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
-  --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
-  --mint: #eaf3f4; --cream: #f7efe5;
+  --ink: #141414; --muted: #5b5a56; --line: #e7ddd0;
+  --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233;
+  --cream: #f7efe5;
   --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font); color: var(--ink);
 }
-.mhct-root { font-family: var(--font); color: var(--ink); }
-.mhct-root .mhct-wrap { max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; box-sizing: border-box; }
-.mhct-root .mhct-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 50px; padding: 0 22px;
-  border-radius: 12px; font: 700 15px/1 var(--font); text-decoration: none; white-space: nowrap; box-sizing: border-box;
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+.mhct-root .mhct-sec { background: var(--cream); padding: 72px 0; overflow: hidden; }
+.mhct-root .mhct-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 44px; align-items: stretch; }
+
+/* левая колонка */
+.mhct-root .mhct-ct { display: flex; flex-direction: column; gap: 28px; }
+.mhct-root .mhct-kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
+.mhct-root .mhct-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
+.mhct-root h2 { margin: 16px 0 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; color: var(--ink); }
+.mhct-root h2 em { font-style: normal; }
+.mhct-root .mhct-lead { margin-top: 14px; font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 460px; }
+
+/* плитки контактов */
+.mhct-root .mhct-tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.mhct-root .mhct-tile { position: relative; background: #fff; border-radius: 18px; padding: 16px; display: grid; grid-template-columns: 44px 1fr; column-gap: 12px; row-gap: 2px; align-items: center;
+  box-shadow: 0 1px 0 rgba(1,76,86,.04), 0 10px 24px -20px rgba(1,76,86,.5);
+  transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; }
+.mhct-root .mhct-tile:hover { transform: translateY(-4px); box-shadow: 0 1px 0 rgba(1,76,86,.04), 0 22px 36px -22px rgba(1,76,86,.55); }
+.mhct-root .mhct-ico { grid-row: span 2; width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: #eaf3f4; color: var(--teal);
+  transition: background-color .3s ease, color .3s ease, transform .4s cubic-bezier(.34,1.56,.64,1); }
+.mhct-root .mhct-tile:hover .mhct-ico { background: var(--teal); color: #fff; transform: rotate(-8deg) scale(1.06); }
+.mhct-root .mhct-tile.mhct-max .mhct-ico { background: #fbeee0; color: var(--bronze); }
+.mhct-root .mhct-tile.mhct-max:hover .mhct-ico { background: var(--bronze); color: #fff; }
+.mhct-root .mhct-ico svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.mhct-root .mhct-lbl { font-size: 12.5px; font-weight: 600; color: #8b8a86; }
+.mhct-root .mhct-val { font-size: 15px; font-weight: 700; letter-spacing: -.01em; color: var(--ink); line-height: 1.3; }
+.mhct-root .mhct-val a { color: inherit; }
+/* вся плитка нажимается как ссылка */
+.mhct-root .mhct-val a::after { content: ""; position: absolute; inset: 0; border-radius: 18px; }
+.mhct-root .mhct-val a:focus-visible { outline: none; }
+.mhct-root .mhct-tile:has(a:focus-visible) { outline: 3px solid var(--teal); outline-offset: 3px; }
+.mhct-root .mhct-copy { position: absolute; z-index: 1; right: 10px; top: 10px; appearance: none; border: 0; cursor: pointer; width: 30px; height: 30px; border-radius: 9px;
+  display: grid; place-items: center; background: transparent; color: #a7a39b; opacity: 0; transition: opacity .2s ease, background-color .2s ease, color .2s ease; }
+.mhct-root .mhct-tile:hover .mhct-copy, .mhct-root .mhct-copy:focus-visible { opacity: 1; }
+.mhct-root .mhct-copy:hover { background: #f1ece5; color: var(--teal); }
+.mhct-root .mhct-copy:focus-visible { outline: 2px solid var(--teal); }
+.mhct-root .mhct-copy svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.mhct-root .mhct-copy[data-done]::after { content: "Скопировано"; position: absolute; right: 0; bottom: calc(100% + 6px); white-space: nowrap;
+  font: 700 11.5px/1 var(--font); color: #fff; background: var(--teal-deep); padding: 6px 8px; border-radius: 7px; }
+.mhct-root .mhct-now { font-size: 12.5px; color: var(--teal); font-weight: 600; grid-column: 2; }
+
+/* правая колонка: карта с карточкой адреса */
+.mhct-root .mhct-map { position: relative; min-height: 480px; border-radius: 24px; overflow: hidden; background: #e8eee6;
+  box-shadow: 0 30px 60px -34px rgba(1,76,86,.55); }
+.mhct-root .mhct-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.mhct-root .mhct-addr { position: absolute; left: 18px; right: 18px; bottom: 18px; max-width: 420px; background: rgba(255,255,255,.96);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-radius: 18px; padding: 18px 20px; display: grid; grid-template-columns: 40px 1fr; gap: 4px 14px;
+  box-shadow: 0 18px 40px -20px rgba(0,0,0,.4); }
+.mhct-root .mhct-pin { grid-row: span 2; position: relative; width: 40px; height: 40px; border-radius: 50%; background: var(--bronze); color: #fff; display: grid; place-items: center; }
+.mhct-root .mhct-pin svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.mhct-root .mhct-pin::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--bronze); animation: mhct-ping 2.2s cubic-bezier(0,0,.2,1) infinite; z-index: -1; }
+.mhct-root .mhct-pin { isolation: isolate; }
+@keyframes mhct-ping { 0% { transform: scale(1); opacity: .45; } 80%, 100% { transform: scale(2.1); opacity: 0; } }
+.mhct-root .mhct-addr b { font-size: 16px; color: var(--ink); align-self: end; }
+.mhct-root .mhct-addr span { font-size: 13.5px; color: var(--muted); }
+.mhct-root .mhct-acts { grid-column: 1 / -1; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+.mhct-root .mhct-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 44px; padding: 0 18px;
+  border-radius: 12px; font: 700 14px/1 var(--font); white-space: nowrap; border: 1.5px solid var(--teal); color: var(--teal);
+  transition: background-color .2s ease, color .2s ease; }
+.mhct-root .mhct-btn:hover { background: var(--teal); color: #fff; }
 .mhct-root .mhct-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
 .mhct-root .mhct-btn .mhct-arr { transition: transform .2s ease; }
-.mhct-root .mhct-btn:hover .mhct-arr { transform: translateX(3px); }
-.mhct-root .mhct-sec { padding-top: 56px; padding-bottom: 56px; display: grid; grid-template-columns: 420px 1fr; gap: 40px; align-items: stretch; }
-.mhct-root .mhct-ct { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
-.mhct-root h2 { margin: 0; font-weight: 800; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.2; }
-.mhct-root dl { margin: 0; display: grid; grid-template-columns: 120px 1fr; row-gap: 12px; font-size: 15.5px; }
-.mhct-root dt { color: #8b8a86; }
-.mhct-root dd { margin: 0; font-weight: 600; }
-.mhct-root dd a { color: var(--ink); text-decoration: none; }
-.mhct-root dd a:hover { color: var(--teal); }
-.mhct-root .mhct-btn { border: 1.5px solid var(--teal); color: var(--teal); }
-.mhct-root .mhct-btn:hover { background: var(--teal); color: #fff; }
-.mhct-root .mhct-map { border-radius: 18px; overflow: hidden; min-height: 340px; background: #e8eee6; position: relative; }
-.mhct-root .mhct-map > ymaps, .mhct-root .mhct-map iframe { position: absolute !important; inset: 0; width: 100% !important; height: 100% !important; border: 0; }
-.mhct-root .mhct-gis { font-size: 13.5px; color: var(--teal); }
-@media (max-width: 860px) {
-.mhct-root .mhct-sec { grid-template-columns: 1fr; }
-.mhct-root .mhct-map { min-height: 300px; }
- }
-@media (max-width: 420px) {
-.mhct-root dl { grid-template-columns: 1fr; row-gap: 2px; }
-.mhct-root dd { margin-bottom: 10px; }
- }
+.mhct-root .mhct-gis { font-size: 14px; font-weight: 700; color: var(--teal); padding: 8px 4px; }
+.mhct-root .mhct-gis:hover { color: var(--bronze); }
 
+/* появление при прокрутке */
+.mhct-root.mhct-js .mhct-ct > *, .mhct-root.mhct-js .mhct-tile, .mhct-root.mhct-js .mhct-map { opacity: 0; transform: translateY(24px); }
+.mhct-root.mhct-js .mhct-addr { opacity: 0; transform: translateY(20px) scale(.97); }
+.mhct-root.mhct-in .mhct-ct > *, .mhct-root.mhct-in .mhct-tile, .mhct-root.mhct-in .mhct-map, .mhct-root.mhct-in .mhct-addr {
+  opacity: 1; transform: none; transition: opacity .6s ease, transform .7s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; }
+.mhct-root.mhct-in .mhct-tiles { opacity: 1; transform: none; }
+.mhct-root.mhct-in .mhct-tile:nth-child(1) { transition-delay: .15s; }
+.mhct-root.mhct-in .mhct-tile:nth-child(2) { transition-delay: .23s; }
+.mhct-root.mhct-in .mhct-tile:nth-child(3) { transition-delay: .31s; }
+.mhct-root.mhct-in .mhct-tile:nth-child(4) { transition-delay: .39s; }
+.mhct-root.mhct-in .mhct-map { transition-delay: .1s; }
+.mhct-root.mhct-in .mhct-addr { transition-delay: .55s; }
+/* после появления у плиток снова быстрый отклик на наведение */
+.mhct-root.mhct-done .mhct-tile { transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; transition-delay: 0s; }
+.mhct-root.mhct-done .mhct-tile:hover { transform: translateY(-4px); }
+
+@media (max-width: 960px) {
+  .mhct-root .mhct-wrap { grid-template-columns: 1fr; gap: 36px; }
+  .mhct-root .mhct-map { min-height: 420px; }
+}
+@media (max-width: 560px) {
+  .mhct-root .mhct-sec { padding: 48px 0; }
+  .mhct-root .mhct-wrap { padding: 0 16px; }
+  .mhct-root .mhct-tiles { grid-template-columns: 1fr; }
+  .mhct-root .mhct-copy { opacity: 1; }
+  .mhct-root .mhct-map { min-height: 460px; border-radius: 18px; }
+  .mhct-root .mhct-addr { left: 10px; right: 10px; bottom: 10px; padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mhct-root *, .mhct-root.mhct-js * { transition: none !important; animation: none !important; }
+  .mhct-root.mhct-js .mhct-ct > *, .mhct-root.mhct-js .mhct-tile, .mhct-root.mhct-js .mhct-map, .mhct-root.mhct-js .mhct-addr { opacity: 1; transform: none; }
+}
 </style>
 <div class="mhct-root">
-<section class="mhct-wrap mhct-sec">
-  <div class="mhct-ct">
-    <h2>Контакты</h2>
-    <dl>
-      <dt>Адрес</dt><dd>г. Улан-Удэ, ул. Корабельная, 47, Советский район</dd>
-      <dt>Телефон</dt><dd><a href="tel:+73012650099">+7 (3012) 65-00-99</a></dd>
-      <dt>Почта</dt><dd><a href="mailto:maklerhub@yandex.ru">maklerhub@yandex.ru</a></dd>
-      <dt>Часы работы</dt><dd>10:00–19:00</dd>
-    </dl>
-    <a class="mhct-btn" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Написать в MAX <span class="mhct-arr" aria-hidden="true">→</span></a>
-    <a class="mhct-gis" href="https://2gis.ru/ulanude/firm/70000001118858836" target="_blank" rel="noopener">Открыть в 2ГИС →</a>
-  </div>
-  <div class="mhct-map">
-    <iframe src="https://yandex.ru/map-widget/v1/?ll=107.578024%2C51.832598&amp;z=16&amp;pt=107.578024%2C51.832598%2Cpm2dgm&amp;l=map" title="Маклер.Хаб на карте: ул. Корабельная, 47" loading="lazy" allowfullscreen></iframe>
+<section class="mhct-sec" aria-labelledby="mhct-title">
+  <div class="mhct-wrap">
+    <div class="mhct-ct">
+      <div>
+        <span class="mhct-kicker">Контакты</span>
+        <h2 id="mhct-title">Звоните, пишите <em>или&nbsp;приходите</em> в&nbsp;гости</h2>
+        <p class="mhct-lead">Подключим к RedCat, расскажем об ассоциации и ответим на вопросы риелторов и застройщиков.</p>
+      </div>
+      <ul class="mhct-tiles">
+        <li class="mhct-tile">
+          <span class="mhct-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5A16.5 16.5 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4z"/></svg></span>
+          <span class="mhct-lbl">Телефон</span>
+          <span class="mhct-val"><a href="tel:+73012650099">+7 (3012) 65-00-99</a></span>
+          <button class="mhct-copy" type="button" data-copy="+7 (3012) 65-00-99" aria-label="Скопировать телефон"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8"/></svg></button>
+        </li>
+        <li class="mhct-tile mhct-max">
+          <span class="mhct-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 1 3.3 6.5L4 19.5l1-3.2A7.9 7.9 0 0 1 4 12z"/><path d="M9 11h6M9 14h4"/></svg></span>
+          <span class="mhct-lbl">Мессенджер MAX</span>
+          <span class="mhct-val"><a href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Написать в MAX →</a></span>
+        </li>
+        <li class="mhct-tile">
+          <span class="mhct-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7 7.5 6 7.5-6"/></svg></span>
+          <span class="mhct-lbl">Почта</span>
+          <span class="mhct-val"><a href="mailto:maklerhub@yandex.ru">maklerhub<wbr>@yandex.ru</a></span>
+          <button class="mhct-copy" type="button" data-copy="maklerhub@yandex.ru" aria-label="Скопировать почту"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8"/></svg></button>
+        </li>
+        <li class="mhct-tile">
+          <span class="mhct-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
+          <span class="mhct-lbl">Часы работы</span>
+          <span class="mhct-val">10:00–19:00</span>
+          <span class="mhct-now" id="mhct-now"></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mhct-map">
+      <iframe src="https://yandex.ru/map-widget/v1/?ll=107.578024%2C51.832598&amp;z=16&amp;pt=107.578024%2C51.832598%2Cpm2dgm&amp;l=map" title="Маклер.Хаб на карте: ул. Корабельная, 47" loading="lazy" allowfullscreen></iframe>
+      <div class="mhct-addr">
+        <span class="mhct-pin" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span>
+        <b>ул. Корабельная, 47</b>
+        <span>г. Улан-Удэ, Советский район</span>
+        <div class="mhct-acts">
+          <a class="mhct-btn" href="https://yandex.ru/maps/?rtext=~51.832598%2C107.578024&amp;rtt=auto" target="_blank" rel="noopener">Проложить маршрут <span class="mhct-arr" aria-hidden="true">→</span></a>
+          <a class="mhct-gis" href="https://2gis.ru/ulanude/firm/70000001118858836" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 </div>
+<script>
+(function () {
+  var root = document.querySelector('.mhct-root');
+  if (!root) return;
+
+  // местное время в Улан-Удэ — удобно тем, кто звонит из других часовых поясов
+  var now = document.getElementById('mhct-now');
+  function tick() {
+    try {
+      var t = new Intl.DateTimeFormat('ru-RU', { timeZone: 'Asia/Irkutsk', hour: '2-digit', minute: '2-digit' }).format(new Date());
+      now.textContent = 'В Улан-Удэ сейчас ' + t;
+    } catch (e) { now.textContent = 'Время Улан-Удэ (МСК+5)'; }
+  }
+  tick();
+  setInterval(tick, 30000);
+
+  // копирование телефона и почты
+  root.querySelectorAll('.mhct-copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.getAttribute('data-copy');
+      var done = function () {
+        b.setAttribute('data-done', '');
+        setTimeout(function () { b.removeAttribute('data-done'); }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () {});
+      else {
+        var ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        ta.remove();
+      }
+    });
+  });
+
+  // появление блока при прокрутке; без поддержки — всё видно сразу
+  if (!('IntersectionObserver' in window)) return;
+  root.classList.add('mhct-js');
+  var io = new IntersectionObserver(function (es) {
+    if (!es.some(function (e) { return e.isIntersecting; })) return;
+    root.classList.add('mhct-in');
+    io.disconnect();
+    setTimeout(function () { root.classList.add('mhct-done'); }, 1400);
+  }, { threshold: 0.15 });
+  io.observe(root);
+})();
+</script>
 </div>
 
 <!-- 09-podval.html -->
@@ -647,7 +1346,7 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 .mhft-root p { margin: 0; }
 .mhft-root a { text-decoration: none; }
 .mhft-root {
-  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
+  --bg: #ffffff; --ink: #141414; --muted: #5b5a56; --line: #e7e2dc;
   --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
   --mint: #eaf3f4; --cream: #f7efe5;
   --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
@@ -686,6 +1385,176 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
   <div class="mhft-wrap mhft-legal">© 2026, ООО «ДОМ+», ИНН 0300020791, КПП 030001001, ОГРН 1240300000995<a href="privacy.html">Согласие на обработку персональных данных</a></div>
 </footer>
 </div>
+</div>
+
+<!-- 10-effekty.html -->
+<div class="blk">
+<style>
+/* Общие эффекты сайта: переход к разделу по ссылкам меню и кнопкам,
+   отклик кнопок на наведение и нажатие, подчёркивание пунктов меню. */
+
+/* ---------- переход к разделу: шторка с названием раздела ---------- */
+.mh-curtain { position: fixed; inset: 0; z-index: 1000; pointer-events: none; display: grid; place-items: center;
+  background: #014c56; clip-path: inset(100% 0 0 0); visibility: hidden;
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif; }
+.mh-curtain::before { content: ""; position: absolute; inset: 0; background: #b67233; clip-path: inset(100% 0 0 0); }
+.mh-curtain-in { text-align: center; color: #fff; padding: 0 24px; }
+.mh-curtain-t { display: block; font-weight: 800; font-size: clamp(34px, 7vw, 84px); line-height: 1.05; letter-spacing: .01em; text-transform: uppercase;
+  opacity: 0; transform: translateY(40px); }
+.mh-curtain-bar { display: block; width: 0; height: 8px; margin: 22px auto 0; background: #da9858; }
+
+/* шторка поднимается снизу, за ней бронзовая полоса */
+.mh-curtain.mh-in { visibility: visible; clip-path: inset(0 0 0 0); transition: clip-path .45s cubic-bezier(.7,0,.3,1) .08s; }
+.mh-curtain.mh-in::before { clip-path: inset(0 0 100% 0); animation: mh-band .53s cubic-bezier(.7,0,.3,1) both; }
+.mh-curtain.mh-in .mh-curtain-t { opacity: 1; transform: none; transition: opacity .35s ease .3s, transform .5s cubic-bezier(.22,1,.36,1) .3s; }
+.mh-curtain.mh-in .mh-curtain-bar { width: 90px; transition: width .45s cubic-bezier(.22,1,.36,1) .45s; }
+/* и уходит вверх, открывая раздел */
+.mh-curtain.mh-out { visibility: visible; clip-path: inset(0 0 100% 0); transition: clip-path .5s cubic-bezier(.7,0,.3,1); }
+.mh-curtain.mh-out .mh-curtain-t { opacity: 0; transform: translateY(-30px); transition: opacity .25s ease, transform .4s ease-in; }
+.mh-curtain.mh-out .mh-curtain-bar { width: 90px; }
+@keyframes mh-band { 0% { clip-path: inset(100% 0 0 0); } 55% { clip-path: inset(0 0 0 0); } 100% { clip-path: inset(0 0 100% 0); } }
+
+/* раздел, к которому перешли, мягко поднимается навстречу */
+.mh-arrive { animation: mh-rise .8s cubic-bezier(.22,1,.36,1) both; }
+@keyframes mh-rise { from { opacity: .2; transform: translateY(60px); } to { opacity: 1; transform: none; } }
+
+/* ---------- кнопки ---------- */
+body .mhh-root .mhh-btn, body .mhsw-root .mhsw-btn, body .mhev-root .mhev-btn, body .mhct-root .mhct-btn {
+  position: relative; overflow: hidden; isolation: isolate;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, background-size .4s cubic-bezier(.65,0,.35,1),
+    transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease; }
+/* приподнимается и отбрасывает тень */
+body .mhh-root .mhh-btn:hover, body .mhsw-root .mhsw-btn:hover, body .mhev-root .mhev-btn:hover, body .mhct-root .mhct-btn:hover {
+  transform: translateY(-3px); box-shadow: 0 14px 24px -14px rgba(1,40,46,.55); }
+body .mhh-root .mhh-btn:active, body .mhsw-root .mhsw-btn:active, body .mhev-root .mhev-btn:active, body .mhct-root .mhct-btn:active {
+  transform: translateY(0) scale(.96); box-shadow: 0 4px 10px -6px rgba(1,40,46,.5); transition-duration: .08s; }
+/* по залитым кнопкам пробегает блик */
+body .mhh-root .mhh-fill::before, body .mhsw-root .mhsw-bronze::before, body .mhsw-root .mhsw-redcat::before, body .mhev-root .mhev-btn::before {
+  content: ""; position: absolute; top: -20%; left: -70%; width: 45%; height: 140%; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent); transform: skewX(-22deg); }
+body .mhh-root .mhh-fill:hover::before, body .mhsw-root .mhsw-bronze:hover::before, body .mhsw-root .mhsw-redcat:hover::before, body .mhev-root .mhev-btn:hover::before {
+  left: 130%; transition: left .7s cubic-bezier(.4,0,.2,1); }
+/* контурные кнопки заливаются слева направо */
+body .mhh-root .mhh-ghost, body .mhsw-root .mhsw-ghost, body .mhct-root .mhct-btn {
+  background-image: linear-gradient(#025f6b, #025f6b); background-repeat: no-repeat; background-position: left center; background-size: 0% 100%; }
+body .mhh-root .mhh-ghost:hover, body .mhsw-root .mhsw-ghost:hover, body .mhct-root .mhct-btn:hover {
+  background-color: transparent !important; background-image: linear-gradient(#025f6b, #025f6b) !important;
+  background-repeat: no-repeat !important; background-position: left center !important; background-size: 100% 100% !important; color: #fff; }
+/* стрелка «убегает» и возвращается с другой стороны */
+body .mhh-root .mhh-btn:hover span[aria-hidden], body .mhsw-root .mhsw-btn:hover .mhsw-arr,
+body .mhev-root .mhev-btn:hover .mhev-arr, body .mhct-root .mhct-btn:hover .mhct-arr { animation: mh-arrow .6s cubic-bezier(.65,0,.35,1); }
+@keyframes mh-arrow { 0% { transform: none; } 45% { transform: translateX(14px); opacity: 0; } 46% { transform: translateX(-14px); opacity: 0; } 100% { transform: translateX(3px); opacity: 1; } }
+/* круг от точки нажатия */
+.mh-ripple { position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; background: currentColor; opacity: .3;
+  transform: translate(-50%, -50%) scale(0); animation: mh-ripple .6s ease-out forwards; }
+@keyframes mh-ripple { to { transform: translate(-50%, -50%) scale(1); opacity: 0; } }
+
+/* ---------- меню: подчёркивание и текущий раздел ---------- */
+body .mhhd-root .mhhd-nav a { position: relative; transition: color .2s ease; }
+body .mhhd-root .mhhd-nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; border-radius: 2px;
+  background: #b67233; transform: scaleX(0); transform-origin: right; transition: transform .35s cubic-bezier(.65,0,.35,1); }
+body .mhhd-root .mhhd-nav a:hover::after, body .mhhd-root .mhhd-nav a.mh-current::after { transform: scaleX(1); transform-origin: left; }
+body .mhhd-root .mhhd-nav a.mh-current { color: #025f6b; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mh-curtain { display: none; }
+  .mh-arrive { animation: none; }
+  body .mhh-root .mhh-btn, body .mhsw-root .mhsw-btn, body .mhev-root .mhev-btn, body .mhct-root .mhct-btn { transition: none; }
+  body [class*="-btn"]:hover, body [class*="-btn"]:active { transform: none !important; }
+  body [class*="-btn"]::before, .mh-ripple { display: none; }
+  body [class*="-btn"] span { animation: none !important; }
+}
+</style>
+<div class="mh-curtain" id="mh-curtain" aria-hidden="true"><div class="mh-curtain-in"><span class="mh-curtain-t" id="mh-curtain-t"></span><span class="mh-curtain-bar"></span></div></div>
+<script>
+(function () {
+  var names = { b371: 'Маклер.Хаб', b451: 'О нас', b455: 'Риелторам', b459: 'Застройщикам', b753: 'Мероприятия', b757: 'Контакты' };
+  var curtain = document.getElementById('mh-curtain');
+  var title = document.getElementById('mh-curtain-t');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var busy = false;
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  // переход к разделу: шторка закрывает экран, страница перескакивает, шторка уходит вверх
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#b"]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    var id = a.getAttribute('href').slice(1);
+    var target = document.getElementById(id);
+    if (!target || !names[id]) return;
+    e.preventDefault();
+    if (reduced.matches) { target.scrollIntoView({ behavior: 'instant', block: 'start' }); history.replaceState(null, '', '#' + id); return; }
+    if (busy) return;
+    busy = true;
+    title.textContent = names[id];
+    curtain.classList.remove('mh-out');
+    void curtain.offsetWidth;
+    curtain.classList.add('mh-in');
+    wait(760).then(function () {
+      if (id === 'b371') window.scrollTo({ top: 0, behavior: 'instant' });
+      else target.scrollIntoView({ behavior: 'instant', block: 'start' });
+      history.replaceState(null, '', '#' + id);
+      var blk = target.closest('.blk');
+      // у закреплённого блока «риелторы / застройщики» сдвигаем только содержимое, а не сам блок
+      var rise = (blk && blk.querySelector('.mhsw-grid')) || blk;
+      if (rise) { rise.classList.remove('mh-arrive'); void rise.offsetWidth; rise.classList.add('mh-arrive'); }
+      return wait(260);
+    }).then(function () {
+      curtain.classList.remove('mh-in');
+      curtain.classList.add('mh-out');
+      return wait(520);
+    }).then(function () {
+      curtain.classList.remove('mh-out');
+      busy = false;
+    });
+  });
+  document.addEventListener('animationend', function (e) {
+    if (e.animationName === 'mh-rise') e.target.classList.remove('mh-arrive');
+  });
+
+  // круг от точки нажатия на кнопке
+  document.addEventListener('pointerdown', function (e) {
+    if (reduced.matches) return;
+    var b = e.target.closest && e.target.closest('.mhh-btn, .mhsw-btn, .mhev-btn, .mhct-btn');
+    if (!b) return;
+    var r = b.getBoundingClientRect();
+    var s = document.createElement('span');
+    var d = Math.hypot(r.width, r.height) * 2;
+    s.className = 'mh-ripple';
+    s.style.cssText = 'left:' + (e.clientX - r.left) + 'px;top:' + (e.clientY - r.top) + 'px;width:' + d + 'px;height:' + d + 'px';
+    b.appendChild(s);
+    s.addEventListener('animationend', function () { s.remove(); });
+  });
+
+  // подсветка пункта меню того раздела, который сейчас на экране
+  var links = Array.prototype.slice.call(document.querySelectorAll('.mhhd-nav a[href^="#b"]'));
+  if (!links.length) return;
+  function spy() {
+    var line = window.innerHeight * 0.35, cur = null;
+    links.forEach(function (a) {
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      var blk = el && (el.closest('.mhsw-track') || el);
+      if (!blk) return;
+      var r = blk.getBoundingClientRect();
+      if (r.top <= line && r.bottom > line) cur = a.getAttribute('href');
+    });
+    // внутри блока «риелторы / застройщики» — по тому, что сейчас показано
+    if (cur === '#b455' || cur === '#b459') {
+      var root = document.querySelector('.mhsw-root');
+      cur = root && root.getAttribute('data-active') === '1' ? '#b459' : '#b455';
+    }
+    links.forEach(function (a) { a.classList.toggle('mh-current', a.getAttribute('href') === cur); });
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { ticking = false; spy(); });
+  }, { passive: true });
+  window.addEventListener('resize', spy);
+  spy();
+})();
+</script>
 </div>
 
 </body>

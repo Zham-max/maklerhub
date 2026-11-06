@@ -1,0 +1,153 @@
+<style>
+/* site-reset */
+.mhzk-root, .mhzk-root * { box-sizing: border-box; }
+.mhzk-root h2, .mhzk-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhzk-root p { margin: 0; }
+.mhzk-root a { text-decoration: none; color: inherit; }
+.mhzk-root {
+  --ink: #141414; --muted: #5b5a56; --soft: #8b8a86; --line: #e7e2dc;
+  --teal: #025f6b; --teal-deep: #014c56; --bronze: #b67233; --cream: #f7efe5;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font); color: var(--ink); background: #fff;
+}
+.mhzk-root .mhzk-sec { max-width: 1200px; margin: 0 auto; padding: 72px 24px; }
+
+/* шапка блока */
+.mhzk-root .mhzk-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px 40px; flex-wrap: wrap; margin-bottom: 32px; }
+.mhzk-root .mhzk-kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
+.mhzk-root .mhzk-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
+.mhzk-root h2 { margin: 12px 0 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
+.mhzk-root .mhzk-sub { margin-top: 10px; font-size: 16px; line-height: 1.6; color: var(--muted); }
+.mhzk-root .mhzk-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 50px; padding: 0 22px;
+  border-radius: 12px; font: 700 15px/1 var(--font); white-space: nowrap; border: 1.5px solid var(--teal); color: var(--teal);
+  background-image: linear-gradient(var(--teal), var(--teal)); background-repeat: no-repeat; background-position: left center; background-size: 0% 100%;
+  transition: background-size .4s cubic-bezier(.65,0,.35,1), color .25s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease; }
+.mhzk-root .mhzk-btn:hover { background-size: 100% 100%; color: #fff; transform: translateY(-3px); box-shadow: 0 14px 24px -14px rgba(1,40,46,.55); }
+.mhzk-root .mhzk-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+
+/* карточки ЖК */
+.mhzk-root .mhzk-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.mhzk-root .mhzk-card { position: relative; display: flex; flex-direction: column; height: 100%; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: #fff;
+  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease; }
+.mhzk-root .mhzk-card:hover { transform: translateY(-6px); border-color: #d9cfc2; box-shadow: 0 26px 44px -30px rgba(1,76,86,.55); }
+.mhzk-root .mhzk-card:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.mhzk-root .mhzk-pic { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--cream); }
+.mhzk-root .mhzk-pic img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+.mhzk-root .mhzk-card:hover .mhzk-pic img { transform: scale(1.06); }
+.mhzk-root .mhzk-tag { position: absolute; left: 12px; top: 12px; padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; line-height: 1;
+  background: rgba(255,255,255,.94); color: var(--teal-deep); }
+.mhzk-root .mhzk-tag.mhzk-done { background: var(--teal); color: #fff; }
+.mhzk-root .mhzk-body { display: flex; flex-direction: column; gap: 6px; padding: 18px 18px 20px; flex: 1; }
+.mhzk-root .mhzk-card h3 { margin: 0; font-size: 18px; font-weight: 800; line-height: 1.25; }
+.mhzk-root .mhzk-dev { font-size: 13px; font-weight: 600; color: var(--soft); }
+.mhzk-root .mhzk-addr { font-size: 14px; line-height: 1.45; color: var(--muted); }
+.mhzk-root .mhzk-types { margin-top: 4px; font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+.mhzk-root .mhzk-price { margin-top: auto; padding-top: 14px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+  border-top: 1px solid var(--line); }
+.mhzk-root .mhzk-price b { font-size: 18px; font-weight: 800; color: var(--teal); white-space: nowrap; }
+.mhzk-root .mhzk-arr { font-weight: 700; color: var(--bronze); transition: transform .25s ease; }
+.mhzk-root .mhzk-card:hover .mhzk-arr { transform: translateX(4px); }
+.mhzk-root .mhzk-note { margin-top: 18px; font-size: 13px; color: var(--soft); }
+
+/* появление при прокрутке */
+.mhzk-root.mhzk-js .mhzk-list > li { opacity: 0; transform: translateY(26px); }
+.mhzk-root.mhzk-in .mhzk-list > li { opacity: 1; transform: none; transition: opacity .6s ease, transform .7s cubic-bezier(.22,1,.36,1); }
+.mhzk-root.mhzk-in .mhzk-list > li:nth-child(2) { transition-delay: .08s; }
+.mhzk-root.mhzk-in .mhzk-list > li:nth-child(3) { transition-delay: .16s; }
+.mhzk-root.mhzk-in .mhzk-list > li:nth-child(4) { transition-delay: .24s; }
+
+@media (max-width: 1000px) {
+  .mhzk-root .mhzk-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* на телефоне карточки листаются вбок */
+@media (max-width: 640px) {
+  .mhzk-root .mhzk-sec { padding: 48px 0; }
+  .mhzk-root .mhzk-head, .mhzk-root .mhzk-note { padding: 0 16px; }
+  .mhzk-root .mhzk-btn { width: 100%; }
+  .mhzk-root .mhzk-list { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 16px 12px; scroll-padding: 0 16px;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .mhzk-root .mhzk-list::-webkit-scrollbar { display: none; }
+  .mhzk-root .mhzk-list > li { flex: 0 0 78%; scroll-snap-align: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mhzk-root * { transition: none !important; }
+  .mhzk-root.mhzk-js .mhzk-list > li { opacity: 1; transform: none; }
+}
+</style>
+<div class="mhzk-root">
+<section class="mhzk-sec" aria-labelledby="mhzk-title">
+  <div class="mhzk-head">
+    <div>
+      <span class="mhzk-kicker">Каталог RedCat</span>
+      <h2 id="mhzk-title">ЖК в каталоге</h2>
+      <p class="mhzk-sub">4 жилых комплекса и&nbsp;270 объектов в&nbsp;продаже в&nbsp;Улан-Удэ.</p>
+    </div>
+    <a class="mhzk-btn" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">Весь каталог в RedCat <span aria-hidden="true">→</span></a>
+  </div>
+
+  <ul class="mhzk-list">
+    <li>
+      <a class="mhzk-card" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">
+        <div class="mhzk-pic"><img src="img/zhk/elki.jpg" alt="ЖК «Ёлки»" width="547" height="400" loading="lazy"><span class="mhzk-tag mhzk-done">Сдан</span></div>
+        <div class="mhzk-body">
+          <h3>ЖК «Ёлки»</h3>
+          <span class="mhzk-dev">СЗ СК Улан-Удэ</span>
+          <p class="mhzk-addr">мкр. Энергетик, ул. Энергетик</p>
+          <p class="mhzk-types">Студии, 1–3-комнатные</p>
+          <div class="mhzk-price"><b>от 6,25 млн ₽</b><span class="mhzk-arr" aria-hidden="true">→</span></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="mhzk-card" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">
+        <div class="mhzk-pic"><img src="img/zhk/plament.jpg" alt="ЖК «Пламент»" width="528" height="400" loading="lazy"><span class="mhzk-tag mhzk-done">Сдан</span></div>
+        <div class="mhzk-body">
+          <h3>ЖК «Пламент»</h3>
+          <span class="mhzk-dev">СЗ ФСК Беркут</span>
+          <p class="mhzk-addr">20-й А квартал, ул. Ключевская</p>
+          <p class="mhzk-types">3–4-комнатные, машино-места</p>
+          <div class="mhzk-price"><b>от 14 млн ₽</b><span class="mhzk-arr" aria-hidden="true">→</span></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="mhzk-card" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">
+        <div class="mhzk-pic"><img src="img/zhk/pobeda.jpg" alt="ЖК «Победа»" width="680" height="383" loading="lazy"><span class="mhzk-tag">Сдача I кв. 2027</span></div>
+        <div class="mhzk-body">
+          <h3>ЖК «Победа»</h3>
+          <span class="mhzk-dev">СЗ ИДК</span>
+          <p class="mhzk-addr">Вербная</p>
+          <p class="mhzk-types">1–2-комнатные</p>
+          <div class="mhzk-price"><b>от 5,01 млн ₽</b><span class="mhzk-arr" aria-hidden="true">→</span></div>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a class="mhzk-card" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">
+        <div class="mhzk-pic"><img src="img/zhk/respublika.jpg" alt="ЖК «Республика»" width="680" height="383" loading="lazy"><span class="mhzk-tag">Сдача I кв. 2028</span></div>
+        <div class="mhzk-body">
+          <h3>ЖК «Республика»</h3>
+          <span class="mhzk-dev">СЗ Готол</span>
+          <p class="mhzk-addr">140-й А квартал, ул. Мокрова</p>
+          <p class="mhzk-types">Студии, 1–3-комнатные, кладовые, машино-места</p>
+          <div class="mhzk-price"><b>от 5,91 млн ₽</b><span class="mhzk-arr" aria-hidden="true">→</span></div>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <p class="mhzk-note">Цены и наличие на 6 ноября 2026. Актуальные шахматки и остатки — в RedCat.</p>
+</section>
+</div>
+<script>
+(function () {
+  var root = document.querySelector('.mhzk-root');
+  if (!root || !('IntersectionObserver' in window)) return;
+  root.classList.add('mhzk-js');
+  var io = new IntersectionObserver(function (es) {
+    if (!es.some(function (e) { return e.isIntersecting; })) return;
+    root.classList.add('mhzk-in');
+    io.disconnect();
+  }, { threshold: 0.15 });
+  io.observe(root);
+})();
+</script>

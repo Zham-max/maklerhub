@@ -8,7 +8,7 @@
 .mhev-root p { margin: 0; }
 .mhev-root a { text-decoration: none; }
 .mhev-root {
-  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
+  --bg: #ffffff; --ink: #141414; --muted: #5b5a56; --line: #e7e2dc;
   --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
   --mint: #eaf3f4; --cream: #f7efe5;
   --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
@@ -21,18 +21,20 @@
 .mhev-root .mhev-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
 .mhev-root .mhev-btn .mhev-arr { transition: transform .2s ease; }
 .mhev-root .mhev-btn:hover .mhev-arr { transform: translateX(3px); }
-.mhev-root .mhev-sec { padding-top: 56px; padding-bottom: 56px; display: flex; flex-direction: column; gap: 22px; }
-.mhev-root h2 { margin: 0; font-weight: 800; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.2; }
+.mhev-root .mhev-sec { padding-top: 0; padding-bottom: 72px; display: flex; flex-direction: column; gap: 22px; }
+.mhev-root h2 { margin: 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
 .mhev-root .mhev-ev { background: var(--teal); color: #fff; border-radius: 24px; padding: clamp(24px, 3.5vw, 40px);
   display: grid; grid-template-columns: 1fr auto; gap: 18px 32px; align-items: center; }
-.mhev-root .mhev-kicker { grid-column: 1 / -1; justify-self: start; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--sand); background: rgba(255,255,255,.1); padding: 7px 13px; border-radius: 999px; }
+.mhev-root .mhev-kicker { grid-column: 1 / -1; justify-self: start; display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--sand); }
+.mhev-root .mhev-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
 .mhev-root h3 { margin: 0 0 10px; font-weight: 800; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; }
 .mhev-root .mhev-info p { margin: 0; color: #d6e8ea; font-size: 15.5px; line-height: 1.6; }
-.mhev-root .mhev-info .mhev-prize { color: var(--sand); margin-top: 6px; }
-.mhev-root .mhev-btn { background: var(--sand); color: #14231f; }
-.mhev-root .mhev-btn:hover { background: #e6a96c; }
+.mhev-root .mhev-info p { max-width: 640px; }
+.mhev-root .mhev-past { font-size: 13.5px; color: #8b8a86; }
+.mhev-root .mhev-btn { background: var(--bronze); color: #fff; }
+.mhev-root .mhev-btn:hover { background: #9d5f27; }
 @media (max-width: 760px) {
+.mhev-root .mhev-sec { padding-bottom: 48px; }
 .mhev-root .mhev-ev { grid-template-columns: 1fr; }
 .mhev-root .mhev-btn { width: 100%; }
  }
@@ -42,13 +44,13 @@
 <section class="mhev-wrap mhev-sec">
   <h2>Мероприятия</h2>
   <div class="mhev-ev">
-    <span class="mhev-kicker">Ближайшее событие</span>
+    <span class="mhev-kicker">Скоро</span>
     <div class="mhev-info">
-      <h3>Конференция «Инвестиции в&nbsp;недвижимость»</h3>
-      <p>3 ноября 2026, 10:00<br>Концерт-Холл «Опера», ул. Корабельная, 32, Улан-Удэ</p>
-      <p class="mhev-prize">Призы: iPhone 18, путёвка на Хайнань, 20&nbsp;000&nbsp;₽ призового фонда</p>
+      <h3>Готовим следующие мероприятия</h3>
+      <p>Конференции, встречи с&nbsp;застройщиками и&nbsp;розыгрыши для участников ассоциации. Анонс появится здесь, а&nbsp;первыми о&nbsp;нём узнают те, кто на&nbsp;связи с&nbsp;нами в&nbsp;MAX.</p>
     </div>
-    <a class="mhev-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSf-zlTh03ks46Imx7YWg99mK4YGNaSVBBYL0Ywnmfg1KD8h0Q/viewform" target="_blank" rel="noopener">Зарегистрироваться <span class="mhev-arr" aria-hidden="true">→</span></a>
+    <a class="mhev-btn" href="https://max.ru/id300020791_biz" target="_blank" rel="noopener">Узнать первым <span class="mhev-arr" aria-hidden="true">→</span></a>
   </div>
+  <p class="mhev-past">Прошло: конференция «Инвестиции в&nbsp;недвижимость», 3&nbsp;ноября 2026</p>
 </section>
 </div>

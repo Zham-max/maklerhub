@@ -1,0 +1,344 @@
+<style>
+/* site-reset */
+.mhsw-root, .mhsw-root * { box-sizing: border-box; }
+.mhsw-root h2 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhsw-root p { margin: 0; }
+.mhsw-root a { text-decoration: none; }
+.mhsw-root {
+  --bg: #ffffff; --ink: #141414; --muted: #5b5a56; --line: #e7e2dc;
+  --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --hdr: 77px;
+  --accent: var(--teal);
+  font-family: var(--font); color: #fff;
+}
+/* у застройщиков фон — тёмная бронза: на ней белый текст читается чётко */
+.mhsw-root[data-active="1"] { --accent: #94561f; }
+
+/* Риелтор и застройщик — один блок. При прокрутке он закрепляется на экране,
+   и прокрутка переключает «риелтор → застройщик»: эмблема уходит по дуге,
+   заголовок стирается и проявляется, условия сменяются, фон меняет цвет. */
+.mhsw-track { position: relative; background: var(--accent); transition: background-color 1.1s ease; }
+.mhsw-mark { position: absolute; left: 0; top: 0; width: 1px; height: 1px; scroll-margin-top: var(--hdr); }
+.mhsw-stage { padding: 72px 0; }
+.mhsw-pin .mhsw-stage { position: sticky; top: var(--hdr); height: calc(100vh - var(--hdr)); padding: 0; display: flex; align-items: center; overflow: hidden; }
+.mhsw-wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.mhsw-grid { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center; }
+.mhsw-pin .mhsw-grid { padding: 16px 0; }
+
+/* левая колонка: переключатель, точки, эмблема на орбите */
+.mhsw-side { display: flex; flex-direction: column; align-items: center; gap: 64px; }
+.mhsw-tabs { display: inline-flex; padding: 4px; border-radius: 999px; background: rgba(255,255,255,.16); }
+.mhsw-tab { appearance: none; border: 0; background: none; cursor: pointer; font: 700 13px/1 var(--font); letter-spacing: .02em; color: #fff;
+  padding: 11px 16px; border-radius: 999px; transition: background-color .35s ease, color .35s ease; }
+.mhsw-tab[aria-selected="true"] { background: #fff; color: var(--accent); }
+.mhsw-tab:focus-visible, .mhsw-dot:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.mhsw-vis { position: relative; width: 300px; height: 300px; touch-action: pan-y; }
+.mhsw-band { position: absolute; inset: -34px; width: calc(100% + 68px); height: calc(100% + 68px); overflow: visible; pointer-events: none;
+  transform: rotate(-20deg); transition: transform 1.3s cubic-bezier(.65,0,.35,1); }
+.mhsw-band circle { fill: none; stroke: #fff; stroke-opacity: .2; stroke-width: 20; stroke-linecap: round;
+  stroke-dasharray: 26 74; transition: stroke-dasharray 1.3s cubic-bezier(.65,0,.35,1); }
+.mhsw-root[data-active="1"] .mhsw-band { transform: rotate(130deg); }
+.mhsw-root[data-active="1"] .mhsw-band circle { stroke-dasharray: 34 66; }
+.mhsw-plates { position: absolute; inset: 30px; }
+.mhsw-orb { position: absolute; inset: 0; border-radius: 50%; background: #fff; display: grid; place-items: center;
+  box-shadow: 0 24px 40px -18px rgba(0,0,0,.45), 0 4px 10px rgba(0,0,0,.12);
+  transform-origin: 50% -190%; will-change: transform;
+  /* уходит: разгон по дуге, потом исчезает */
+  opacity: 0; transition: transform .62s cubic-bezier(.55,0,1,.45), opacity 0s linear .62s; }
+.mhsw-orb svg { width: 62%; height: auto; }
+.mhsw-orb[data-i="0"] { color: var(--teal); }
+.mhsw-orb[data-i="1"] { color: #94561f; }
+/* ушедшая эмблема ждёт с той стороны, откуда вернётся */
+.mhsw-root[data-active="1"] .mhsw-orb[data-i="0"] { transform: rotate(50deg); }
+.mhsw-root[data-active="0"] .mhsw-orb[data-i="1"] { transform: rotate(-50deg); }
+.mhsw-root[data-active="0"] .mhsw-orb[data-i="0"],
+.mhsw-root[data-active="1"] .mhsw-orb[data-i="1"] { opacity: 1; transform: rotate(0deg);
+  transition: transform .95s cubic-bezier(.22,1,.36,1) .3s, opacity 0s linear .3s; }
+.mhsw-dots { position: absolute; left: -46px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 8px; }
+.mhsw-dot { appearance: none; border: 0; background: none; cursor: pointer; width: 16px; height: 12px; padding: 0; display: grid; place-items: center;
+  transition: height .45s cubic-bezier(.3,.7,.2,1); }
+.mhsw-dot i { display: block; width: 4px; height: 4px; border-radius: 4px; background: #fff; opacity: .5;
+  transition: height .45s cubic-bezier(.3,.7,.2,1), opacity .3s; }
+.mhsw-dot[aria-current="true"] { height: 30px; }
+.mhsw-dot[aria-current="true"] i { height: 26px; opacity: 1; }
+
+/* правая колонка: заголовок и условия; оба варианта лежат друг на друге */
+.mhsw-main { min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+.mhsw-stack { display: grid; }
+.mhsw-stack > * { grid-area: 1 / 1; min-width: 0; }
+.mhsw-hd, .mhsw-body { visibility: hidden; }
+.mhsw-t1, .mhsw-t2 { display: block; margin: 0; }
+.mhsw-t1 { font-weight: 300; font-size: clamp(30px, 3.6vw, 46px); line-height: 1; letter-spacing: .02em; text-transform: uppercase; }
+.mhsw-t2 { font-weight: 800; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.2; margin-top: 8px; }
+/* уходящий заголовок: тонкая строка стирается вправо, жирная — влево */
+.mhsw-hd { transition: visibility 0s linear .5s; }
+.mhsw-hd .mhsw-t1 { clip-path: inset(0 0 0 100%); transition: clip-path .42s cubic-bezier(.55,0,1,.45); }
+.mhsw-hd .mhsw-t2 { clip-path: inset(0 100% 0 0); transition: clip-path .42s cubic-bezier(.55,0,1,.45) .06s; }
+.mhsw-hd.mhsw-on { visibility: visible; transition: visibility 0s linear .5s; }
+.mhsw-hd.mhsw-on .mhsw-t1 { clip-path: inset(0 0 0 0); transition: clip-path .7s cubic-bezier(.22,1,.36,1) .55s; }
+.mhsw-hd.mhsw-on .mhsw-t2 { clip-path: inset(0 0 0 0); transition: clip-path .7s cubic-bezier(.22,1,.36,1) .62s; }
+/* условия: старые гаснут, новые поднимаются по очереди */
+.mhsw-body { display: flex; flex-direction: column; gap: 16px; opacity: 0; transform: translateY(-6px);
+  transition: opacity .3s ease-in .05s, transform .3s ease-in .05s, visibility 0s linear .4s; }
+.mhsw-body > * { opacity: 0; transform: translateY(10px); transition: opacity 0s linear .4s, transform 0s linear .4s; }
+.mhsw-body.mhsw-on { visibility: visible; opacity: 1; transform: none; transition: opacity 0s linear .4s, transform 0s linear .4s, visibility 0s linear .4s; }
+.mhsw-body.mhsw-on > * { opacity: 1; transform: none; transition: opacity .5s ease-out, transform .5s cubic-bezier(.22,1,.36,1); }
+.mhsw-body.mhsw-on > :nth-child(1) { transition-delay: .4s; }
+.mhsw-body.mhsw-on > :nth-child(2) { transition-delay: .46s; }
+.mhsw-body.mhsw-on > :nth-child(3) { transition-delay: .52s; }
+.mhsw-body.mhsw-on > :nth-child(4) { transition-delay: .58s; }
+
+.mhsw-lead { font-size: 16px; line-height: 1.6; max-width: 720px; }
+.mhsw-b0 .mhsw-lead, .mhsw-b0 .mhsw-steps span { color: #d6e8ea; }
+.mhsw-b1 .mhsw-lead, .mhsw-b1 .mhsw-steps span { color: #fbeee0; }
+.mhsw-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.mhsw-b0 .mhsw-cards { grid-template-columns: repeat(4, 1fr); }
+.mhsw-b1 .mhsw-cards { grid-template-columns: repeat(3, 1fr); }
+.mhsw-card { background: #fff; border-radius: 16px; padding: 14px 16px; display: grid; grid-template-columns: 22px 1fr; column-gap: 10px; row-gap: 4px; align-content: start; }
+.mhsw-card i { display: block; grid-row: span 2; }
+.mhsw-card i svg { display: block; }
+.mhsw-b0 .mhsw-card i { color: var(--bronze); }
+.mhsw-b1 .mhsw-card i { color: var(--teal); }
+.mhsw-card b { font-size: 15px; line-height: 1.3; color: var(--ink); }
+.mhsw-card span { font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+.mhsw-steps { list-style: none; margin: 0; padding: 14px 0 0; display: grid; gap: 14px; border-top: 1px solid rgba(255,255,255,.28); }
+.mhsw-b0 .mhsw-steps { grid-template-columns: repeat(3, 1fr); }
+.mhsw-b1 .mhsw-steps { grid-template-columns: repeat(4, 1fr); }
+.mhsw-steps li { display: grid; grid-template-columns: 36px 1fr; column-gap: 12px; align-items: center; }
+.mhsw-steps em { grid-row: span 2; font-style: normal; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; }
+.mhsw-b0 .mhsw-steps em { background: var(--sand); color: #14231f; }
+.mhsw-b1 .mhsw-steps em { background: var(--teal); color: #fff; }
+.mhsw-steps b { font-size: 15px; }
+.mhsw-steps span { font-size: 13.5px; }
+.mhsw-foot { background: #fff; border-radius: 16px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.mhsw-foot p { flex: 1 1 240px; font-size: 14.5px; line-height: 1.5; color: var(--muted); }
+.mhsw-row { display: flex; gap: 12px; flex-wrap: wrap; flex: none; }
+.mhsw-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 48px; padding: 0 20px;
+  border-radius: 12px; font: 700 15px/1 var(--font); white-space: nowrap; transition: background-color .2s ease, color .2s ease; }
+.mhsw-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.mhsw-btn .mhsw-arr { transition: transform .2s ease; }
+.mhsw-btn:hover .mhsw-arr { transform: translateX(3px); }
+.mhsw-bronze { background: var(--bronze); color: #fff; }
+.mhsw-bronze:hover { background: #9d5f27; }
+.mhsw-redcat { background: var(--rc); color: #fff; }
+.mhsw-redcat:hover { background: #d93608; }
+.mhsw-ghost { border: 1.5px solid var(--teal); color: var(--teal); }
+.mhsw-ghost:hover { background: var(--teal); color: #fff; }
+.mhsw-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 1100px) {
+  .mhsw-b0 .mhsw-cards { grid-template-columns: repeat(2, 1fr); }
+  .mhsw-grid { grid-template-columns: 240px 1fr; gap: 48px; }
+  .mhsw-vis { width: 240px; height: 240px; }
+}
+@media (max-width: 900px) {
+  .mhsw-stage { padding: 48px 0; }
+  .mhsw-grid { grid-template-columns: 1fr; gap: 28px; }
+  .mhsw-side { gap: 46px; }
+  .mhsw-vis { width: 170px; height: 170px; }
+  .mhsw-plates { inset: 18px; }
+  .mhsw-band { inset: -22px; width: calc(100% + 44px); height: calc(100% + 44px); }
+  .mhsw-dots { display: none; }
+  .mhsw-b1 .mhsw-cards { grid-template-columns: 1fr; }
+  .mhsw-b0 .mhsw-steps, .mhsw-b1 .mhsw-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .mhsw-wrap { padding: 0 16px; }
+  .mhsw-b0 .mhsw-cards { grid-template-columns: 1fr; }
+  .mhsw-b0 .mhsw-steps, .mhsw-b1 .mhsw-steps { grid-template-columns: 1fr; }
+  .mhsw-row, .mhsw-row .mhsw-btn { width: 100%; }
+  .mhsw-tab { padding: 11px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mhsw-root *, .mhsw-track { transition-duration: 0s !important; transition-delay: 0s !important; }
+}
+</style>
+<div class="mhsw-root" data-active="0">
+<div class="mhsw-track" id="mhsw-track">
+  <span class="mhsw-mark" id="b455" aria-hidden="true"></span>
+  <span class="mhsw-mark" id="b459" aria-hidden="true"></span>
+  <section class="mhsw-stage" tabindex="-1" aria-roledescription="карусель" aria-label="Риелторам и застройщикам">
+    <div class="mhsw-wrap mhsw-grid">
+
+      <div class="mhsw-side">
+        <div class="mhsw-tabs" role="tablist" aria-label="Для кого">
+          <button class="mhsw-tab" type="button" role="tab" data-go="0" aria-selected="true" aria-controls="mhsw-b0">Риелторам</button>
+          <button class="mhsw-tab" type="button" role="tab" data-go="1" aria-selected="false" aria-controls="mhsw-b1">Застройщикам</button>
+        </div>
+        <div class="mhsw-vis" id="mhsw-vis">
+          <svg class="mhsw-band" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" pathLength="100"/></svg>
+          <div class="mhsw-plates">
+            <div class="mhsw-orb" data-i="0" aria-hidden="true">
+              <!-- дом и ключ -->
+              <svg viewBox="0 0 130 120" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 58 L56 24 L96 58"/>
+                <path d="M26 50 V96 H86 V50"/>
+                <path d="M47 96 V72 H65 V96"/>
+                <circle cx="96" cy="86" r="11" fill="#fff"/>
+                <path d="M107 86 H124 M117 86 V95 M124 86 V93"/>
+              </svg>
+            </div>
+            <div class="mhsw-orb" data-i="1" aria-hidden="true">
+              <!-- дом и башенный кран -->
+              <svg viewBox="0 0 130 120" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 108 H120"/>
+                <path d="M22 108 V54 H62 V108"/>
+                <path d="M33 66 H39 M45 66 H51 M33 80 H39 M45 80 H51 M33 94 H39 M45 94 H51"/>
+                <path d="M92 108 V20"/>
+                <path d="M70 26 H122 M92 20 L80 26 M92 20 L104 26"/>
+                <path d="M116 26 V48"/>
+                <path d="M110 48 H122 V56 H110 Z"/>
+                <path d="M72 26 V34 H80 V26"/>
+              </svg>
+            </div>
+          </div>
+          <div class="mhsw-dots">
+            <button class="mhsw-dot" type="button" data-go="0" aria-current="true" aria-label="Риелторам"><i></i></button>
+            <button class="mhsw-dot" type="button" data-go="1" aria-label="Застройщикам"><i></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mhsw-main">
+        <div class="mhsw-stack">
+          <div class="mhsw-hd mhsw-on" data-i="0">
+            <h2><span class="mhsw-t1">Риелторам</span><span class="mhsw-t2">Все новостройки региона в одном сервисе. Бесплатно.</span></h2>
+          </div>
+          <div class="mhsw-hd" data-i="1" aria-hidden="true">
+            <h2><span class="mhsw-t1">Застройщикам</span><span class="mhsw-t2">Платите только за проданную квартиру</span></h2>
+          </div>
+        </div>
+
+        <div class="mhsw-stack">
+          <div class="mhsw-body mhsw-b0 mhsw-on" id="mhsw-b0" role="tabpanel" data-i="0">
+            <p class="mhsw-lead">Вступайте в ассоциацию Маклер.Хаб и работайте с объектами застройщиков через RedCat.</p>
+            <ul class="mhsw-cards"><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Каталог новостроек</b><span>Бурятия и Иркутск в одном месте</span></li><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Шахматки и остатки</b><span>Актуальные квартиры без звонков в отделы продаж</span></li><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Фиксация клиента</b><span>Клиент закреплён за вами</span></li><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Комиссия за 72 часа</b><span>Выплата после закрытой сделки</span></li></ul>
+            <ol class="mhsw-steps"><li><em>1</em><b>Регистрация в RedCat</b><span>Пара минут, бесплатно</span></li><li><em>2</em><b>Подбор и фиксация</b><span>Выбираете объект, закрепляете клиента</span></li><li><em>3</em><b>Сделка и комиссия</b><span>Оплата в течение 72 часов</span></li></ol>
+            <div class="mhsw-foot">
+              <p>Плюс сообщество: мероприятия ассоциации, встречи с застройщиками, розыгрыши для участников.</p>
+              <div class="mhsw-row">
+                <a class="mhsw-btn mhsw-bronze" href="https://max.ru/id300020791_biz" target="_blank" rel="noopener">Вступить в ассоциацию <span class="mhsw-arr" aria-hidden="true">→</span></a>
+                <a class="mhsw-btn mhsw-ghost" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">Зарегистрироваться в RedCat <span class="mhsw-arr" aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mhsw-body mhsw-b1" id="mhsw-b1" role="tabpanel" data-i="1" aria-hidden="true">
+            <p class="mhsw-lead">RedCat заменяет рекламу для частных покупателей: ваши объекты продают риелторы Бурятии и Иркутска.</p>
+            <ul class="mhsw-cards"><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Бесплатная реклама в RedCat</b><span>Объекты в каталоге для всех риелторов-участников</span></li><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Отдел продаж, работающий офлайн</b></li><li class="mhsw-card"><i><svg viewBox="0 0 20 20" width="22" height="22" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".14"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><b>Уникальная маркетинговая стратегия</b><span>Для риелторов и клиентов</span></li></ul>
+            <ol class="mhsw-steps"><li><em>1</em><b>Заявка</b><span>Оставляете контакты</span></li><li><em>2</em><b>Подключение</b><span>Объекты появляются в RedCat</span></li><li><em>3</em><b>Продажи</b><span>Риелторы ведут клиентов</span></li><li><em>4</em><b>Оплата</b><span>Только за закрытую сделку</span></li></ol>
+            <div class="mhsw-foot">
+              <p>Ни рубля вперёд: оплата только после закрытой сделки.</p>
+              <div class="mhsw-row">
+                <a class="mhsw-btn mhsw-bronze" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Подключить объект <span class="mhsw-arr" aria-hidden="true">→</span></a>
+                <a class="mhsw-btn mhsw-ghost" href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">Задать вопрос <span class="mhsw-arr" aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="mhsw-sr" aria-live="polite" id="mhsw-live"></p>
+  </section>
+</div>
+</div>
+<script>
+(function () {
+  var root = document.querySelector('.mhsw-root');
+  if (!root) return;
+  var track = document.getElementById('mhsw-track');
+  var stage = track.querySelector('.mhsw-stage');
+  var grid = track.querySelector('.mhsw-grid');
+  var mark1 = document.getElementById('b459');
+  var live = document.getElementById('mhsw-live');
+  var names = ['Риелторам', 'Застройщикам'];
+  var STRETCH = 0.9; // сколько экранов прокрутки занимает переход
+  var active = 0, pinned = false, dist = 0;
+
+  function show(i) {
+    if (i === active) return;
+    active = i;
+    root.setAttribute('data-active', String(i));
+    track.querySelectorAll('.mhsw-hd, .mhsw-body').forEach(function (el) {
+      var on = el.getAttribute('data-i') === String(i);
+      el.classList.toggle('mhsw-on', on);
+      if (on) el.removeAttribute('aria-hidden'); else el.setAttribute('aria-hidden', 'true');
+    });
+    track.querySelectorAll('.mhsw-tab').forEach(function (b) { b.setAttribute('aria-selected', b.getAttribute('data-go') === String(i) ? 'true' : 'false'); });
+    track.querySelectorAll('.mhsw-dot').forEach(function (b) {
+      if (b.getAttribute('data-go') === String(i)) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+    });
+    live.textContent = names[i];
+  }
+
+  function hdr() {
+    var h = document.querySelector('.mhhd-hdr');
+    return h ? h.offsetHeight : 0;
+  }
+
+  // Закрепляем блок только там, где он целиком помещается в экран; иначе — обычный блок с переключателем.
+  function layout() {
+    root.style.setProperty('--hdr', hdr() + 'px');
+    track.classList.remove('mhsw-pin');
+    track.style.height = '';
+    pinned = false;
+    if (window.matchMedia('(min-width: 901px)').matches) {
+      track.classList.add('mhsw-pin');
+      if (grid.offsetHeight <= stage.clientHeight) {
+        pinned = true;
+        dist = Math.round(stage.clientHeight * STRETCH);
+        track.style.height = (stage.clientHeight + dist) + 'px';
+      } else {
+        track.classList.remove('mhsw-pin');
+      }
+    }
+    mark1.style.top = pinned ? dist + 'px' : '0px';
+    onScroll();
+  }
+
+  function onScroll() {
+    if (!pinned) return;
+    var p = (hdr() - track.getBoundingClientRect().top) / dist;
+    // небольшой зазор, чтобы на границе блок не дёргался туда-обратно
+    if (active === 0 && p > 0.55) show(1);
+    else if (active === 1 && p < 0.45) show(0);
+  }
+
+  function go(i) {
+    if (pinned) {
+      var y = window.scrollY + track.getBoundingClientRect().top - hdr() + (i ? dist : 0);
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+    show(i);
+  }
+
+  track.querySelectorAll('[data-go]').forEach(function (b) {
+    b.addEventListener('click', function () { go(Number(b.getAttribute('data-go'))); });
+  });
+  // кнопки «Я риелтор» / «Я застройщик» и пункты меню
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#b455"], a[href="#b459"]');
+    if (a && !pinned) show(a.getAttribute('href') === '#b459' ? 1 : 0);
+  });
+  if (location.hash === '#b459') show(1);
+  stage.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') go(1);
+    else if (e.key === 'ArrowLeft') go(0);
+  });
+  var vis = document.getElementById('mhsw-vis'), sx = null, sy = 0;
+  vis.addEventListener('pointerdown', function (e) { sx = e.clientX; sy = e.clientY; });
+  vis.addEventListener('pointerup', function (e) {
+    if (sx === null) return;
+    var dx = e.clientX - sx;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(e.clientY - sy) * 1.4) go(dx < 0 ? 1 : 0);
+    sx = null;
+  });
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', layout);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+  layout();
+})();
+</script>

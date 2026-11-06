@@ -5,8 +5,9 @@ fs.mkdirSync(path.join(OUT, 'img'), { recursive: true });
 
 // id якорей из Битрикс24, на которые ссылается меню
 const anchors = {
-  '02-pervyy-ekran.html': 'b371', '03-o-kompanii.html': 'b451', '04-rieltoram.html': 'b455',
-  '05-zastroyshchikam.html': 'b459', '07-meropriyatiya.html': 'b753', '08-kontakty.html': 'b757',
+  '02-pervyy-ekran.html': 'b371', '03-o-kompanii.html': 'b451',
+  // b455 и b459 (риелторам / застройщикам) стоят внутри 04-rieltoram-zastroyshchikam.html
+  '07-meropriyatiya.html': 'b753', '08-kontakty.html': 'b757',
 };
 const names = {
   '01-header.html': ['logo', 'redcat'], '02-pervyy-ekran.html': 'hero-logo', '03-o-kompanii.html': 'about-logo',
@@ -45,7 +46,7 @@ const page = `<!doctype html>
 <link rel="icon" href="img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
 <style>
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #fff; -webkit-font-smoothing: antialiased; }

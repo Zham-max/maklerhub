@@ -1,0 +1,71 @@
+<style>
+/* site-reset */
+.mhlf-root, .mhlf-root * { box-sizing: border-box; }
+.mhlf-root h2 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhlf-root p { margin: 0; }
+.mhlf-root a { text-decoration: none; }
+.mhlf-root {
+  --ink: #141414; --teal: #025f6b; --teal-deep: #014c56; --bronze: #b67233; --sand: #da9858;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font); color: #fff;
+}
+.mhlf-root .mhlf-sec { background: var(--teal); }
+.mhlf-root .mhlf-wrap { max-width: 1200px; margin: 0 auto; padding: 56px 24px;
+  display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; align-items: center; }
+
+/* текст слева */
+.mhlf-root .mhlf-text { display: flex; flex-direction: column; gap: 14px; }
+.mhlf-root .mhlf-kicker { align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--sand); }
+.mhlf-root .mhlf-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
+.mhlf-root h2 { margin: 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
+.mhlf-root .mhlf-sub { font-size: 16px; line-height: 1.6; color: #d6e8ea; max-width: 460px; }
+.mhlf-root .mhlf-points { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.mhlf-root .mhlf-points li { display: flex; align-items: center; gap: 12px; font-size: 15px; line-height: 1.45; }
+.mhlf-root .mhlf-points li::before { content: ""; flex: none; width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(255,255,255,.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.4l2.6 2.6L14 7.6' fill='none' stroke='%23da9858' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 18px no-repeat; }
+.mhlf-root .mhlf-alt { margin-top: 8px; font-size: 14px; color: #d6e8ea; }
+.mhlf-root .mhlf-alt a { color: #fff; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,.4); }
+.mhlf-root .mhlf-alt a:hover { color: var(--sand); border-color: var(--sand); }
+
+/* форма Битрикс24 справа: белая карточка, форма подстроена под шрифт и цвета сайта */
+.mhlf-root .mhlf-card { background: #fff; color: var(--ink); border-radius: 22px; padding: 6px 4px; min-height: 300px;
+  box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
+.mhlf-root .mhlf-card .b24-form-wrapper { box-shadow: none !important; border: 0 !important; background: transparent !important; }
+.mhlf-root .mhlf-card .b24-form, .mhlf-root .mhlf-card .b24-form * { font-family: var(--font) !important; }
+.mhlf-root .mhlf-card .b24-form-btn { background-color: var(--bronze) !important; border-radius: 12px !important; font-weight: 700 !important;
+  transition: background-color .25s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease; }
+.mhlf-root .mhlf-card .b24-form-btn:hover { background-color: #9d5f27 !important; transform: translateY(-2px); box-shadow: 0 14px 24px -14px rgba(1,40,46,.55); }
+.mhlf-root .mhlf-card .b24-form-control { border-radius: 12px !important; }
+.mhlf-root .mhlf-card .b24-form-sign { opacity: .55; }
+/* поля формы — в две колонки: имя и фамилия, телефон и почта; «Кто вы?» на всю ширину */
+.mhlf-root .mhlf-card div:has(> .b24-form-field) { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; }
+.mhlf-root .mhlf-card div:has(> .b24-form-field) > .b24-form-field-list { grid-column: 1 / -1; }
+.mhlf-root .mhlf-card .b24-form-field-agreement, .mhlf-root .mhlf-card .b24-form-field-agreement * { font-size: 12px !important; line-height: 1.45 !important; }
+
+@media (max-width: 860px) {
+  .mhlf-root .mhlf-wrap { grid-template-columns: 1fr; gap: 22px; padding: 44px 16px; }
+  .mhlf-root .mhlf-points { display: none; }
+  .mhlf-root .mhlf-card { border-radius: 18px; padding: 4px 0; }
+}
+</style>
+<div class="mhlf-root">
+<section class="mhlf-sec" aria-labelledby="mhlf-title">
+  <div class="mhlf-wrap">
+    <div class="mhlf-text">
+      <span class="mhlf-kicker">Заявка</span>
+      <h2 id="mhlf-title">Оставьте контакты — перезвоним</h2>
+      <p class="mhlf-sub">Подключим к&nbsp;RedCat, расскажем об&nbsp;условиях для риелторов и&nbsp;застройщиков и&nbsp;ответим на&nbsp;вопросы.</p>
+      <ul class="mhlf-points">
+        <li>Для риелторов — бесплатно</li>
+        <li>Застройщикам — оплата только за&nbsp;проданную квартиру</li>
+        <li>Перезвоним в&nbsp;рабочее время, 10:00–19:00</li>
+      </ul>
+      <p class="mhlf-alt">Удобнее сразу? <a href="tel:+73012650099">+7 (3012) 65-00-99</a> или <a href="https://max.ru/id0300020791_bot" target="_blank" rel="noopener">написать в MAX</a></p>
+    </div>
+    <div class="mhlf-card">
+      <!-- CRM-форма Битрикс24 №9 «Контактные данные»: заявка сразу попадает лидом в CRM -->
+      <script data-b24-form="inline/9/il5004" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b38879800/crm/form/loader_9.js');</script>
+    </div>
+  </div>
+</section>
+</div>

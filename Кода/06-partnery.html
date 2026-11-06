@@ -8,7 +8,7 @@
 .mhpt-root p { margin: 0; }
 .mhpt-root a { text-decoration: none; }
 .mhpt-root {
-  --bg: #ffffff; --ink: #141414; --muted: #555555; --line: #e7e2dc;
+  --bg: #ffffff; --ink: #141414; --muted: #5b5a56; --line: #e7e2dc;
   --teal: #025f6b; --teal-deep: #014c56; --sand: #da9858; --bronze: #b67233; --rc: #f54012;
   --mint: #eaf3f4; --cream: #f7efe5;
   --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
@@ -21,12 +21,18 @@
 .mhpt-root .mhpt-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
 .mhpt-root .mhpt-btn .mhpt-arr { transition: transform .2s ease; }
 .mhpt-root .mhpt-btn:hover .mhpt-arr { transform: translateX(3px); }
-.mhpt-root .mhpt-sec { padding-top: 56px; padding-bottom: 56px; display: flex; flex-direction: column; gap: 24px; }
-.mhpt-root h2 { margin: 0; font-weight: 800; font-size: clamp(24px, 2.8vw, 34px); line-height: 1.2; }
+.mhpt-root .mhpt-sec { padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 24px; }
+.mhpt-root h2 { margin: 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
 .mhpt-root .mhpt-logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
 .mhpt-root .mhpt-pl { border: 1px solid var(--line); border-radius: 16px; min-height: 120px; display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 10px; padding: 14px; text-align: center; }
 .mhpt-root .mhpt-pl img { max-width: 85%; height: 28px; object-fit: contain; }
+/* логотипы серые и спокойные, цвет — при наведении */
+.mhpt-root .mhpt-pl { transition: border-color .3s ease, box-shadow .3s ease, transform .3s cubic-bezier(.22,1,.36,1); }
+.mhpt-root .mhpt-pl img, .mhpt-root .mhpt-pl b { filter: grayscale(1); opacity: .62; transition: filter .35s ease, opacity .35s ease; }
+.mhpt-root .mhpt-pl:hover { border-color: #d9cfc2; transform: translateY(-3px); box-shadow: 0 16px 30px -24px rgba(1,76,86,.5); }
+.mhpt-root .mhpt-pl:hover img, .mhpt-root .mhpt-pl:hover b { filter: none; opacity: 1; }
+@media (hover: none) { .mhpt-root .mhpt-pl img, .mhpt-root .mhpt-pl b { opacity: .75; } }
 .mhpt-root .mhpt-pl img.mhpt-afi { height: 42px; }
 .mhpt-root .mhpt-pl b { font-size: 17px; color: var(--ink); }
 .mhpt-root .mhpt-pl span { font-size: 12.5px; color: #8b8a86; line-height: 1.4; }
@@ -34,6 +40,7 @@
 .mhpt-root .mhpt-logos { grid-template-columns: repeat(3, 1fr); }
  }
 @media (max-width: 520px) {
+.mhpt-root .mhpt-sec { padding-top: 48px; padding-bottom: 48px; }
 .mhpt-root .mhpt-logos { grid-template-columns: repeat(2, 1fr); }
  }
 

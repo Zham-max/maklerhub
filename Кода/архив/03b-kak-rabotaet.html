@@ -1,0 +1,159 @@
+<style>
+/* site-reset */
+.mhrc-root, .mhrc-root * { box-sizing: border-box; }
+.mhrc-root h2, .mhrc-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhrc-root p { margin: 0; }
+.mhrc-root a { text-decoration: none; }
+.mhrc-root {
+  --ink: #141414; --muted: #5b5a56; --line: #e6e2dc;
+  --teal: #025f6b; --teal-deep: #014c56; --bronze: #b67233; --bronze-deep: #9d5f27;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font); color: var(--ink);
+}
+.mhrc-root .mhrc-sec { background: #f7efe5; padding: 80px 0; }
+.mhrc-root .mhrc-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* шапка блока */
+.mhrc-root .mhrc-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; margin-bottom: 44px; }
+.mhrc-root .mhrc-kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
+.mhrc-root .mhrc-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
+.mhrc-root h2 { margin: 16px 0 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; max-width: 640px; }
+.mhrc-root .mhrc-brand { display: flex; align-items: center; gap: 14px; font-size: 14px; line-height: 1.5; color: var(--muted); max-width: 330px; }
+.mhrc-root .mhrc-brand img { width: 120px; height: auto; flex: none; }
+
+/* шаги */
+.mhrc-root .mhrc-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; counter-reset: none; }
+.mhrc-root .mhrc-step { position: relative; overflow: hidden; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 26px 24px 28px; min-height: 200px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease; }
+.mhrc-root .mhrc-step:hover { transform: translateY(-6px); border-color: #e9d3bd; box-shadow: 0 24px 40px -28px rgba(1,76,86,.45); }
+/* полоса прогресса сверху карточки: заполняется по очереди, от шага к шагу */
+.mhrc-root .mhrc-step::before { content: ""; position: absolute; left: 0; top: 0; height: 4px; width: 100%; background: var(--bronze);
+  transform: scaleX(0); transform-origin: left; }
+.mhrc-root .mhrc-num { width: 40px; height: 40px; border-radius: 12px; background: var(--teal); color: #fff; display: grid; place-items: center;
+  font-weight: 800; font-size: 16px; transition: transform .4s cubic-bezier(.34,1.56,.64,1), background-color .3s ease; }
+.mhrc-root .mhrc-step:hover .mhrc-num { transform: rotate(-8deg) scale(1.08); background: var(--teal-deep); }
+.mhrc-root .mhrc-step h3 { margin: 10px 0 0; font-size: 16.5px; font-weight: 700; line-height: 1.35; }
+.mhrc-root .mhrc-step p { font-size: 14px; line-height: 1.55; color: var(--muted); }
+
+/* призыв под шагами */
+.mhrc-root .mhrc-cta { margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+  background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; }
+.mhrc-root .mhrc-cta p { font-size: 15px; font-weight: 600; color: var(--ink); }
+.mhrc-root .mhrc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 50px; padding: 0 22px;
+  border-radius: 12px; font: 700 15px/1 var(--font); white-space: nowrap; background: var(--bronze); color: #fff;
+  position: relative; overflow: hidden; isolation: isolate;
+  transition: background-color .25s ease, transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s ease; }
+.mhrc-root .mhrc-btn:hover { background: var(--bronze-deep); transform: translateY(-3px); box-shadow: 0 14px 24px -14px rgba(1,40,46,.55); }
+.mhrc-root .mhrc-btn:active { transform: scale(.96); }
+.mhrc-root .mhrc-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.mhrc-root .mhrc-btn::before { content: ""; position: absolute; top: -20%; left: -70%; width: 45%; height: 140%; z-index: -1;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent); transform: skewX(-22deg); }
+.mhrc-root .mhrc-btn:hover::before { left: 130%; transition: left .7s cubic-bezier(.4,0,.2,1); }
+.mhrc-root .mhrc-btn .mhrc-arr { transition: transform .2s ease; }
+.mhrc-root .mhrc-btn:hover .mhrc-arr { transform: translateX(3px); }
+
+/* появление при прокрутке: заголовок, затем карточки и их полосы одна за другой */
+.mhrc-root.mhrc-js .mhrc-head > *, .mhrc-root.mhrc-js .mhrc-step, .mhrc-root.mhrc-js .mhrc-cta { opacity: 0; transform: translateY(26px); }
+.mhrc-root.mhrc-js .mhrc-num { transform: scale(.4); opacity: 0; }
+.mhrc-root.mhrc-in .mhrc-head > *, .mhrc-root.mhrc-in .mhrc-step, .mhrc-root.mhrc-in .mhrc-cta {
+  opacity: 1; transform: none; transition: opacity .6s ease, transform .7s cubic-bezier(.22,1,.36,1); }
+.mhrc-root.mhrc-in .mhrc-head > :nth-child(2) { transition-delay: .1s; }
+.mhrc-root.mhrc-in .mhrc-num { opacity: 1; transform: none; transition: opacity .3s ease, transform .5s cubic-bezier(.34,1.56,.64,1); }
+.mhrc-root.mhrc-in .mhrc-step::before { transform: scaleX(1); transition: transform .55s cubic-bezier(.65,0,.35,1); }
+.mhrc-root.mhrc-in .mhrc-step:nth-child(1) { transition-delay: .15s; }
+.mhrc-root.mhrc-in .mhrc-step:nth-child(2) { transition-delay: .27s; }
+.mhrc-root.mhrc-in .mhrc-step:nth-child(3) { transition-delay: .39s; }
+.mhrc-root.mhrc-in .mhrc-step:nth-child(4) { transition-delay: .51s; }
+.mhrc-root.mhrc-in .mhrc-step:nth-child(1) .mhrc-num { transition-delay: .45s; }
+.mhrc-root.mhrc-in .mhrc-step:nth-child(2) .mhrc-num { transition-delay: .95s; }
+.mhrc-root.mhrc-in .mhrc-step:nth-child(3) .mhrc-num { transition-delay: 1.45s; }
+.mhrc-root.mhrc-in .mhrc-step:nth-child(4) .mhrc-num { transition-delay: 1.95s; }
+.mhrc-root.mhrc-in .mhrc-step:nth-child(1)::before { transition-delay: .55s; }
+.mhrc-root.mhrc-in .mhrc-step:nth-child(2)::before { transition-delay: 1.05s; }
+.mhrc-root.mhrc-in .mhrc-step:nth-child(3)::before { transition-delay: 1.55s; }
+.mhrc-root.mhrc-in .mhrc-step:nth-child(4)::before { transition-delay: 2.05s; }
+.mhrc-root.mhrc-in .mhrc-cta { transition-delay: .7s; }
+/* после появления — снова быстрый отклик на наведение */
+.mhrc-root.mhrc-done .mhrc-step { transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease; transition-delay: 0s; }
+.mhrc-root.mhrc-done .mhrc-step:hover { transform: translateY(-6px); }
+.mhrc-root.mhrc-done .mhrc-num { transition: transform .4s cubic-bezier(.34,1.56,.64,1), background-color .3s ease; transition-delay: 0s; }
+.mhrc-root.mhrc-done .mhrc-step:hover .mhrc-num { transform: rotate(-8deg) scale(1.08); }
+
+@media (max-width: 1000px) {
+  .mhrc-root .mhrc-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .mhrc-root .mhrc-sec { padding: 52px 0; }
+  .mhrc-root .mhrc-wrap { padding: 0 16px; }
+  .mhrc-root .mhrc-head { margin-bottom: 28px; }
+  .mhrc-root .mhrc-steps { grid-template-columns: 1fr; gap: 12px; }
+  .mhrc-root .mhrc-step { min-height: 0; padding: 20px; display: grid; grid-template-columns: 40px 1fr; column-gap: 14px; row-gap: 4px; }
+  .mhrc-root .mhrc-num { grid-row: span 2; }
+  .mhrc-root .mhrc-step h3 { margin: 0; align-self: end; }
+  .mhrc-root .mhrc-cta, .mhrc-root .mhrc-btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mhrc-root *, .mhrc-root *::before { transition: none !important; }
+  .mhrc-root.mhrc-js .mhrc-head > *, .mhrc-root.mhrc-js .mhrc-step, .mhrc-root.mhrc-js .mhrc-cta, .mhrc-root.mhrc-js .mhrc-num { opacity: 1; transform: none; }
+  .mhrc-root .mhrc-step::before { transform: scaleX(1); }
+}
+</style>
+<div class="mhrc-root">
+<section class="mhrc-sec" aria-labelledby="mhrc-title">
+  <div class="mhrc-wrap">
+    <div class="mhrc-head">
+      <div>
+        <span class="mhrc-kicker">Как работает RedCat</span>
+        <h2 id="mhrc-title">От регистрации до комиссии — четыре шага</h2>
+      </div>
+      <div class="mhrc-brand">
+        <img src="img/redcat.png" alt="RedCat" width="360" height="81" loading="lazy">
+        <span>Платформа, где риелтор видит все новостройки региона, а застройщик получает покупателей.</span>
+      </div>
+    </div>
+
+    <ol class="mhrc-steps">
+      <li class="mhrc-step">
+        <span class="mhrc-num">1</span>
+        <h3>Зарегистрируйтесь на платформе</h3>
+        <p>Пара минут и бесплатно — сразу открывается каталог новостроек.</p>
+      </li>
+      <li class="mhrc-step">
+        <span class="mhrc-num">2</span>
+        <h3>Соберите подборку объектов для клиента</h3>
+        <p>Шахматки и актуальные остатки без звонков в отделы продаж.</p>
+      </li>
+      <li class="mhrc-step">
+        <span class="mhrc-num">3</span>
+        <h3>Закрепите клиента и заключите сделку</h3>
+        <p>Клиент фиксируется за вами — никто не перехватит.</p>
+      </li>
+      <li class="mhrc-step">
+        <span class="mhrc-num">4</span>
+        <h3>Получите комиссию</h3>
+        <p>Выплата в течение 72 часов после закрытой сделки.</p>
+      </li>
+    </ol>
+
+    <div class="mhrc-cta">
+      <p>Новостройки Бурятии и Иркутска — в одном каталоге.</p>
+      <a class="mhrc-btn" href="https://redcat.ai/q/VWHTK6" target="_blank" rel="noopener">Зарегистрироваться в RedCat <span class="mhrc-arr" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+</div>
+<script>
+(function () {
+  var root = document.querySelector('.mhrc-root');
+  if (!root || !('IntersectionObserver' in window)) return;
+  root.classList.add('mhrc-js');
+  var io = new IntersectionObserver(function (es) {
+    if (!es.some(function (e) { return e.isIntersecting; })) return;
+    root.classList.add('mhrc-in');
+    io.disconnect();
+    setTimeout(function () { root.classList.add('mhrc-done'); }, 2700);
+  }, { threshold: 0.2 });
+  io.observe(root);
+})();
+</script>
