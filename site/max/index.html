@@ -515,7 +515,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 
               <p class="desc">Конференции, встречи с застройщиками, розыгрыши</p>
             </div>
           </div>
-          <a class="btn btn-accent btn-card" href="https://max.ru/id300020791_biz" data-ext="max">Узнать первым</a>
+          <a class="btn btn-accent btn-card" href="https://max.ru/join/bbGRo76bqRK0ppqSXBADLsP9YKJn35aRuudi_-Xwd1o" data-ext="max">Узнать первым</a>
         </article>
 
         <article class="card">
@@ -638,86 +638,12 @@ input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 
         </ol>
       </div>
 
-      <form class="form-card" id="formRealtor" novalidate>
+      <div class="form-card" data-b24-slot="realtor">
         <h3 style="margin:0 0 4px;font-size:17px;font-weight:800;letter-spacing:-.015em">Заявка на вступление</h3>
         <p class="hint" style="margin:6px 0 0;font-size:13px;color:var(--text)">Перезвоним в рабочее время: будни, 10:00–19:00.</p>
-
-        <div class="field" data-field="name" style="margin-top:18px">
-          <label for="r-name">Имя <span class="req">*</span></label>
-          <div class="control"><input id="r-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" maxlength="80"></div>
-          <p class="err" data-err>Укажите имя</p>
-        </div>
-
-        <div class="field" data-field="phone">
-          <div class="phone-head">
-            <span class="f-label">Телефон <span class="req">*</span></span>
-            <button class="link-mini" id="rContact" type="button" hidden>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></svg>
-              Мой номер
-            </button>
-          </div>
-          <div class="control"><input id="r-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" maxlength="18"></div>
-          <p class="err" data-err>Введите номер полностью</p>
-        </div>
-
-        <div class="field" data-field="city">
-          <label for="r-city">Город <span class="req">*</span></label>
-          <div class="control">
-            <select id="r-city" name="city" required>
-              <option value="" disabled selected>Выберите город</option>
-              <option value="Улан-Удэ">Улан-Удэ</option>
-              <option value="Иркутск">Иркутск</option>
-              <option value="Другой">Другой</option>
-            </select>
-          </div>
-          <p class="err" data-err>Выберите город</p>
-        </div>
-
-        <div class="field" data-field="role">
-          <span class="f-label">Вы <span class="req">*</span></span>
-          <div class="segments">
-            <label class="seg"><input type="radio" name="role" value="Частный риелтор"><span>Частный риелтор</span></label>
-            <label class="seg"><input type="radio" name="role" value="Сотрудник агентства"><span>Сотрудник агентства</span></label>
-          </div>
-          <p class="err" data-err>Выберите вариант</p>
-        </div>
-
-        <div class="field" data-field="agency" id="r-agency-wrap" hidden>
-          <label for="r-agency">Название агентства <span class="req">*</span></label>
-          <div class="control"><input id="r-agency" name="agency" type="text" placeholder="Как называется агентство" maxlength="120"></div>
-          <p class="err" data-err>Укажите название агентства</p>
-        </div>
-
-        <div class="field" data-field="experience">
-          <label for="r-exp">Опыт в недвижимости</label>
-          <div class="control">
-            <select id="r-exp" name="experience">
-              <option value="" disabled selected>Выберите</option>
-              <option value="До 1 года">До 1 года</option>
-              <option value="1–3 года">1–3 года</option>
-              <option value="Более 3 лет">Более 3 лет</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="consent" data-field="consent">
-          <input id="r-consent" type="checkbox" name="consent">
-          <label class="box" for="r-consent" aria-hidden="true">
-            <svg viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.3l3 3 6-6.6"/></svg>
-          </label>
-          <label for="r-consent">Согласен на обработку персональных данных в соответствии с <a href="https://maklerhub.ru/privacy.html" data-ext="link">политикой</a> <span class="req">*</span></label>
-        </div>
-
-        <div class="form-alert" id="r-alert" role="alert">
-          <span data-alert-text>Не получилось отправить заявку. Попробуйте ещё раз или напишите нам в MAX.</span>
-          <a class="btn" href="https://max.ru/id0300020791_bot" data-ext="max">Написать в MAX</a>
-        </div>
-
-        <button class="btn btn-accent btn-block" type="submit" style="margin-top:18px">
-          <span class="spinner" aria-hidden="true"></span><span data-label>Отправить заявку</span>
-        </button>
-        <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
-      </form>
+        <!-- CRM-форма Битрикс24 №9, та же, что на maklerhub.ru: заявка сразу попадает лидом в CRM. Одна форма на страницу — переносится между экранами -->
+        <div id="b24form" style="margin-top:14px"><script data-b24-form="inline/9/il5004" data-skip-moving="true">(function(w,d,u){var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(window,document,'https://cdn-ru.bitrix24.ru/b38879800/crm/form/loader_9.js');</script></div>
+      </div>
     </section>
 
     <!-- ================= ЗАСТРОЙЩИКАМ ================= -->
@@ -749,92 +675,10 @@ input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 
         </ol>
       </div>
 
-      <form class="form-card" id="formDeveloper" novalidate>
+      <div class="form-card" data-b24-slot="developer">
         <h3 style="margin:0 0 4px;font-size:17px;font-weight:800;letter-spacing:-.015em">Заявка на подключение</h3>
         <p class="hint" style="margin:6px 0 0;font-size:13px;color:var(--text)">Перезвоним в рабочее время: будни, 10:00–19:00.</p>
-
-        <div class="field" data-field="company" style="margin-top:18px">
-          <label for="d-company">Название компании <span class="req">*</span></label>
-          <div class="control"><input id="d-company" name="company" type="text" autocomplete="organization" placeholder="ООО «СтройИнвест»" maxlength="120"></div>
-          <p class="err" data-err>Укажите название компании</p>
-        </div>
-
-        <div class="field" data-field="name">
-          <label for="d-name">Контактное лицо <span class="req">*</span></label>
-          <div class="control"><input id="d-name" name="name" type="text" autocomplete="name" placeholder="Имя и фамилия" maxlength="80"></div>
-          <p class="err" data-err>Укажите имя</p>
-        </div>
-
-        <div class="field" data-field="position">
-          <label for="d-position">Должность</label>
-          <div class="control"><input id="d-position" name="position" type="text" autocomplete="organization-title" placeholder="Руководитель отдела продаж" maxlength="80"></div>
-        </div>
-
-        <div class="field" data-field="phone">
-          <div class="phone-head">
-            <span class="f-label">Телефон <span class="req">*</span></span>
-            <button class="link-mini" id="dContact" type="button" hidden>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></svg>
-              Мой номер
-            </button>
-          </div>
-          <div class="control"><input id="d-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" maxlength="18"></div>
-          <p class="err" data-err>Введите номер полностью</p>
-        </div>
-
-        <div class="field" data-field="city">
-          <label for="d-city">Город объекта <span class="req">*</span></label>
-          <div class="control">
-            <select id="d-city" name="city" required>
-              <option value="" disabled selected>Выберите город</option>
-              <option value="Улан-Удэ">Улан-Удэ</option>
-              <option value="Иркутск">Иркутск</option>
-              <option value="Другой">Другой</option>
-            </select>
-          </div>
-          <p class="err" data-err>Выберите город</p>
-        </div>
-
-        <div class="field" data-field="complex">
-          <label for="d-complex">Название ЖК</label>
-          <div class="control"><input id="d-complex" name="complex" type="text" placeholder="ЖК «Северный»" maxlength="120"></div>
-        </div>
-
-        <div class="field" data-field="flats">
-          <label for="d-flats">Количество квартир в продаже</label>
-          <div class="control">
-            <select id="d-flats" name="flats">
-              <option value="" disabled selected>Выберите</option>
-              <option value="До 50">До 50</option>
-              <option value="50–200">50–200</option>
-              <option value="Более 200">Более 200</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="field" data-field="comment">
-          <label for="d-comment">Комментарий</label>
-          <div class="control"><textarea id="d-comment" name="comment" placeholder="Что важно учесть" maxlength="600"></textarea></div>
-        </div>
-
-        <div class="consent" data-field="consent">
-          <input id="d-consent" type="checkbox" name="consent">
-          <label class="box" for="d-consent" aria-hidden="true">
-            <svg viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.3l3 3 6-6.6"/></svg>
-          </label>
-          <label for="d-consent">Согласен на обработку персональных данных в соответствии с <a href="https://maklerhub.ru/privacy.html" data-ext="link">политикой</a> <span class="req">*</span></label>
-        </div>
-
-        <div class="form-alert" id="d-alert" role="alert">
-          <span data-alert-text>Не получилось отправить заявку. Попробуйте ещё раз или напишите нам в MAX.</span>
-          <a class="btn" href="https://max.ru/id0300020791_bot" data-ext="max">Написать в MAX</a>
-        </div>
-
-        <button class="btn btn-accent btn-block" type="submit" style="margin-top:18px">
-          <span class="spinner" aria-hidden="true"></span><span data-label>Подключить объект</span>
-        </button>
-        <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
-      </form>
+      </div>
 
       <a class="btn btn-ghost btn-block" href="https://max.ru/id0300020791_bot" data-ext="max" style="margin-top:10px">Задать вопрос</a>
     </section>
@@ -860,7 +704,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 
       <a href="#" data-nav="realtor">Риелторам <span class="chev">›</span></a>
       <a href="#" data-nav="developer">Застройщикам <span class="chev">›</span></a>
       <a href="https://redcat.ai/" data-ext="link">Каталог новостроек <span class="chev">›</span></a>
-      <a href="https://max.ru/id300020791_biz" data-ext="max">Мероприятия <span class="chev">›</span></a>
+      <a href="https://max.ru/join/bbGRo76bqRK0ppqSXBADLsP9YKJn35aRuudi_-Xwd1o" data-ext="max">Мероприятия <span class="chev">›</span></a>
       <a href="https://max.ru/id0300020791_bot" data-ext="max">Написать в MAX <span class="chev">›</span></a>
     </nav>
     <div class="sheet-foot">
@@ -952,6 +796,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 
     for (var i = 0; i < screens.length; i++) {
       screens[i].classList.toggle('is-active', screens[i] === target);
     }
+    var slot = target.querySelector('[data-b24-slot]'), b24 = el('b24form');
+    if (slot && b24 && b24.parentNode !== slot) slot.appendChild(b24);
     current = name;
     closeMenu();
     window.scrollTo(0, 0);
@@ -1364,19 +1210,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 
     });
   }
 
-  setupForm({
-    formId: 'formRealtor',
-    type: 'realtor',
-    roleToggle: true,
-    validate: validateRealtor
-  });
 
-  setupForm({
-    formId: 'formDeveloper',
-    type: 'developer',
-    roleToggle: false,
-    validate: validateDeveloper
-  });
 
   /* ---------------- старт ---------------- */
   syncBackButton();
