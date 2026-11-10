@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3F5F8">
+<title>Маклер.Хаб x RedCat — новостройки Бурятии и Иркутска</title>
+<meta name="description" content="Ассоциация риелторов Бурятии и Иркутска, оператор платформы RedCat. Вступление для риелторов и подключение объектов для застройщиков — бесплатно.">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --accent:#E30613;
+  --accent-dark:#BC0511;
+  --accent-soft:#FDECEE;
+  --navy:#101E3C;
+  --text:#5B6473;
+  --muted:#8B94A3;
+  --bg:#F3F5F8;
+  --card:#FFFFFF;
+  --line:#E7EBF1;
+  --error:#D92D20;
+  --r:24px;
+  --safe-t:env(safe-area-inset-top,0px);
+  --safe-b:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--navy);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  overscroll-behavior-y:contain;
+}
+button,input,select,textarea{font:inherit;color:inherit}
+img,svg{display:block}
+a{color:inherit;text-decoration:none}
+.app{position:relative;max-width:430px;margin:0 auto;min-height:100dvh;background:var(--bg);
+  box-shadow:0 0 0 1px rgba(16,30,60,.05),0 40px 90px -50px rgba(16,30,60,.45)}
+@media (max-width:440px){.app{box-shadow:none}}
+
+/* ---------- шапка ---------- */
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:calc(var(--safe-t) + 10px) 16px 10px;
+  background:rgba(243,245,248,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(231,235,241,.9)}
+.brand{display:flex;align-items:baseline;gap:5px;font-size:16px;font-weight:800;letter-spacing:-.015em;white-space:nowrap}
+.brand .x{color:var(--muted);font-weight:500;font-size:14px}
+.brand .rc{color:var(--accent)}
+.menu-btn{flex:none;width:40px;height:40px;border:1px solid var(--line);border-radius:12px;background:#fff;
+  display:grid;place-content:center;gap:4px;cursor:pointer}
+.menu-btn span{display:block;width:17px;height:2px;border-radius:2px;background:var(--navy);transition:transform .2s ease,opacity .2s ease}
+.menu-btn:active{background:#EDF1F6}
+
+.wrap{padding:12px 16px calc(36px + var(--safe-b))}
+
+/* ---------- экраны ---------- */
+.screen{display:none}
+.screen.is-active{display:block;animation:screenIn .26s cubic-bezier(.22,1,.36,1) both}
+@keyframes screenIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.screen.is-active{animation:none}.btn{transition:none}}
+
+/* ---------- кнопки ---------- */
+.btn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:52px;padding:0 18px;border-radius:15px;font-size:14px;font-weight:700;letter-spacing:.01em;white-space:nowrap;
+  transition:transform .16s ease,background-color .16s ease,border-color .16s ease,box-shadow .16s ease,opacity .16s ease}
+.btn:active{transform:scale(.985)}
+.btn:focus-visible{outline:3px solid rgba(227,6,19,.35);outline-offset:2px}
+.btn-accent{background:var(--accent);color:#fff;box-shadow:0 12px 26px -16px rgba(227,6,19,.95)}
+.btn-accent:hover{background:var(--accent-dark)}
+.btn-ghost{background:#fff;color:var(--navy);border:1.5px solid #D9DFE9}
+.btn-ghost:hover{border-color:#AFBACB}
+.btn-block{width:100%}
+.btn-card{width:100%;height:46px;border-radius:13px;margin-top:14px;
+  font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.btn[disabled]{cursor:default;opacity:.75;box-shadow:none}
+.btn .arr{transition:transform .2s ease}
+.btn:hover .arr{transform:translateX(3px)}
+
+/* ---------- первый экран ---------- */
+.hero{position:relative;overflow:hidden;background:var(--card);border-radius:var(--r);padding:22px 20px 20px;
+  box-shadow:0 1px 0 rgba(16,30,60,.04),0 24px 48px -40px rgba(16,30,60,.5)}
+.hero::before{content:"";position:absolute;right:-46px;top:-58px;width:186px;height:186px;border-radius:50%;
+  background:radial-gradient(circle at 34% 34%,rgba(227,6,19,.13),rgba(227,6,19,0) 68%)}
+.hero::after{content:"";position:absolute;left:0;bottom:0;width:112px;height:112px;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(90deg,rgba(16,30,60,.09) 1px,transparent 1px),
+                   linear-gradient(rgba(16,30,60,.09) 1px,transparent 1px);
+  background-size:14px 14px;-webkit-mask-image:radial-gradient(circle at 0 100%,#000,transparent 72%);
+  mask-image:radial-gradient(circle at 0 100%,#000,transparent 72%)}
+.eyebrow{position:relative;display:inline-flex;align-items:center;gap:8px;
+  font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:16px;height:2px;border-radius:2px;background:currentColor}
+.hero h1{position:relative;margin:12px 0 0;font-size:27px;line-height:1.14;letter-spacing:-.025em;font-weight:800;text-wrap:balance}
+.hero .sub{position:relative;margin:10px 0 0;font-size:14px;line-height:1.5;color:var(--text);max-width:32ch}
+.hero-actions{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.hero-actions .btn{height:50px;font-size:14.5px;padding:0 10px}
+
+/* ---------- цифры ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.stat{background:var(--card);border-radius:16px;padding:12px 8px;text-align:center;box-shadow:0 1px 0 rgba(16,30,60,.04)}
+.stat b{display:block;font-size:17px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:3px;font-size:10.5px;line-height:1.3;color:var(--muted)}
+
+/* ---------- карточки ---------- */
+.cards{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.card{background:var(--card);border-radius:var(--r);padding:20px;box-shadow:0 1px 0 rgba(16,30,60,.04)}
+.card-head{display:flex;align-items:flex-start;gap:12px}
+.chip{flex:none;width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.chip svg{width:20px;height:20px}
+.card h2{margin:0;font-size:19px;line-height:1.22;letter-spacing:-.02em;font-weight:800}
+.card p.desc{margin:7px 0 0;font-size:14px;line-height:1.45;color:var(--text)}
+.card-head + p.desc{margin-top:8px}
+.card-plain h2{margin:0}
+
+/* ---------- FAQ ---------- */
+.faq{margin-top:14px;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;background:none;border:0;padding:14px 0;display:flex;align-items:center;justify-content:space-between;
+  gap:12px;text-align:left;font-size:14px;line-height:1.35;font-weight:600;cursor:pointer}
+.faq-q:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.plus{position:relative;flex:none;width:24px;height:24px;border-radius:50%;background:#F0F3F7;transition:background-color .2s ease,transform .28s ease}
+.plus::before,.plus::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:1.8px;border-radius:2px;
+  background:var(--navy);transform:translate(-50%,-50%);transition:transform .28s ease,background-color .2s ease}
+.plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq-item.is-open .plus{background:var(--accent);transform:rotate(180deg)}
+.faq-item.is-open .plus::before,.faq-item.is-open .plus::after{background:#fff}
+.faq-item.is-open .plus::after{transform:translate(-50%,-50%) rotate(0)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s cubic-bezier(.22,1,.36,1)}
+.faq-a>div{overflow:hidden}
+.faq-item.is-open .faq-a{grid-template-rows:1fr}
+.faq-a p{margin:0;padding:0 0 14px;font-size:13.5px;line-height:1.5;color:var(--text)}
+
+/* ---------- контакты ---------- */
+.contact-row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.contact-row:first-of-type{padding-top:2px}
+.contact-row:last-of-type{border-bottom:0;padding-bottom:0}
+.ci{flex:none;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:#F3F5F8;color:var(--navy)}
+.ci svg{width:17px;height:17px}
+.contact-row .lbl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.contact-row .val{font-size:14.5px;font-weight:600;line-height:1.4;margin-top:1px;word-break:break-word}
+.contact-row a.val:hover{color:var(--accent)}
+.cta-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.cta-row .btn{height:44px;border-radius:12px;font-size:12.5px;letter-spacing:.03em}
+.legal{margin:16px 2px 0;font-size:11.5px;line-height:1.5;color:var(--muted);text-align:center}
+.legal a{text-decoration:underline;text-underline-offset:2px}
+.legal a:hover{color:var(--navy)}
+
+/* ---------- внутренние экраны ---------- */
+.back{display:inline-flex;align-items:center;gap:7px;padding:8px 0;margin-bottom:2px;
+  background:none;border:0;cursor:pointer;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--muted)}
+.back svg{width:15px;height:15px}
+.back:hover{color:var(--navy)}
+.sec-title{margin:6px 0 0;font-size:25px;line-height:1.16;letter-spacing:-.022em;font-weight:800}
+.sec-lead{margin:9px 0 0;font-size:14px;line-height:1.5;color:var(--text)}
+.block{margin-top:12px;background:var(--card);border-radius:var(--r);padding:20px}
+.block h3{margin:0;font-size:15px;font-weight:800;letter-spacing:-.01em}
+.block p.hint{margin:8px 0 0;font-size:13px;line-height:1.5;color:var(--text)}
+.block-title{display:flex;align-items:center;gap:8px}
+.block-title .num{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:7px;
+  background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:800}
+
+.benefits{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:11px}
+.benefits li{position:relative;padding-left:29px;font-size:13.5px;line-height:1.45;color:var(--text)}
+.benefits li b{color:var(--navy);font-weight:700}
+.benefits li::before{content:"";position:absolute;left:0;top:1px;width:19px;height:19px;border-radius:50%;
+  background:var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.3l2.6 2.6L14 7.7' fill='none' stroke='%23E30613' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/13px no-repeat}
+
+/* шаги */
+.steps{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:0}
+.steps li{position:relative;display:grid;grid-template-columns:26px 1fr;gap:12px;padding-bottom:16px}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{content:"";position:absolute;left:12px;top:24px;bottom:0;width:2px;background:var(--line);border-radius:2px}
+.steps li:last-child::before{display:none}
+.steps .n{position:relative;z-index:1;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;
+  background:var(--card);border:2px solid var(--accent);color:var(--accent);font-size:12px;font-weight:800}
+.steps b{display:block;font-size:13.5px;font-weight:700;line-height:1.5}
+.steps span{display:block;font-size:12.5px;line-height:1.45;color:var(--muted);margin-top:1px}
+
+/* ---------- формы ---------- */
+.form-card{margin-top:12px;background:var(--card);border-radius:var(--r);padding:20px}
+.field{margin-top:16px}
+.field:first-child{margin-top:0}
+.field>label,.field .f-label{display:block;font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:7px;letter-spacing:.01em}
+.field .f-label{margin-bottom:8px}
+.req{color:var(--accent)}
+.control{position:relative}
+input[type=text],input[type=tel],input[type=email],select,textarea{
+  width:100%;height:50px;padding:0 14px;border-radius:14px;border:1.5px solid #E3E8F0;background:#FBFCFE;
+  font-size:15px;color:var(--navy);appearance:none;transition:border-color .18s ease,background-color .18s ease,box-shadow .18s ease}
+textarea{height:auto;min-height:84px;padding:12px 14px;line-height:1.45;resize:vertical}
+input::placeholder,textarea::placeholder{color:#A7AFBC}
+input:hover,select:hover,textarea:hover{border-color:#CFD7E3}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3.5px rgba(227,6,19,.1)}
+.control select{padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' fill='none' stroke='%238B94A3' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center}
+select:invalid{color:#A7AFBC}
+option{color:var(--navy)}
+.field.is-invalid input,.field.is-invalid select,.field.is-invalid textarea{border-color:var(--error);background:#FFFBFA}
+.field.is-invalid input:focus,.field.is-invalid select:focus,.field.is-invalid textarea:focus{box-shadow:0 0 0 3.5px rgba(217,45,32,.1)}
+.err{display:none;margin:6px 2px 0;font-size:12px;line-height:1.35;color:var(--error)}
+.field.is-invalid .err{display:block}
+
+/* сегменты (кто вы) */
+.segments{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg{position:relative}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:flex;align-items:center;justify-content:center;text-align:center;height:46px;padding:0 8px;
+  border-radius:13px;border:1.5px solid #E3E8F0;background:#FBFCFE;font-size:12.5px;font-weight:600;line-height:1.2;
+  color:var(--text);cursor:pointer;transition:border-color .18s ease,background-color .18s ease,color .18s ease}
+.seg input:checked+span{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.seg input:focus-visible+span{outline:3px solid rgba(227,6,19,.3);outline-offset:2px}
+
+/* телефон: подстановка номера */
+.phone-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px}
+.phone-head .f-label{margin:0}
+.link-mini{appearance:none;background:none;border:0;padding:2px 0;cursor:pointer;
+  font-size:11.5px;font-weight:700;color:var(--accent);display:none;align-items:center;gap:4px}
+.link-mini svg{width:13px;height:13px}
+.link-mini.is-visible{display:inline-flex}
+
+/* согласие */
+.consent{display:grid;grid-template-columns:22px 1fr;gap:10px;margin-top:18px;align-items:start}
+.consent input{position:absolute;opacity:0;width:1px;height:1px}
+.box{width:22px;height:22px;border-radius:7px;border:1.6px solid #CCD4E0;background:#fff;display:grid;place-items:center;
+  cursor:pointer;transition:background-color .18s ease,border-color .18s ease}
+.box svg{width:12px;height:12px;opacity:0;transform:scale(.6);transition:opacity .16s ease,transform .18s ease}
+.consent input:checked+.box{background:var(--accent);border-color:var(--accent)}
+.consent input:checked+.box svg{opacity:1;transform:none}
+.consent input:focus-visible+.box{outline:3px solid rgba(227,6,19,.3);outline-offset:2px}
+.consent label{font-size:12px;line-height:1.45;color:var(--text);cursor:pointer}
+.consent a{color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.consent.is-invalid .box{border-color:var(--error)}
+.consent.is-invalid label{color:var(--error)}
+.form-alert{display:none;margin-top:14px;padding:12px 14px;border-radius:14px;background:#FEF3F2;
+  border:1px solid #FBD6D2;font-size:12.5px;line-height:1.45;color:#912018}
+.form-alert.is-visible{display:block}
+.form-alert .btn{margin-top:10px;height:42px;border-radius:11px;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;
+  background:#fff;border:1.5px solid #E4B4AE;color:#912018;width:100%}
+.form-note{margin:12px 2px 0;font-size:11.5px;line-height:1.45;color:var(--muted);text-align:center}
+.spinner{width:15px;height:15px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;
+  animation:spin .7s linear infinite;display:none}
+.btn.is-loading .spinner{display:block}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- спасибо ---------- */
+.thanks{margin-top:25vh;text-align:center;padding:8px 4px}
+.thanks .ok{width:74px;height:74px;margin:0 auto 20px;border-radius:50%;background:var(--card);display:grid;place-items:center;
+  box-shadow:0 18px 40px -26px rgba(16,30,60,.55)}
+.thanks .ok i{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--accent-soft)}
+.thanks .ok svg{width:26px;height:26px;color:var(--accent)}
+.thanks h2{margin:0;font-size:25px;line-height:1.2;letter-spacing:-.02em;font-weight:800}
+.thanks p{margin:10px auto 0;font-size:14px;line-height:1.5;color:var(--text);max-width:30ch}
+.thanks .btn{margin-top:22px}
+.thanks .small{margin-top:14px;font-size:12px;color:var(--muted)}
+.thanks .small a{color:var(--navy);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+
+/* ---------- меню ---------- */
+.scrim{position:fixed;inset:0;background:rgba(16,30,60,.42);opacity:0;visibility:hidden;transition:opacity .24s ease,visibility .24s ease;z-index:40}
+.scrim.is-open{opacity:1;visibility:visible}
+.sheet{position:fixed;left:50%;bottom:0;transform:translate(-50%,104%);width:100%;max-width:430px;z-index:41;
+  background:var(--card);border-radius:24px 24px 0 0;padding:10px 16px calc(18px + var(--safe-b));
+  transition:transform .3s cubic-bezier(.22,1,.36,1);box-shadow:0 -20px 50px -30px rgba(16,30,60,.6)}
+.sheet.is-open{transform:translate(-50%,0)}
+.sheet .grip{width:38px;height:4px;border-radius:4px;background:#DCE2EB;margin:0 auto 12px}
+.sheet .s-title{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:4px 0 8px}
+.sheet nav{display:flex;flex-direction:column}
+.sheet nav a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 2px;font-size:15px;font-weight:600;
+  border-bottom:1px solid var(--line)}
+.sheet nav a:last-child{border-bottom:0}
+.sheet nav a:hover{color:var(--accent)}
+.sheet nav a .chev{color:#B7C0CE}
+.sheet .sheet-foot{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.sheet .sheet-foot .btn{height:46px;border-radius:13px;font-size:13px}
+
+/* ---------- мелочи ---------- */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.noscript{padding:14px;border-radius:14px;background:#FFF6E5;color:#7A4C00;font-size:13px;margin-top:12px}
+@media (max-width:359px){
+  .hero h1{font-size:24px}
+  .hero-actions{grid-template-columns:1fr}
+  .brand{font-size:15px}
+}
+
+/* =====================================================================
+   Тема официального сайта maklerhub.ru:
+   бирюза #025F6B, бронза #B67233, песок #DA9858, крем #F7EFE5,
+   Montserrat, тонкие линии вместо теней.
+   ===================================================================== */
+:root{
+  --teal:#025F6B;
+  --teal-deep:#014C56;
+  --bronze:#B67233;
+  --bronze-dark:#9D5F27;
+  --sand:#DA9858;
+  --cream:#F7EFE5;
+  --ink:#141414;
+  --accent:#B67233;
+  --accent-dark:#9D5F27;
+  --accent-soft:#F7EFE5;
+  --navy:#141414;
+  --text:#5B5A56;
+  --muted:#8A857D;
+  --bg:#FFFFFF;
+  --line:#E7E2DC;
+  --r:18px;
+  --font:"Montserrat","Helvetica Neue",Arial,sans-serif;
+}
+body{background:#fff;color:var(--ink);font-family:var(--font);letter-spacing:.002em}
+.app{background:#fff;box-shadow:none}
+
+/* шапка */
+.topbar{background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);padding-top:calc(var(--safe-t) + 12px);padding-bottom:12px}
+.brand{font-family:var(--font);font-weight:800;font-size:17px;letter-spacing:.01em;color:var(--teal)}
+.brand .x{color:#B8B2A8;font-weight:500;font-size:14px}
+.brand .rc{color:#F54012;display:inline-block;transform:translateY(-1px)}
+.menu-btn{border-color:var(--line);border-radius:10px}
+.menu-btn span{background:var(--ink)}
+
+/* первый экран */
+.hero{background:var(--cream);border-radius:22px;box-shadow:none;padding:24px 20px 22px}
+.hero::before,.hero::after{display:none}
+.eyebrow{color:var(--bronze);font-size:10.5px;letter-spacing:.16em}
+.hero h1{font-size:25px;line-height:1.17;color:var(--ink);text-transform:uppercase;letter-spacing:.004em;font-weight:800}
+.hero .sub{color:var(--text);font-size:13.5px;line-height:1.55}
+.rule{width:52px;height:4px;border-radius:2px;background:var(--bronze);margin:14px 0 0}
+
+/* кнопки */
+.btn{border-radius:12px;height:50px;font-family:var(--font);font-size:14.5px;font-weight:700;letter-spacing:0;text-transform:none}
+.btn:focus-visible{outline:3px solid rgba(2,95,107,.4)}
+.btn-accent{background:var(--bronze);color:#fff;box-shadow:none}
+.btn-accent:hover{background:var(--bronze-dark)}
+.btn-ghost{background:#fff;border:1.5px solid var(--teal);color:var(--teal)}
+.btn-ghost:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+.btn-card{height:48px;border-radius:12px;margin-top:16px;font-size:14px;letter-spacing:0;text-transform:none}
+
+/* цифры */
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:none}
+.stat b{color:var(--teal);font-size:20px;font-weight:800}
+.stat span{color:var(--muted);font-size:11px}
+
+/* карточки */
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:none}
+.chip{background:var(--cream);color:var(--teal);border-radius:12px}
+.card h2{font-size:18px;line-height:1.3;color:var(--ink);font-weight:800;letter-spacing:0}
+.card p.desc{font-size:13.5px;line-height:1.5;color:var(--text)}
+
+/* внутренние экраны */
+.back{color:var(--muted);font-weight:700}
+.back:hover{color:var(--teal)}
+.sec-title{font-size:23px;line-height:1.2;text-transform:uppercase;letter-spacing:.006em;color:var(--ink);font-weight:800}
+.sec-lead{font-size:13.5px;color:var(--text);line-height:1.55}
+.block{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:none}
+.block h3{font-size:15px;color:var(--ink);font-weight:800}
+.benefits li{font-size:13.5px;color:var(--text)}
+.benefits li b{color:var(--ink)}
+.benefits li::before{background-color:#EAF3F4;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.3l2.6 2.6L14 7.7' fill='none' stroke='%23025F6B' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.steps .n{border-color:var(--teal);color:var(--teal)}
+.steps b{color:var(--ink)}
+.steps span{color:var(--muted)}
+.steps li::before{background:var(--line)}
+
+/* формы */
+.form-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:none}
+.field>label,.field .f-label{font-size:12.5px;color:var(--ink)}
+.req{color:var(--bronze)}
+input[type=text],input[type=tel],input[type=email],select,textarea{
+  border:1.5px solid #E2DCD3;background:#fff;border-radius:12px;font-family:var(--font);font-size:15px}
+input:hover,select:hover,textarea:hover{border-color:#CFC7BA}
+input:focus,select:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3.5px rgba(2,95,107,.12)}
+.control select{background-position:right 14px center}
+.field.is-invalid input,.field.is-invalid select,.field.is-invalid textarea{border-color:#B3261E;background:#FFFCFB}
+.field.is-invalid input:focus,.field.is-invalid select:focus,.field.is-invalid textarea:focus{box-shadow:0 0 0 3.5px rgba(179,38,30,.1)}
+.err{color:#B3261E}
+.seg span{border:1.5px solid #E2DCD3;background:#fff;border-radius:12px;color:var(--text);font-family:var(--font)}
+.seg input:checked+span{border-color:var(--teal);background:#EAF3F4;color:var(--teal-deep)}
+.seg input:focus-visible+span{outline-color:rgba(2,95,107,.35)}
+.link-mini{color:var(--teal)}
+.consent .box{border-color:#CFC7BA;border-radius:6px}
+.consent input:checked+.box{background:var(--teal);border-color:var(--teal)}
+.consent input:focus-visible+.box{outline-color:rgba(2,95,107,.35)}
+.consent label{color:var(--text);font-size:12px}
+.consent a{color:var(--teal-deep)}
+.consent.is-invalid .box{border-color:#B3261E}
+.consent.is-invalid label{color:#B3261E}
+.form-alert{background:#FDF4F3;border-color:#F0D6D2;color:#8A2A22;border-radius:12px}
+.form-alert .btn{background:#fff;border:1.5px solid #E0C3BE;color:#8A2A22}
+.form-note{color:var(--muted)}
+
+/* FAQ */
+.faq{border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{font-size:14px;color:var(--ink);font-weight:600}
+.faq-q:hover{color:var(--teal)}
+.plus{background:#F3EFE9;border-radius:7px;width:26px;height:26px}
+.plus::before,.plus::after{background:var(--teal)}
+.faq-item.is-open .plus{background:var(--teal);transform:none}
+.faq-a p{color:var(--text);font-size:13px}
+
+/* контакты */
+.ci{background:var(--cream);color:var(--teal);border-radius:10px}
+.contact-row{border-bottom:1px solid var(--line)}
+.contact-row .lbl{color:var(--muted);font-size:10.5px;letter-spacing:.1em}
+.contact-row .val{color:var(--ink);font-weight:600;font-size:14px}
+.contact-row a.val:hover{color:var(--teal)}
+.legal{color:var(--muted);font-size:11px}
+.legal a{color:var(--teal-deep)}
+
+/* спасибо */
+.thanks{margin-top:22vh}
+.thanks .ok{background:transparent;box-shadow:none;width:auto;height:auto;margin:0 auto 18px}
+.thanks .ok i{width:64px;height:64px;background:#EAF3F4}
+.thanks .ok svg{color:var(--teal);width:30px;height:30px}
+.thanks h2{font-size:24px;text-transform:uppercase;letter-spacing:.01em;color:var(--ink)}
+.thanks p{color:var(--text);font-size:13.5px}
+.thanks .small a{color:var(--teal-deep)}
+
+/* меню */
+.sheet{border-radius:18px 18px 0 0}
+.sheet .s-title{color:var(--bronze);letter-spacing:.14em}
+.sheet nav a{font-size:15px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line)}
+.sheet nav a:hover{color:var(--teal)}
+.sheet nav a .chev{color:#C4BEB4}
+.sheet .grip{background:#E2DCD3}
+@media (max-width:359px){
+  .hero h1{font-size:22px}
+  .brand{font-size:15.5px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a class="brand" href="#" data-nav="home" aria-label="Маклер.Хаб x RedCat — на главную">
+      <span>Маклер.Хаб</span><span class="x">x</span><span class="rc">RedCat</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Меню" aria-expanded="false" aria-controls="menuSheet">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main class="wrap">
+    <!-- ================= ГЛАВНАЯ ================= -->
+    <section class="screen is-active" id="screen-home" data-screen="home" aria-label="Главная">
+      <div class="hero">
+        <p class="eyebrow">Бурятия и Иркутск</p>
+        <h1>Все риелторы. Все новостройки. Одна платформа.</h1>
+        <div class="rule" aria-hidden="true"></div>
+        <p class="sub">Ассоциация риелторов и оператор платформы RedCat — для тех, кто продаёт и строит новостройки.</p>
+        <div class="hero-actions">
+          <button class="btn btn-accent" type="button" data-nav="realtor">Я риелтор</button>
+          <button class="btn btn-ghost" type="button" data-nav="developer">Я застройщик</button>
+        </div>
+      </div>
+
+      <div class="stats" aria-label="Цифры">
+        <div class="stat"><b>200+</b><span>риелторов</span></div>
+        <div class="stat"><b>5+</b><span>ЖК</span></div>
+        <div class="stat"><b>248</b><span>объектов за полгода</span></div>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-head">
+            <span class="chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 19v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V19"/><circle cx="9.5" cy="8" r="3.2"/><path d="M17 11.2a3 3 0 0 0 0-6M21 19v-1.4a3.6 3.6 0 0 0-2.6-3.4"/></svg>
+            </span>
+            <div>
+              <h2>Риелторам</h2>
+              <p class="desc">Бесплатный доступ ко всем новостройкам региона в одном каталоге</p>
+            </div>
+          </div>
+          <button class="btn btn-accent btn-card" type="button" data-nav="realtor">Вступить</button>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <span class="chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l6-3v17"/><path d="M11 21V11l7 3v7"/><path d="M8 8.5v1.5M8 12.5v1.5M15 15v1.5"/></svg>
+            </span>
+            <div>
+              <h2>Застройщикам</h2>
+              <p class="desc">Бесплатное подключение объекта. Без рекламных бюджетов и предоплаты за лиды</p>
+            </div>
+          </div>
+          <button class="btn btn-accent btn-card" type="button" data-nav="developer">Подключить объект</button>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <span class="chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><path d="M3.5 9.2h17M9.2 9.2v11.3M15 9.2v11.3M3.5 15h17"/></svg>
+            </span>
+            <div>
+              <h2>Каталог новостроек</h2>
+              <p class="desc">Шахматки и остатки без звонков в отдел продаж</p>
+            </div>
+          </div>
+          <a class="btn btn-accent btn-card" href="https://redcat.ai/" data-ext="link">Открыть RedCat</a>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <span class="chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="3.5"/><path d="M8 3v4M16 3v4M3.5 10.5h17"/><path d="M8 14.5h2.5M13.5 14.5H16M8 18h2.5"/></svg>
+            </span>
+            <div>
+              <h2>Мероприятия</h2>
+              <p class="desc">Конференции, встречи с застройщиками, розыгрыши</p>
+            </div>
+          </div>
+          <a class="btn btn-accent btn-card" href="https://max.ru/id300020791_biz" data-ext="max">Узнать первым</a>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <span class="chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.6 2.3c-.8.4-1.2 1-1.2 1.9"/><path d="M12 16.8v.2"/></svg>
+            </span>
+            <div>
+              <h2>Вопросы и ответы</h2>
+              <p class="desc">Коротко о том, как всё устроено</p>
+            </div>
+          </div>
+          <div class="faq" id="faq">
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">Сколько стоит вступление для риелтора?<span class="plus" aria-hidden="true"></span></button>
+              <div class="faq-a"><div><p>Бесплатно.</p></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">Сколько стоит подключение для застройщика?<span class="plus" aria-hidden="true"></span></button>
+              <div class="faq-a"><div><p>Подключение и размещение объектов бесплатные.</p></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">В каких городах работаете?<span class="plus" aria-hidden="true"></span></button>
+              <div class="faq-a"><div><p>Бурятия и Иркутск. Новостройки также продаём в&nbsp;Москве.</p></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">Проводит ли RedCat показы?<span class="plus" aria-hidden="true"></span></button>
+              <div class="faq-a"><div><p>Нет. RedCat — платформа-каталог. Показы и работу с клиентом ведёт риелтор.</p></div></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">Как вступить в ассоциацию?<span class="plus" aria-hidden="true"></span></button>
+              <div class="faq-a"><div><p>Оставьте заявку в приложении, мы перезвоним в рабочее время.</p></div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <span class="chip" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.6 4-2 1.4a12 12 0 0 0 6 6l1.4-2 4 1.6v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2Z"/></svg>
+            </span>
+            <div>
+              <h2>Контакты</h2>
+              <p class="desc">Позвоните или напишите — ответим в рабочее время</p>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.6 4-2 1.4a12 12 0 0 0 6 6l1.4-2 4 1.6v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2Z"/></svg></span>
+            <div>
+              <div class="lbl">Телефон</div>
+              <a class="val" href="tel:+73012650099" data-ext="tel">+7 (3012) 65-00-99</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3.5 20.5l1.4-5.2A8.5 8.5 0 1 1 21 11.5Z"/></svg></span>
+            <div>
+              <div class="lbl">MAX</div>
+              <a class="val" href="https://max.ru/id0300020791_bot" data-ext="max">Написать в MAX</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="3"/><path d="M3.6 7l8.4 6 8.4-6"/></svg></span>
+            <div>
+              <div class="lbl">Почта</div>
+              <a class="val" href="mailto:maklerhub@yandex.ru">maklerhub@yandex.ru</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+            <div>
+              <div class="lbl">Адрес</div>
+              <div class="val">Улан-Удэ, ул. Корабельная, 47</div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+            <div>
+              <div class="lbl">Часы работы</div>
+              <div class="val">Будни, 10:00–19:00</div>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-accent" href="tel:+73012650099" data-ext="tel">Позвонить</a>
+            <a class="btn btn-ghost" href="https://yandex.ru/maps/?text=%D0%A3%D0%BB%D0%B0%D0%BD-%D0%A3%D0%B4%D1%8D%2C%20%D0%9A%D0%BE%D1%80%D0%B0%D0%B1%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%2047" data-ext="link">Яндекс.Карты</a>
+            <a class="btn btn-ghost" href="https://2gis.ru/ulan-ude/search/%D0%9A%D0%BE%D1%80%D0%B0%D0%B1%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%2047" data-ext="link" style="grid-column:1 / -1">2ГИС</a>
+          </div>
+
+          <p class="legal">ООО «ДОМ+» · <a href="https://maklerhub.ru/privacy.html" data-ext="link">Политика обработки персональных данных</a></p>
+        </article>
+      </div>
+    </section>
+    <!-- ================= РИЕЛТОРАМ ================= -->
+    <section class="screen" id="screen-realtor" data-screen="realtor" aria-label="Риелторам">
+      <button class="back" type="button" data-nav="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6l-6 6 6 6"/></svg>
+        На главную
+      </button>
+      <h2 class="sec-title">Риелторам</h2>
+      <p class="sec-lead">Вступите в ассоциацию и работайте с новостройками Бурятии, Иркутска и Москвы через RedCat.</p>
+
+      <div class="block">
+        <h3>Что вы получаете</h3>
+        <ul class="benefits">
+          <li><b>Вступление бесплатное</b></li>
+          <li>Каталог новостроек Бурятии, Иркутска и Москвы</li>
+          <li>Шахматки и остатки онлайн</li>
+          <li>Фиксация клиента за риелтором</li>
+          <li>Мероприятия и встречи с застройщиками для участников ассоциации</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>Как это работает</h3>
+        <ol class="steps">
+          <li><span class="n">1</span><div><b>Регистрация в RedCat</b><span>Занимает пару минут</span></div></li>
+          <li><span class="n">2</span><div><b>Подбор и фиксация объекта</b><span>Клиент закрепляется за вами</span></div></li>
+          <li><span class="n">3</span><div><b>Сделка</b><span>Сопровождаем на всех этапах</span></div></li>
+        </ol>
+      </div>
+
+      <form class="form-card" id="formRealtor" novalidate>
+        <h3 style="margin:0 0 4px;font-size:17px;font-weight:800;letter-spacing:-.015em">Заявка на вступление</h3>
+        <p class="hint" style="margin:6px 0 0;font-size:13px;color:var(--text)">Перезвоним в рабочее время: будни, 10:00–19:00.</p>
+
+        <div class="field" data-field="name" style="margin-top:18px">
+          <label for="r-name">Имя <span class="req">*</span></label>
+          <div class="control"><input id="r-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" maxlength="80"></div>
+          <p class="err" data-err>Укажите имя</p>
+        </div>
+
+        <div class="field" data-field="phone">
+          <div class="phone-head">
+            <span class="f-label">Телефон <span class="req">*</span></span>
+            <button class="link-mini" id="rContact" type="button" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></svg>
+              Мой номер
+            </button>
+          </div>
+          <div class="control"><input id="r-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" maxlength="18"></div>
+          <p class="err" data-err>Введите номер полностью</p>
+        </div>
+
+        <div class="field" data-field="city">
+          <label for="r-city">Город <span class="req">*</span></label>
+          <div class="control">
+            <select id="r-city" name="city" required>
+              <option value="" disabled selected>Выберите город</option>
+              <option value="Улан-Удэ">Улан-Удэ</option>
+              <option value="Иркутск">Иркутск</option>
+              <option value="Другой">Другой</option>
+            </select>
+          </div>
+          <p class="err" data-err>Выберите город</p>
+        </div>
+
+        <div class="field" data-field="role">
+          <span class="f-label">Вы <span class="req">*</span></span>
+          <div class="segments">
+            <label class="seg"><input type="radio" name="role" value="Частный риелтор"><span>Частный риелтор</span></label>
+            <label class="seg"><input type="radio" name="role" value="Сотрудник агентства"><span>Сотрудник агентства</span></label>
+          </div>
+          <p class="err" data-err>Выберите вариант</p>
+        </div>
+
+        <div class="field" data-field="agency" id="r-agency-wrap" hidden>
+          <label for="r-agency">Название агентства <span class="req">*</span></label>
+          <div class="control"><input id="r-agency" name="agency" type="text" placeholder="Как называется агентство" maxlength="120"></div>
+          <p class="err" data-err>Укажите название агентства</p>
+        </div>
+
+        <div class="field" data-field="experience">
+          <label for="r-exp">Опыт в недвижимости</label>
+          <div class="control">
+            <select id="r-exp" name="experience">
+              <option value="" disabled selected>Выберите</option>
+              <option value="До 1 года">До 1 года</option>
+              <option value="1–3 года">1–3 года</option>
+              <option value="Более 3 лет">Более 3 лет</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="consent" data-field="consent">
+          <input id="r-consent" type="checkbox" name="consent">
+          <label class="box" for="r-consent" aria-hidden="true">
+            <svg viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.3l3 3 6-6.6"/></svg>
+          </label>
+          <label for="r-consent">Согласен на обработку персональных данных в соответствии с <a href="https://maklerhub.ru/privacy.html" data-ext="link">политикой</a> <span class="req">*</span></label>
+        </div>
+
+        <div class="form-alert" id="r-alert" role="alert">
+          <span data-alert-text>Не получилось отправить заявку. Попробуйте ещё раз или напишите нам в MAX.</span>
+          <a class="btn" href="https://max.ru/id0300020791_bot" data-ext="max">Написать в MAX</a>
+        </div>
+
+        <button class="btn btn-accent btn-block" type="submit" style="margin-top:18px">
+          <span class="spinner" aria-hidden="true"></span><span data-label>Отправить заявку</span>
+        </button>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+      </form>
+    </section>
+
+    <!-- ================= ЗАСТРОЙЩИКАМ ================= -->
+    <section class="screen" id="screen-developer" data-screen="developer" aria-label="Застройщикам">
+      <button class="back" type="button" data-nav="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6l-6 6 6 6"/></svg>
+        На главную
+      </button>
+      <h2 class="sec-title">Застройщикам</h2>
+      <p class="sec-lead">Подключите объект к RedCat — ваши квартиры увидят 200+ риелторов ассоциации.</p>
+
+      <div class="block">
+        <h3>Что вы получаете</h3>
+        <ul class="benefits">
+          <li><b>Подключение и размещение объектов бесплатно</b></li>
+          <li>RedCat заменяет B2C-рекламу: не нужно платить за лиды заранее</li>
+          <li>Доступ к 200+ риелторам ассоциации</li>
+          <li>Актуальные шахматки и остатки видны риелторам онлайн — меньше звонков в отдел продаж</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3>Как это работает</h3>
+        <ol class="steps">
+          <li><span class="n">1</span><div><b>Заявка</b><span>Оставляете контакты</span></div></li>
+          <li><span class="n">2</span><div><b>Подключение</b><span>Объект появляется в каталоге</span></div></li>
+          <li><span class="n">3</span><div><b>Продажи</b><span>Риелторы приводят клиентов</span></div></li>
+          <li><span class="n">4</span><div><b>Закрытие сделки</b><span>Сопровождаем до результата</span></div></li>
+        </ol>
+      </div>
+
+      <form class="form-card" id="formDeveloper" novalidate>
+        <h3 style="margin:0 0 4px;font-size:17px;font-weight:800;letter-spacing:-.015em">Заявка на подключение</h3>
+        <p class="hint" style="margin:6px 0 0;font-size:13px;color:var(--text)">Перезвоним в рабочее время: будни, 10:00–19:00.</p>
+
+        <div class="field" data-field="company" style="margin-top:18px">
+          <label for="d-company">Название компании <span class="req">*</span></label>
+          <div class="control"><input id="d-company" name="company" type="text" autocomplete="organization" placeholder="ООО «СтройИнвест»" maxlength="120"></div>
+          <p class="err" data-err>Укажите название компании</p>
+        </div>
+
+        <div class="field" data-field="name">
+          <label for="d-name">Контактное лицо <span class="req">*</span></label>
+          <div class="control"><input id="d-name" name="name" type="text" autocomplete="name" placeholder="Имя и фамилия" maxlength="80"></div>
+          <p class="err" data-err>Укажите имя</p>
+        </div>
+
+        <div class="field" data-field="position">
+          <label for="d-position">Должность</label>
+          <div class="control"><input id="d-position" name="position" type="text" autocomplete="organization-title" placeholder="Руководитель отдела продаж" maxlength="80"></div>
+        </div>
+
+        <div class="field" data-field="phone">
+          <div class="phone-head">
+            <span class="f-label">Телефон <span class="req">*</span></span>
+            <button class="link-mini" id="dContact" type="button" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></svg>
+              Мой номер
+            </button>
+          </div>
+          <div class="control"><input id="d-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" maxlength="18"></div>
+          <p class="err" data-err>Введите номер полностью</p>
+        </div>
+
+        <div class="field" data-field="city">
+          <label for="d-city">Город объекта <span class="req">*</span></label>
+          <div class="control">
+            <select id="d-city" name="city" required>
+              <option value="" disabled selected>Выберите город</option>
+              <option value="Улан-Удэ">Улан-Удэ</option>
+              <option value="Иркутск">Иркутск</option>
+              <option value="Другой">Другой</option>
+            </select>
+          </div>
+          <p class="err" data-err>Выберите город</p>
+        </div>
+
+        <div class="field" data-field="complex">
+          <label for="d-complex">Название ЖК</label>
+          <div class="control"><input id="d-complex" name="complex" type="text" placeholder="ЖК «Северный»" maxlength="120"></div>
+        </div>
+
+        <div class="field" data-field="flats">
+          <label for="d-flats">Количество квартир в продаже</label>
+          <div class="control">
+            <select id="d-flats" name="flats">
+              <option value="" disabled selected>Выберите</option>
+              <option value="До 50">До 50</option>
+              <option value="50–200">50–200</option>
+              <option value="Более 200">Более 200</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field" data-field="comment">
+          <label for="d-comment">Комментарий</label>
+          <div class="control"><textarea id="d-comment" name="comment" placeholder="Что важно учесть" maxlength="600"></textarea></div>
+        </div>
+
+        <div class="consent" data-field="consent">
+          <input id="d-consent" type="checkbox" name="consent">
+          <label class="box" for="d-consent" aria-hidden="true">
+            <svg viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.3l3 3 6-6.6"/></svg>
+          </label>
+          <label for="d-consent">Согласен на обработку персональных данных в соответствии с <a href="https://maklerhub.ru/privacy.html" data-ext="link">политикой</a> <span class="req">*</span></label>
+        </div>
+
+        <div class="form-alert" id="d-alert" role="alert">
+          <span data-alert-text>Не получилось отправить заявку. Попробуйте ещё раз или напишите нам в MAX.</span>
+          <a class="btn" href="https://max.ru/id0300020791_bot" data-ext="max">Написать в MAX</a>
+        </div>
+
+        <button class="btn btn-accent btn-block" type="submit" style="margin-top:18px">
+          <span class="spinner" aria-hidden="true"></span><span data-label>Подключить объект</span>
+        </button>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+      </form>
+
+      <a class="btn btn-ghost btn-block" href="https://max.ru/id0300020791_bot" data-ext="max" style="margin-top:10px">Задать вопрос</a>
+    </section>
+
+    <!-- ================= СПАСИБО ================= -->
+    <section class="screen" id="screen-thanks" data-screen="thanks" aria-label="Заявка отправлена">
+      <div class="thanks">
+        <div class="ok"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l5 5 10-11"/></svg></i></div>
+        <h2>Спасибо!</h2>
+        <p>Заявка у нас. Мы перезвоним в рабочее время: будни, 10:00–19:00.</p>
+        <button class="btn btn-accent btn-block" type="button" data-nav="home">Вернуться на главную</button>
+        <p class="small">Хотите быстрее — <a href="https://max.ru/id0300020791_bot" data-ext="max">напишите в MAX</a></p>
+      </div>
+    </section>
+  </main>
+
+  <div class="scrim" id="scrim"></div>
+  <div class="sheet" id="menuSheet" role="dialog" aria-modal="true" aria-label="Меню">
+    <div class="grip" aria-hidden="true"></div>
+    <p class="s-title">Разделы</p>
+    <nav>
+      <a href="#" data-nav="home">Главная <span class="chev">›</span></a>
+      <a href="#" data-nav="realtor">Риелторам <span class="chev">›</span></a>
+      <a href="#" data-nav="developer">Застройщикам <span class="chev">›</span></a>
+      <a href="https://redcat.ai/" data-ext="link">Каталог новостроек <span class="chev">›</span></a>
+      <a href="https://max.ru/id300020791_biz" data-ext="max">Мероприятия <span class="chev">›</span></a>
+      <a href="https://max.ru/id0300020791_bot" data-ext="max">Написать в MAX <span class="chev">›</span></a>
+    </nav>
+    <div class="sheet-foot">
+      <a class="btn btn-accent" href="tel:+73012650099" data-ext="tel">Позвонить +7 (3012) 65-00-99</a>
+    </div>
+  </div>
+</div>
+<script src="https://st.max.ru/js/max-web-app.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* =====================================================================
+     НАСТРОЙКИ
+     WEBHOOK_URL — адрес приёма заявок. Подставьте сюда вебхук Битрикс24
+     (например: https://ваш-портал.bitrix24.ru/rest/1/xxxxxxxx/crm.lead.add.json).
+     Пусто — форма покажет сообщение и кнопку «Написать в MAX».
+     ===================================================================== */
+  var WEBHOOK_URL = '';
+
+  var MAX_CHAT = 'https://max.ru/id0300020791_bot';
+  var TIMEOUT_MS = 20000;
+
+  /* ---------------- MAX Bridge ---------------- */
+  var WA = window.WebApp || null;
+
+  function safe(fn) {
+    try { return fn(); } catch (e) { return null; }
+  }
+
+  if (WA) {
+    safe(function () { if (typeof WA.ready === 'function') WA.ready(); });
+    safe(function () { if (typeof WA.expand === 'function') WA.expand(); });
+  }
+
+  function maxUser() {
+    if (!WA) return null;
+    var u = safe(function () {
+      return (WA.initDataUnsafe && WA.initDataUnsafe.user) || null;
+    });
+    if (!u) return null;
+    var name = safe(function () {
+      return [u.first_name, u.last_name].filter(Boolean).join(' ') || u.name || '';
+    }) || '';
+    return {
+      id: u.id || u.user_id || null,
+      name: name,
+      username: u.username || ''
+    };
+  }
+
+  function maxInitData() {
+    return (WA && typeof WA.initData === 'string' && WA.initData) ? WA.initData : '';
+  }
+
+  function openExternal(url, kind) {
+    if (!isSafeUrl(url)) return;
+    var handled = false;
+    if (WA) {
+      if (kind === 'max' && typeof WA.openMaxLink === 'function') {
+        handled = !!safe(function () { WA.openMaxLink(url); return true; });
+      }
+      if (!handled && typeof WA.openLink === 'function') {
+        handled = !!safe(function () { WA.openLink(url); return true; });
+      }
+    }
+    if (!handled) window.open(url, '_blank', 'noopener');
+  }
+
+  // наружу отдаём только https/http, телефон и почту — остальные схемы (javascript:, data:) отбрасываем
+  function isSafeUrl(url) {
+    return /^(https?:\/\/|tel:\+?[\d\s()\-]+$|mailto:[^\s]+$)/i.test(url || '');
+  }
+
+  /* ---------------- экраны ---------------- */
+  var current = 'home';
+  var history = [];
+
+  function el(id) { return document.getElementById(id); }
+
+  function showScreen(name, remember) {
+    var target = el('screen-' + name);
+    if (!target) return;
+    if (remember !== false && name !== current) {
+      history.push(current);
+      if (history.length > 20) history.shift();
+    }
+    var screens = document.querySelectorAll('.screen');
+    for (var i = 0; i < screens.length; i++) {
+      screens[i].classList.toggle('is-active', screens[i] === target);
+    }
+    current = name;
+    closeMenu();
+    window.scrollTo(0, 0);
+    syncBackButton();
+  }
+
+  function goBack() {
+    var prev = history.pop();
+    if (!prev || prev === 'thanks') prev = 'home';
+    showScreen(prev, false);
+  }
+
+  function syncBackButton() {
+    if (!WA || !WA.BackButton) return;
+    if (current === 'home') {
+      safe(function () { WA.BackButton.hide(); });
+    } else {
+      safe(function () { WA.BackButton.show(); });
+    }
+  }
+
+  if (WA && WA.BackButton && typeof WA.BackButton.onClick === 'function') {
+    safe(function () { WA.BackButton.onClick(goBack); });
+  }
+
+  /* ---------------- меню ---------------- */
+  var menuBtn = el('menuBtn');
+  var sheet = el('menuSheet');
+  var scrim = el('scrim');
+
+  function openMenu() {
+    if (!sheet) return;
+    sheet.classList.add('is-open');
+    scrim.classList.add('is-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closeMenu() {
+    if (!sheet) return;
+    sheet.classList.remove('is-open');
+    scrim.classList.remove('is-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      if (sheet.classList.contains('is-open')) closeMenu(); else openMenu();
+    });
+  }
+  if (scrim) scrim.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  /* ---------------- клики: навигация и внешние ссылки ---------------- */
+  document.addEventListener('click', function (e) {
+    var nav = e.target.closest ? e.target.closest('[data-nav]') : null;
+    if (nav) {
+      e.preventDefault();
+      showScreen(nav.getAttribute('data-nav'));
+      return;
+    }
+    var ext = e.target.closest ? e.target.closest('[data-ext]') : null;
+    if (!ext) return;
+    var url = ext.getAttribute('href');
+    var kind = ext.getAttribute('data-ext');
+    if (!url || !isSafeUrl(url)) {
+      e.preventDefault();
+      return;
+    }
+    if (kind === 'tel') {
+      if (WA && typeof WA.openLink === 'function') {
+        e.preventDefault();
+        openExternal(url, 'link');
+      }
+      return;
+    }
+    e.preventDefault();
+    openExternal(url, kind === 'max' ? 'max' : 'link');
+  });
+
+  /* ---------------- FAQ ---------------- */
+  var faqRoot = el('faq');
+  if (faqRoot) {
+    faqRoot.addEventListener('click', function (e) {
+      var q = e.target.closest ? e.target.closest('.faq-q') : null;
+      if (!q) return;
+      var item = q.parentNode;
+      var open = item.classList.toggle('is-open');
+      q.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  /* ---------------- телефон ---------------- */
+  function digitsOf(v) { return (v || '').replace(/\D/g, ''); }
+
+  function formatPhone(value) {
+    var d = digitsOf(value);
+    if (!d) return '';
+    if (d.charAt(0) === '8') d = '7' + d.slice(1);
+    if (d.charAt(0) !== '7') d = '7' + d;
+    d = d.slice(0, 11);
+    var out = '+7';
+    if (d.length > 1) out += ' (' + d.slice(1, 4);
+    if (d.length >= 5) out += ') ' + d.slice(4, 7);
+    if (d.length >= 8) out += '-' + d.slice(7, 9);
+    if (d.length >= 10) out += '-' + d.slice(9, 11);
+    return out;
+  }
+
+  function attachPhone(input) {
+    if (!input) return;
+    input.addEventListener('input', function () {
+      var pos = input.selectionStart;
+      var atEnd = pos === input.value.length;
+      input.value = formatPhone(input.value);
+      if (atEnd) {
+        try { input.setSelectionRange(input.value.length, input.value.length); } catch (e) {}
+      }
+    });
+    input.addEventListener('focus', function () {
+      if (!input.value) input.value = '+7 (';
+    });
+    input.addEventListener('blur', function () {
+      if (digitsOf(input.value) === '7') input.value = '';
+    });
+  }
+
+  attachPhone(el('r-phone'));
+  attachPhone(el('d-phone'));
+
+  /* ---------------- «Подставить мой номер» ---------------- */
+  function extractPhone(data, depth) {
+    if (!data || depth > 3) return '';
+    if (typeof data === 'string') return /^\+?[\d\s()\-]{10,}$/.test(data) ? data : '';
+    if (typeof data !== 'object') return '';
+    var keys = ['phone_number', 'phoneNumber', 'phone', 'tel', 'number'];
+    for (var i = 0; i < keys.length; i++) {
+      var v = data[keys[i]];
+      if (typeof v === 'string' && digitsOf(v).length >= 10) return v;
+    }
+    for (var k in data) {
+      if (!Object.prototype.hasOwnProperty.call(data, k)) continue;
+      var found = extractPhone(data[k], depth + 1);
+      if (found) return found;
+    }
+    return '';
+  }
+
+  function setPhone(input, phone) {
+    if (!input) return;
+    input.value = formatPhone(phone);
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+
+  function attachContactButton(btnId, inputId) {
+    var btn = el(btnId);
+    var input = el(inputId);
+    if (!btn || !input) return;
+    if (!(WA && typeof WA.requestContact === 'function')) return;
+    btn.hidden = false;
+    btn.classList.add('is-visible');
+    btn.addEventListener('click', function () {
+      var done = function (res) {
+        var phone = extractPhone(res, 0);
+        if (phone) setPhone(input, phone);
+      };
+      safe(function () {
+        var r = WA.requestContact(done);
+        if (r && typeof r.then === 'function') r.then(done, function () {});
+      });
+    });
+  }
+
+  attachContactButton('rContact', 'r-phone');
+  attachContactButton('dContact', 'd-phone');
+
+  /* ---------------- валидация ---------------- */
+  function fieldOf(input) {
+    return input.closest ? input.closest('.field') : null;
+  }
+
+  function setError(node, message) {
+    if (!node) return;
+    node.classList.add('is-invalid');
+    var err = node.querySelector('[data-err]');
+    if (err && message) err.textContent = message;
+  }
+
+  function clearError(node) {
+    if (node) node.classList.remove('is-invalid');
+  }
+
+  function bindClear(form) {
+    form.addEventListener('input', function (e) {
+      var f = fieldOf(e.target);
+      if (f) clearError(f);
+      if (e.target.type === 'checkbox') {
+        var c = e.target.closest('.consent');
+        if (c) c.classList.remove('is-invalid');
+      }
+      var alert = form.querySelector('.form-alert');
+      if (alert) alert.classList.remove('is-visible');
+    });
+    form.addEventListener('change', function (e) {
+      var f = fieldOf(e.target);
+      if (f) clearError(f);
+      if (e.target.type === 'radio') {
+        var r = e.target.closest('.field');
+        if (r) clearError(r);
+      }
+      var alert = form.querySelector('.form-alert');
+      if (alert) alert.classList.remove('is-visible');
+    });
+  }
+
+  /* ---------------- отправка ---------------- */
+  function buildPayload(type, data) {
+    var user = maxUser();
+    var lines = [];
+    var titles = {
+      realtor: 'Заявка риелтора — Маклер.Хаб x RedCat',
+      developer: 'Заявка застройщика — Маклер.Хаб x RedCat'
+    };
+    var labels = {
+      name: 'Имя', phone: 'Телефон', city: 'Город', role: 'Кто вы',
+      agency: 'Агентство', experience: 'Опыт', company: 'Компания',
+      position: 'Должность', complex: 'ЖК', flats: 'Квартир в продаже',
+      comment: 'Комментарий'
+    };
+    Object.keys(data).forEach(function (k) {
+      if (k === 'consent') return;
+      if (data[k] === '' || data[k] == null) return;
+      lines.push((labels[k] || k) + ': ' + data[k]);
+    });
+    if (user && user.name) lines.push('Пользователь MAX: ' + user.name + (user.id ? ' (id ' + user.id + ')' : ''));
+    lines.push('Источник: MAX mini app');
+
+    var payload = {
+      type: type,
+      source: 'MAX mini app',
+      title: titles[type],
+      createdAt: new Date().toISOString(),
+      user: user || null,
+      initData: maxInitData(),
+      data: data,
+      fields: {
+        TITLE: titles[type],
+        NAME: data.name || '',
+        PHONE: [{ VALUE: data.phone || '', VALUE_TYPE: 'WORK' }],
+        COMMENTS: lines.join('\n'),
+        SOURCE_ID: 'WEB',
+        SOURCE_DESCRIPTION: 'MAX mini app'
+      }
+    };
+    if (data.company) payload.fields.COMPANY_TITLE = data.company;
+    return payload;
+  }
+
+  function send(payload) {
+    if (!WEBHOOK_URL) return Promise.reject(new Error('not_configured'));
+    // заявка с персональными данными уходит только по защищённому каналу или на свой же адрес
+    if (!/^https:\/\//i.test(WEBHOOK_URL) && WEBHOOK_URL.charAt(0) !== '/') {
+      return Promise.reject(new Error('insecure_webhook'));
+    }
+    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = setTimeout(function () { if (controller) controller.abort(); }, TIMEOUT_MS);
+    var opts = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    };
+    if (controller) opts.signal = controller.signal;
+    return fetch(WEBHOOK_URL, opts)
+      .then(function (res) {
+        clearTimeout(timer);
+        if (!res.ok) throw new Error('http_' + res.status);
+        return res;
+      })
+      .catch(function (err) {
+        clearTimeout(timer);
+        throw err;
+      });
+  }
+
+  function setLoading(btn, on) {
+    if (!btn) return;
+    btn.disabled = on;
+    btn.classList.toggle('is-loading', on);
+    var label = btn.querySelector('[data-label]');
+    if (label) label.textContent = on ? 'Отправляем…' : btn.getAttribute('data-idle') || label.textContent;
+  }
+
+  function showAlert(form) {
+    var alert = form.querySelector('.form-alert');
+    if (alert) {
+      var text = alert.querySelector('[data-alert-text]');
+      if (!WEBHOOK_URL && text) {
+        text.textContent = 'Приём заявок пока не настроен. Напишите нам в MAX — ответим в рабочее время.';
+      }
+      alert.classList.add('is-visible');
+      alert.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }
+  }
+
+  function collect(form) {
+    var data = {};
+    var inputs = form.querySelectorAll('input[name],select[name],textarea[name]');
+    for (var i = 0; i < inputs.length; i++) {
+      var inp = inputs[i];
+      if (inp.type === 'checkbox') continue;
+      if (inp.type === 'radio') {
+        if (inp.checked) data[inp.name] = inp.value;
+        continue;
+      }
+      data[inp.name] = (inp.value || '').trim();
+    }
+    return data;
+  }
+
+  function validateRealtor(form) {
+    var bad = null, first = null;
+    function fail(node) { node.classList.add('is-invalid'); if (!first) first = node; }
+    var name = el('r-name');
+    if (name.value.trim().length < 2) { fail(fieldOf(name)); bad = true; }
+    var phone = el('r-phone');
+    if (digitsOf(phone.value).length !== 11) { fail(fieldOf(phone)); bad = true; }
+    var city = el('r-city');
+    if (!city.value) { fail(fieldOf(city)); bad = true; }
+    var role = form.querySelector('input[name="role"]:checked');
+    if (!role) { fail(fieldOf(form.querySelector('input[name="role"]'))); bad = true; }
+    var agency = el('r-agency');
+    if (role && role.value === 'Сотрудник агентства' && agency.value.trim().length < 2) {
+      fail(fieldOf(agency)); bad = true;
+    }
+    var consent = el('r-consent');
+    if (!consent.checked) { consent.closest('.consent').classList.add('is-invalid'); bad = true; if (!first) first = consent.closest('.consent'); }
+    if (first) {
+      var focusable = first.querySelector('input,select,textarea,button');
+      first.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      if (focusable) setTimeout(function () { safe(function () { focusable.focus({ preventScroll: true }); }); }, 260);
+    }
+    return !bad;
+  }
+
+  function validateDeveloper(form) {
+    var bad = null, first = null;
+    function fail(node) { node.classList.add('is-invalid'); if (!first) first = node; }
+    var company = el('d-company');
+    if (company.value.trim().length < 2) { fail(fieldOf(company)); bad = true; }
+    var name = el('d-name');
+    if (name.value.trim().length < 2) { fail(fieldOf(name)); bad = true; }
+    var phone = el('d-phone');
+    if (digitsOf(phone.value).length !== 11) { fail(fieldOf(phone)); bad = true; }
+    var city = el('d-city');
+    if (!city.value) { fail(fieldOf(city)); bad = true; }
+    var consent = el('d-consent');
+    if (!consent.checked) { consent.closest('.consent').classList.add('is-invalid'); bad = true; if (!first) first = consent.closest('.consent'); }
+    if (first) {
+      var focusable = first.querySelector('input,select,textarea,button');
+      first.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      if (focusable) setTimeout(function () { safe(function () { focusable.focus({ preventScroll: true }); }); }, 260);
+    }
+    return !bad;
+  }
+
+  function setupForm(opts) {
+    var form = el(opts.formId);
+    if (!form) return;
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) btn.setAttribute('data-idle', btn.querySelector('[data-label]').textContent);
+    bindClear(form);
+
+    if (opts.roleToggle) {
+      var radios = form.querySelectorAll('input[name="role"]');
+      for (var i = 0; i < radios.length; i++) {
+        radios[i].addEventListener('change', function () {
+          var wrap = el('r-agency-wrap');
+          var isAgency = form.querySelector('input[name="role"]:checked').value === 'Сотрудник агентства';
+          wrap.hidden = !isAgency;
+          if (!isAgency) { el('r-agency').value = ''; clearError(wrap); }
+        });
+      }
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var alert = form.querySelector('.form-alert');
+      if (alert) alert.classList.remove('is-visible');
+
+      var valid = opts.validate(form);
+      if (!valid) return;
+
+      var data = collect(form);
+      if (!data.consent) data.consent = 'да';
+      data.consent = 'да';
+
+      setLoading(btn, true);
+      send(buildPayload(opts.type, data))
+        .then(function () {
+          form.reset();
+          var wrap = el('r-agency-wrap');
+          if (wrap) wrap.hidden = true;
+          setLoading(btn, false);
+          history.length = 0;
+          showScreen('thanks', false);
+        })
+        .catch(function () {
+          setLoading(btn, false);
+          showAlert(form);
+        });
+    });
+  }
+
+  setupForm({
+    formId: 'formRealtor',
+    type: 'realtor',
+    roleToggle: true,
+    validate: validateRealtor
+  });
+
+  setupForm({
+    formId: 'formDeveloper',
+    type: 'developer',
+    roleToggle: false,
+    validate: validateDeveloper
+  });
+
+  /* ---------------- старт ---------------- */
+  syncBackButton();
+
+  // Если страницу открыли из ссылки с якорем вида #realtor — сразу нужный экран
+  var initial = (location.hash || '').replace('#', '');
+  if (initial === 'realtor' || initial === 'developer') showScreen(initial, false);
+})();
+</script>
+</body>
+</html>
