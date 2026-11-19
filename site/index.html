@@ -1121,6 +1121,84 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
   .mhct-root *, .mhct-root.mhct-js * { transition: none !important; animation: none !important; }
   .mhct-root.mhct-js .mhct-ct > *, .mhct-root.mhct-js .mhct-tile, .mhct-root.mhct-js .mhct-map, .mhct-root.mhct-js .mhct-addr { opacity: 1; transform: none; }
 }
+  /* ===== Контакты: иконка сверху, текст под ней ===== */
+.mhct-root .mhct-tile.mhct-tile-phones,
+.mhct-root .mhct-tile.mhct-max {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: flex-start;
+  gap: 8px;
+  grid-template-columns: none;
+  grid-template-areas: none;
+}
+
+.mhct-root .mhct-tile.mhct-tile-phones .mhct-ico,
+.mhct-root .mhct-tile.mhct-max .mhct-ico {
+  position: static;
+  margin: 0 0 4px 0;
+  flex: 0 0 auto;
+}
+
+.mhct-root .mhct-tile-phones .mhct-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+.mhct-root .mhct-tile .mhct-lbl {
+  display: block;
+  margin: 0;
+}
+
+/* телефоны */
+.mhct-root .mhct-tile-phones .mhct-phones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mhct-root .mhct-tile-phones .mhct-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.mhct-root .mhct-tile-phones .mhct-info {
+  display: flex;
+  flex-direction: column;   /* название сверху, номер снизу */
+  gap: 2px;
+  min-width: 0;
+}
+.mhct-root .mhct-tile-phones .mhct-sub {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #8a8a8a;
+}
+.mhct-root .mhct-tile-phones .mhct-val {
+  display: block;
+}
+.mhct-root .mhct-tile-phones .mhct-val,
+.mhct-root .mhct-tile-phones .mhct-val a {
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+/* MAX */
+.mhct-root .mhct-tile.mhct-max .mhct-val {
+  display: block;
+}
+.mhct-root .mhct-tile.mhct-max .mhct-val a {
+  color: #000;
+  text-decoration: none;
+}
+.mhct-root .mhct-tile.mhct-max .mhct-val a:hover {
+  text-decoration: underline;
+}
 </style>
 <div class="mhct-root">
 <section class="mhct-sec" aria-labelledby="mhct-title">
