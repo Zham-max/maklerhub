@@ -1199,6 +1199,44 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 .mhct-root .mhct-tile.mhct-max .mhct-val a:hover {
   text-decoration: underline;
 }
+  /* ===== Иконка слева, текст справа ===== */
+
+/* плитка с телефонами */
+.mhct-root .mhct-tile.mhct-tile-phones {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+.mhct-root .mhct-tile.mhct-tile-phones .mhct-ico {
+  flex: 0 0 auto;
+  margin: 0;
+}
+.mhct-root .mhct-tile-phones .mhct-body {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+}
+
+/* плитка MAX */
+.mhct-root .mhct-tile.mhct-max {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: none;
+  column-gap: 16px;
+  row-gap: 6px;
+  align-items: start;
+  align-content: start;
+}
+.mhct-root .mhct-tile.mhct-max .mhct-ico {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  margin: 0;
+}
+.mhct-root .mhct-tile.mhct-max .mhct-lbl,
+.mhct-root .mhct-tile.mhct-max .mhct-val {
+  grid-column: 2;
+}
 </style>
 <div class="mhct-root">
 <section class="mhct-sec" aria-labelledby="mhct-title">
