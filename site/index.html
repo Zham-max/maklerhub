@@ -956,7 +956,7 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 .mhvd-root .mhvd-card figcaption { font-size: 15px; font-weight: 700; line-height: 1.4; }
 .mhvd-root .mhvd-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; background: #0b1416;
   box-shadow: 0 30px 60px -32px rgba(1,40,46,.6); }
-.mhvd-root .mhvd-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.mhvd-root .mhvd-frame video { display: block; width: 100%; height: 100%; object-fit: contain; background: #0b1416; }
 .mhvd-root .mhvd-play { position: absolute; inset: 0; appearance: none; border: 0; cursor: pointer; padding: 20px;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: #fff;
   background: radial-gradient(120% 80% at 50% 30%, #037382 0%, #014c56 55%, #012f35 100%); font: 700 14px/1 var(--font); }
@@ -979,39 +979,42 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 <div class="mhvd-root">
 <section class="mhvd-sec" aria-labelledby="mhvd-title">
   <div class="mhvd-wrap">
-    <span class="mhvd-kicker">Видео</span>
-    <h2 id="mhvd-title">Смотрите, как мы работаем</h2>
-    <p class="mhvd-sub">Короткие ролики о Маклер.Хаб и платформе RedCat.</p>
+    <span class="mhvd-kicker">Видеоуроки</span>
+    <h2 id="mhvd-title">Уроки по RedCat</h2>
+    <p class="mhvd-sub">Короткие инструкции для риелторов: как начать работу на платформе.</p>
     <div class="mhvd-grid">
 
       <figure class="mhvd-card">
-        <div class="mhvd-frame" data-src="https://drive.google.com/file/d/1DjywNFE2D9wJGbxm_3V4lns_O7D4UNPZ/preview" data-title="Видео 1">
-          <button class="mhvd-play" type="button" aria-label="Смотреть: Видео 1">
+        <div class="mhvd-frame">
+          <video src="media/RedCat_урок_v2_регистрация_и_верификация.mp4" preload="none" playsinline aria-label="Видеоурок: регистрация и верификация в RedCat"></video>
+          <button class="mhvd-play" type="button" aria-label="Смотреть: регистрация и верификация">
             <span class="mhvd-play-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
             <span class="mhvd-play-t">Смотреть</span>
           </button>
         </div>
-        <figcaption>Название первого видео</figcaption>
+        <figcaption>Регистрация и верификация</figcaption>
       </figure>
 
       <figure class="mhvd-card">
-        <div class="mhvd-frame" data-src="https://drive.google.com/file/d/1zBVt8AtTxyJSNEenohI0HQ2RKXIWKYqW/preview" data-title="Видео 2">
-          <button class="mhvd-play" type="button" aria-label="Смотреть: Видео 2">
+        <div class="mhvd-frame">
+          <video src="media/RedCat_урок_клиент_и_подборка_v2.mp4" preload="none" playsinline aria-label="Видеоурок: клиент и подборка в RedCat"></video>
+          <button class="mhvd-play" type="button" aria-label="Смотреть: клиент и подборка">
             <span class="mhvd-play-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
             <span class="mhvd-play-t">Смотреть</span>
           </button>
         </div>
-        <figcaption>Название второго видео</figcaption>
+        <figcaption>Клиент и подборка</figcaption>
       </figure>
 
       <figure class="mhvd-card">
-        <div class="mhvd-frame" data-src="https://drive.google.com/file/d/18IuGdKQ12FPPmSvDtfhCmeQ9qCOuWK9O/preview" data-title="Видео 3">
-          <button class="mhvd-play" type="button" aria-label="Смотреть: Видео 3">
+        <div class="mhvd-frame">
+          <video src="media/RedCat_урок_планировка_квартиры.mp4" preload="none" playsinline aria-label="Видеоурок: планировка квартиры в RedCat"></video>
+          <button class="mhvd-play" type="button" aria-label="Смотреть: планировка квартиры">
             <span class="mhvd-play-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
             <span class="mhvd-play-t">Смотреть</span>
           </button>
         </div>
-        <figcaption>Название третьего видео</figcaption>
+        <figcaption>Планировка квартиры</figcaption>
       </figure>
 
     </div>
@@ -1020,26 +1023,23 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 </div>
 <script>
 (function () {
-  var frames = document.querySelectorAll('.mhvd-frame');
-  function reset(f) {
-    var old = f.querySelector('iframe');
-    if (old) old.remove();
-    var b = f.querySelector('.mhvd-play');
-    if (b) b.hidden = false;
-  }
-  frames.forEach(function (f) {
-    var b = f.querySelector('.mhvd-play');
+  var vids = [];
+  document.querySelectorAll('.mhvd-frame').forEach(function (f) {
+    var v = f.querySelector('video'), b = f.querySelector('.mhvd-play');
+    vids.push(v);
     b.addEventListener('click', function () {
-      // играет только один ролик
-      frames.forEach(function (o) { if (o !== f) reset(o); });
-      var ifr = document.createElement('iframe');
-      ifr.src = f.getAttribute('data-src');
-      ifr.title = f.getAttribute('data-title') || 'Видео';
-      ifr.allow = 'autoplay; fullscreen';
-      ifr.setAttribute('allowfullscreen', '');
-      f.appendChild(ifr);
       b.hidden = true;
+      v.controls = true;
+      v.play().catch(function () {});
     });
+    // одновременно играет только один ролик
+    v.addEventListener('play', function () { vids.forEach(function (o) { if (o !== v && !o.paused) o.pause(); }); });
+    // ушёл с экрана — пауза
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (!e.isIntersecting && !v.paused) v.pause(); });
+      }, { threshold: 0.2 }).observe(v);
+    }
   });
 })();
 </script>
