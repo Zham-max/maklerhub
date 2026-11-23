@@ -934,7 +934,117 @@ p.addEventListener('click',function(e){if(e.target.tagName==='A'){p.classList.re
 })();
 </script>
 </div>
+<!-- 07a-video.html -->
+<div class="blk" id="b761">
+<style>
+.mhvd-root, .mhvd-root * { box-sizing: border-box; }
+.mhvd-root h2, .mhvd-root h3 { border: 0; padding: 0; background: none; text-decoration: none; color: inherit; }
+.mhvd-root p { margin: 0; }
+.mhvd-root {
+  --ink: #141414; --muted: #5b5a56; --teal: #025f6b; --sand: #da9858; --bronze: #b67233; --cream: #f7efe5;
+  --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font); color: var(--ink);
+}
+.mhvd-root .mhvd-sec { background: var(--cream); }
+.mhvd-root .mhvd-wrap { max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 14px; }
+.mhvd-root .mhvd-kicker { align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
+.mhvd-root .mhvd-kicker::before { content: ""; width: 24px; height: 1.5px; background: currentColor; }
+.mhvd-root h2 { margin: 0; font-weight: 800; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; }
+.mhvd-root .mhvd-sub { font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 560px; }
+.mhvd-root .mhvd-grid { margin-top: 18px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.mhvd-root .mhvd-card { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.mhvd-root .mhvd-card figcaption { font-size: 15px; font-weight: 700; line-height: 1.4; }
+.mhvd-root .mhvd-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; background: #0b1416;
+  box-shadow: 0 30px 60px -32px rgba(1,40,46,.6); }
+.mhvd-root .mhvd-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.mhvd-root .mhvd-play { position: absolute; inset: 0; appearance: none; border: 0; cursor: pointer; padding: 20px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: #fff;
+  background: radial-gradient(120% 80% at 50% 30%, #037382 0%, #014c56 55%, #012f35 100%); font: 700 14px/1 var(--font); }
+.mhvd-root .mhvd-play[hidden] { display: none; }
+.mhvd-root .mhvd-play-ico { width: 64px; height: 64px; border-radius: 50%; background: var(--bronze); display: grid; place-items: center;
+  animation: mhvd-pulse 2.4s ease-out infinite; transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+.mhvd-root .mhvd-play-ico svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
+.mhvd-root .mhvd-play:hover .mhvd-play-ico { transform: scale(1.1); }
+.mhvd-root .mhvd-play:focus-visible { outline: 3px solid var(--sand); outline-offset: -6px; }
+.mhvd-root .mhvd-play-t { font-size: 13px; letter-spacing: .04em; opacity: .85; }
+@keyframes mhvd-pulse { 0% { box-shadow: 0 0 0 0 rgba(182,114,51,.55); } 70%, 100% { box-shadow: 0 0 0 20px rgba(182,114,51,0); } }
+@media (max-width: 960px) { .mhvd-root .mhvd-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) {
+  .mhvd-root .mhvd-wrap { padding: 48px 16px; }
+  .mhvd-root .mhvd-grid { grid-template-columns: 1fr; gap: 28px; }
+  .mhvd-root .mhvd-frame { border-radius: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .mhvd-root .mhvd-play-ico { animation: none; } }
+</style>
+<div class="mhvd-root">
+<section class="mhvd-sec" aria-labelledby="mhvd-title">
+  <div class="mhvd-wrap">
+    <span class="mhvd-kicker">Видео</span>
+    <h2 id="mhvd-title">Смотрите, как мы работаем</h2>
+    <p class="mhvd-sub">Короткие ролики о Маклер.Хаб и платформе RedCat.</p>
+    <div class="mhvd-grid">
 
+      <figure class="mhvd-card">
+        <div class="mhvd-frame" data-src="https://drive.google.com/file/d/1DjywNFE2D9wJGbxm_3V4lns_O7D4UNPZ/preview" data-title="Видео 1">
+          <button class="mhvd-play" type="button" aria-label="Смотреть: Видео 1">
+            <span class="mhvd-play-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="mhvd-play-t">Смотреть</span>
+          </button>
+        </div>
+        <figcaption>Название первого видео</figcaption>
+      </figure>
+
+      <figure class="mhvd-card">
+        <div class="mhvd-frame" data-src="https://drive.google.com/file/d/1zBVt8AtTxyJSNEenohI0HQ2RKXIWKYqW/preview" data-title="Видео 2">
+          <button class="mhvd-play" type="button" aria-label="Смотреть: Видео 2">
+            <span class="mhvd-play-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="mhvd-play-t">Смотреть</span>
+          </button>
+        </div>
+        <figcaption>Название второго видео</figcaption>
+      </figure>
+
+      <figure class="mhvd-card">
+        <div class="mhvd-frame" data-src="https://drive.google.com/file/d/18IuGdKQ12FPPmSvDtfhCmeQ9qCOuWK9O/preview" data-title="Видео 3">
+          <button class="mhvd-play" type="button" aria-label="Смотреть: Видео 3">
+            <span class="mhvd-play-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+            <span class="mhvd-play-t">Смотреть</span>
+          </button>
+        </div>
+        <figcaption>Название третьего видео</figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+</div>
+<script>
+(function () {
+  var frames = document.querySelectorAll('.mhvd-frame');
+  function reset(f) {
+    var old = f.querySelector('iframe');
+    if (old) old.remove();
+    var b = f.querySelector('.mhvd-play');
+    if (b) b.hidden = false;
+  }
+  frames.forEach(function (f) {
+    var b = f.querySelector('.mhvd-play');
+    b.addEventListener('click', function () {
+      // играет только один ролик
+      frames.forEach(function (o) { if (o !== f) reset(o); });
+      var ifr = document.createElement('iframe');
+      ifr.src = f.getAttribute('data-src');
+      ifr.title = f.getAttribute('data-title') || 'Видео';
+      ifr.allow = 'autoplay; fullscreen';
+      ifr.setAttribute('allowfullscreen', '');
+      f.appendChild(ifr);
+      b.hidden = true;
+    });
+  });
+})();
+</script>
+</div>
+  
 <!-- 07b-zayavka.html -->
 <div class="blk">
 <style>
